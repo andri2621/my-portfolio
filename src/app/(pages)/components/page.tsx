@@ -86,9 +86,6 @@ export default function ComponentPage() {
                     </option>
                   ))}
                 </select>
-                <ButtonLink href='https://github.com/theodorusclarence/ts-nextjs-tailwind-starter/blob/main/src/styles/colors.css'>
-                  Check list of colors
-                </ButtonLink>
               </div>
               <div className='flex flex-wrap gap-2 text-xs font-medium'>
                 <div className='bg-primary-50 flex h-10 w-10 items-center justify-center rounded text-black'>
