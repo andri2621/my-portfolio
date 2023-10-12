@@ -42,7 +42,7 @@ const HomeSection = () => {
             <div className='text-neutral block text-3xl font-black dark:text-white lg:text-5xl'>
               Andi Setiawan
             </div>
-            <h2 className='text-neutral text-base font-medium dark:text-white lg:text-2xl'>
+            <h2 className='text-base font-medium lg:text-2xl'>
               I&apos;am
               <span className='text-primary ml-2 text-xl lg:text-3xl'>
                 Frontend Developer

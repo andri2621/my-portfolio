@@ -7,7 +7,8 @@ import '@/styles/globals.css';
 // Prevent fontawesome from adding its CSS since we did it manually above:
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
-import NavbarTop from '@/components/NavbarTop';
+import NavbarBottom from '@/components/navbar/NavbarBottom';
+import NavbarTop from '@/components/navbar/NavbarTop';
 
 import { Providers } from '@/app/providers';
 import { siteConfig } from '@/constant/config';
@@ -70,6 +71,7 @@ export default function RootLayout({
         <Providers>
           <NavbarTop />
           {children}
+          <NavbarBottom />
         </Providers>
       </body>
     </html>

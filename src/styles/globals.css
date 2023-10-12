@@ -105,7 +105,6 @@ body {
   margin-right: auto;
   position: relative;
   font-family: 'Inter', sans-serif;
-  scroll-behavior: scroll-smooth;
 }
 
 img {

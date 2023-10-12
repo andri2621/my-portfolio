@@ -2,7 +2,8 @@
 
 const NavbarBottom = () => {
   return (
-    <ul className='menu menu-horizontal bg-base-200 rounded-box'>
+    // <div className='z-50 mx-auto overflow-hidden md:hidden'>
+    <ul className='menu menu-horizontal bg-base-200 rounded-box fixed bottom-2 '>
       <li>
         <a>
           <svg
@@ -58,6 +59,7 @@ const NavbarBottom = () => {
         </a>
       </li>
     </ul>
+    // </div>
   );
 };
 
