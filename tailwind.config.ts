@@ -1,29 +1,53 @@
+import daisyuiThemes from 'daisyui/src/theming/themes';
 import type { Config } from 'tailwindcss';
 import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  darkMode: ['class', '[data-theme="night"]'],
   theme: {
+    container: {
+      center: true,
+      padding: '16px',
+    },
     extend: {
       fontFamily: {
         primary: ['Inter', ...defaultTheme.fontFamily.sans],
       },
+      screens: {
+        '2xl': '1320px',
+      },
       colors: {
-        primary: {
-          // Customize it on globals.css :root
-          50: 'rgb(var(--tw-color-primary-50) / <alpha-value>)',
-          100: 'rgb(var(--tw-color-primary-100) / <alpha-value>)',
-          200: 'rgb(var(--tw-color-primary-200) / <alpha-value>)',
-          300: 'rgb(var(--tw-color-primary-300) / <alpha-value>)',
-          400: 'rgb(var(--tw-color-primary-400) / <alpha-value>)',
-          500: 'rgb(var(--tw-color-primary-500) / <alpha-value>)',
-          600: 'rgb(var(--tw-color-primary-600) / <alpha-value>)',
-          700: 'rgb(var(--tw-color-primary-700) / <alpha-value>)',
-          800: 'rgb(var(--tw-color-primary-800) / <alpha-value>)',
-          900: 'rgb(var(--tw-color-primary-900) / <alpha-value>)',
-          950: 'rgb(var(--tw-color-primary-950) / <alpha-value>)',
+        primary: '#14b8a6',
+        secondary: '#ef9fbc',
+        accent: '#eeaf3a',
+        neutral: '#291534',
+        dark: '#291334',
+        base: { 100: '#faf7f5' },
+        info: '#3abff8',
+        success: '#36d399',
+        warning: '#fbbd23',
+        error: '#f87272',
+        lightpale: '#988B9C',
+        darkpale: '#666A77',
+        darkmodal: '#1D283A',
+        slate: {
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b',
+          600: '#475569',
+          700: '#334155',
+          800: '#1e293b',
+          900: '#0f172a',
+          950: '#020617',
         },
-        dark: '#222222',
+      },
+      boxShadow: {
+        '3xl': '0px 0px 16px 2px rgba(0,0,0,0.2)',
+        '4xl': '0px 0px 16px 2px rgba(255,255,255,0.2)',
       },
       keyframes: {
         flicker: {
@@ -52,5 +76,49 @@ export default {
       },
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  // plugins: [require('@tailwindcss/forms'), require('daisyui')], //! Default setting from template
+  plugins: [require('daisyui')],
+  daisyui: {
+    themes: [
+      {
+        cupcake: {
+          ...daisyuiThemes['[data-theme=cupcake]'],
+          primary: '#14b8a6',
+          secondary: '#ef9fbc',
+          accent: '#eeaf3a',
+          neutral: '#291534',
+          base: { 100: '#faf7f5' },
+          info: '#3abff8',
+          success: '#36d399',
+          warning: '#fbbd23',
+          error: '#f87272',
+
+          '--rounded-box': '1rem', // border radius rounded-box utility class, used in card and other large boxes
+          '--rounded-btn': '0.5rem', // border radius rounded-btn utility class, used in buttons and similar element
+          '--rounded-badge': '1.9rem', // border radius rounded-badge utility class, used in badges and similar
+          '--animation-btn': '0.25s', // duration of animation when you click on button
+          '--animation-input': '0.2s', // duration of animation for inputs like checkbox, toggle, radio, etc
+          '--btn-text-case': 'uppercase', // set default text transform for buttons
+          '--btn-focus-scale': '0.95', // scale transform of button when you focus on it
+          '--border-btn': '1px', // border width of buttons
+          '--tab-border': '1px', // border width of tabs
+          '--tab-radius': '0.5rem', // border radius of tabs
+        },
+      },
+      {
+        night: {
+          ...daisyuiThemes['[data-theme=night]'],
+          primary: '#14b8a6',
+          secondary: '#ef9fbc',
+          accent: '#eeaf3a',
+          neutral: '#291534',
+          base: { 100: '#faf7f5' },
+          info: '#3abff8',
+          success: '#36d399',
+          warning: '#fbbd23',
+          error: '#f87272',
+        },
+      },
+    ],
+  },
 } satisfies Config;

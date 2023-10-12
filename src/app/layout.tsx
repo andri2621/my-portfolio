@@ -1,12 +1,22 @@
+import { config } from '@fortawesome/fontawesome-svg-core';
 import { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import * as React from 'react';
 
 import '@/styles/globals.css';
+// Prevent fontawesome from adding its CSS since we did it manually above:
+import '@fortawesome/fontawesome-svg-core/styles.css';
 
+import NavbarTop from '@/components/NavbarTop';
+
+import { Providers } from '@/app/providers';
 import { siteConfig } from '@/constant/config';
 
-// STARTERCONF Change these default meta
-// STARTERCONF Look at @/constant/config to change them
+// prevent fontawesome from adding its CSS since we did it manually
+config.autoAddCss = false;
+
+const inter = Inter({ subsets: ['latin'] });
+
 export const metadata: Metadata = {
   title: {
     default: siteConfig.title,
@@ -34,14 +44,14 @@ export const metadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description,
     images: [`${siteConfig.url}/images/og.jpg`],
-    // creator: '@th_clarence',
+    creator: '@andri2621',
   },
-  // authors: [
-  //   {
-  //     name: 'Theodorus Clarence',
-  //     url: 'https://theodorusclarence.com',
-  //   },
-  // ],
+  authors: [
+    {
+      name: 'Andi Setiawan',
+      url: 'https://awandri.com',
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -50,8 +60,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
-      <body>{children}</body>
+    <html
+      lang='en-US'
+      className='scroll-smooth transition duration-200 ease-linear'
+      data-theme='cupcake'
+      suppressHydrationWarning
+    >
+      <body className={inter.className}>
+        <Providers>
+          <NavbarTop />
+          {children}
+        </Providers>
+      </body>
     </html>
   );
 }

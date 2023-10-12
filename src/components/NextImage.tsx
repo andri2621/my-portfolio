@@ -10,6 +10,7 @@ type NextImageProps = {
     blur?: string;
   };
   alt: string;
+  quality?: number;
 } & (
   | { width: string | number; height: string | number }
   | { layout: 'fill'; width?: string | number; height?: string | number }
@@ -27,6 +28,7 @@ export default function NextImage({
   width,
   height,
   alt,
+  quality,
   className,
   classNames,
   ...rest
@@ -50,6 +52,7 @@ export default function NextImage({
         width={width}
         height={height}
         alt={alt}
+        quality={quality}
         onLoadingComplete={() => setStatus('complete')}
         {...rest}
       />
