@@ -114,3 +114,7 @@ img {
 .navbar-fixed {
   @apply dark:bg-dark/10 fixed z-[99] bg-white/20 shadow-md backdrop-blur-sm;
 }
+
+.navbar-top .active {
+  @apply !text-primary;
+}

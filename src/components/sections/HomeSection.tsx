@@ -36,28 +36,25 @@ const HomeSection = () => {
         <div className='flex flex-wrap'>
           {/* LEFT CONTENT */}
           <div className='w-full self-center px-4 md:w-1/2 lg:w-3/5'>
-            <div className='text-base font-semibold md:text-xl'>
+            <div className='text-base-content/70 dark:text-lightpale text-base font-semibold md:text-xl'>
               Hi, my name is
             </div>
-            <div className='text-neutral block text-3xl font-black dark:text-white lg:text-5xl'>
+            <div className='block text-3xl font-black dark:text-white lg:text-5xl'>
               Andi Setiawan
             </div>
-            <h2 className='text-base font-medium lg:text-2xl'>
+            <h2 className='text-base-content/70 dark:text-lightpale text-base font-medium  lg:text-2xl'>
               I&apos;am
               <span className='text-primary ml-2 text-xl lg:text-3xl'>
                 Frontend Developer
               </span>
             </h2>
-            <p className='text-darkpale mb-4 mt-4 text-sm leading-5 '>
+            <p className='text-base-content/50 mb-4 mt-4 text-sm leading-5 '>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam,
               ipsum expedita. Dolore vero ad est nostrum quae autem saepe aut et
               repudiandae magni.
             </p>
 
-            <Link
-              href='#'
-              className='btn btn-primary btn-sm text-neutral md:btn-md text-xs'
-            >
+            <Link href='#' className='btn btn-primary btn-sm md:btn-md text-xs'>
               DOWNLOAD CV
             </Link>
             <Link

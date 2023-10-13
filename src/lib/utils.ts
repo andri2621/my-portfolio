@@ -24,3 +24,18 @@ export function useClickOutside(
     };
   }, [ref, handler]);
 }
+
+export const handleScrollNav = () => {
+  return () => {
+    const nav = document.querySelector<HTMLElement>('#navbar-top');
+
+    if (nav) {
+      const fixedNav: number = nav.offsetTop;
+      if (window.scrollY > fixedNav) {
+        nav.classList.add('navbar-fixed');
+      } else {
+        nav.classList.remove('navbar-fixed');
+      }
+    }
+  };
+};

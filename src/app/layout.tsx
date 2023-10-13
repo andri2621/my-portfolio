@@ -7,9 +7,6 @@ import '@/styles/globals.css';
 // Prevent fontawesome from adding its CSS since we did it manually above:
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
-import NavbarBottom from '@/components/navbar/NavbarBottom';
-import NavbarTop from '@/components/navbar/NavbarTop';
-
 import { Providers } from '@/app/providers';
 import { siteConfig } from '@/constant/config';
 
@@ -63,15 +60,13 @@ export default function RootLayout({
   return (
     <html
       lang='en-US'
-      className='scroll-smooth transition duration-200 ease-linear'
+      className='transition duration-200 ease-linear'
       data-theme='cupcake'
       suppressHydrationWarning
     >
       <body className={inter.className}>
         <Providers>
-          <NavbarTop />
-          {children}
-          <NavbarBottom />
+          <main>{children}</main>
         </Providers>
       </body>
     </html>
