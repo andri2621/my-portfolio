@@ -1,5 +1,6 @@
 import clsx, { ClassValue } from 'clsx';
 import { RefObject, useEffect } from 'react';
+import { Events, scrollSpy } from 'react-scroll';
 import { twMerge } from 'tailwind-merge';
 
 /** Merge classes with tailwind-merge with clsx full feature */
@@ -25,8 +26,72 @@ export function useClickOutside(
   }, [ref, handler]);
 }
 
-export const handleScrollNav = () => {
-  return () => {
+// export function useFixedNavbar() {
+//   const handleScrollNav = () => {
+//     const nav = document.querySelector<HTMLElement>('#navbar-top');
+
+//     if (nav) {
+//       const fixedNav: number = nav.offsetTop;
+//       if (window.scrollY > fixedNav) {
+//         nav.classList.add('navbar-fixed');
+//       } else {
+//         nav.classList.remove('navbar-fixed');
+//       }
+//     }
+//   };
+
+//   useEffect(() => {
+//     // Check scroll position on component mount
+//     handleScrollNav();
+
+//     // add scroll listener
+//     window.addEventListener('scroll', handleScrollNav);
+//     // remove scroll listener on unmounted
+//     return () => {
+//       window.removeEventListener('scroll', handleScrollNav);
+//     };
+//   }, []);
+// }
+
+// export function useFixedNavbar() {
+//   const handleScrollNav = () => {
+//     const nav = document.querySelector<HTMLElement>('#navbar-top');
+
+//     if (nav) {
+//       const fixedNav: number = nav.offsetTop;
+//       if (window.scrollY > fixedNav) {
+//         nav.classList.add('navbar-fixed');
+//       } else {
+//         nav.classList.remove('navbar-fixed');
+//       }
+//     }
+//   };
+
+//   useEffect(() => {
+//     // Check scroll position on component mount
+//     handleScrollNav();
+//     // Add scroll listener
+//     window.addEventListener('scroll', handleScrollNav);
+
+//     // Register 'begin' event, check in the current section
+//     Events.scrollEvent.register('begin', (to, element) => {
+//       console.log('Entering section:', to);
+//     });
+
+//     // Update scrollSpy
+//     scrollSpy.update();
+
+//     return () => {
+//       window.removeEventListener('scroll', handleScrollNav);
+//       Events.scrollEvent.remove('begin');
+//     };
+//   }, []);
+// }
+
+export function useReactScrollWithFixedNavbar(
+  handleScrollBegin: (to: string, element: HTMLElement) => void
+) {
+  const handleScrollNav = () => {
     const nav = document.querySelector<HTMLElement>('#navbar-top');
 
     if (nav) {
@@ -38,4 +103,22 @@ export const handleScrollNav = () => {
       }
     }
   };
-};
+
+  useEffect(() => {
+    // Check scroll position on component mount
+    handleScrollNav();
+    // Add scroll listener
+    window.addEventListener('scroll', handleScrollNav);
+
+    //===========================
+    const handleScroll = (to: string, element: HTMLElement) => {
+      handleScrollBegin(to, element); // Call the custom handler
+    };
+
+    Events.scrollEvent.register('begin', handleScroll);
+    scrollSpy.update();
+    return () => {
+      Events.scrollEvent.remove('begin');
+    };
+  }, [handleScrollBegin]);
+}
