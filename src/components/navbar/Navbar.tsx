@@ -9,7 +9,7 @@ import { FaCloudRain } from 'react-icons/fa';
 import { useReactScrollWithFixedNavbar } from '@/lib/utils';
 
 import ScrollableLink from '@/components/links/ScrollableLink';
-import Setting from '@/components/Settings';
+import Setting from '@/components/settings';
 
 import { NavigationData } from '@/constant/NavigationData';
 
@@ -42,7 +42,7 @@ const Navbar = () => {
         id='navbar-top'
         className='navbar-top absolute left-0 right-0 top-0 z-10 flex w-full items-center'
       >
-        <div className='container'>
+        <div className='layout'>
           <div className='relative flex items-center justify-between py-4'>
             {/* Logo */}
             <div className='px-4'>
@@ -87,7 +87,7 @@ const Navbar = () => {
             transition={{ duration: 0.3 }}
             className='navbar-bottom fixed bottom-5 z-50 flex w-full items-center justify-center md:hidden'
           >
-            <ul className='menu menu-horizontal rounded-box dark:bg-night/20 bg-cupcake/20 dark:border-cupcake/30 border-night/30 gap-2 border shadow-md backdrop-blur-sm'>
+            <ul className='menu menu-horizontal rounded-box dark:bg-neutral/20 border-neutral/30 gap-2 border bg-white/20 shadow-md backdrop-blur-sm dark:border-white/30'>
               {NavigationData.map((nav) => (
                 <li key={nav.id}>
                   <ScrollableLink
@@ -99,8 +99,8 @@ const Navbar = () => {
                     onSetActive={handleScroll}
                     className={clsx(
                       activeSection === nav.value
-                        ? 'dark:!text-night !bg-primary !text-cupcake'
-                        : 'dark:text-cupcake text-night'
+                        ? 'dark:!text-neutral !bg-primary !text-white'
+                        : 'dark:text-base-content text-black '
                     )}
                   >
                     <nav.icon size={18} />

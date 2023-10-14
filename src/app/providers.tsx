@@ -6,9 +6,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <NextThemeProviders
       attribute='data-theme'
-      defaultTheme='cupcake'
+      defaultTheme='emerald'
       enableColorScheme={true}
-      themes={['cupcake', 'night']}
+      themes={['emerald', 'night']}
     >
       {children}
     </NextThemeProviders>

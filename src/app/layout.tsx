@@ -61,7 +61,7 @@ export default function RootLayout({
     <html
       lang='en-US'
       className='transition duration-200 ease-linear'
-      data-theme='cupcake'
+      data-theme='emerald'
       suppressHydrationWarning
     >
       <body className={inter.className}>

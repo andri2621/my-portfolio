@@ -1,8 +1,8 @@
 'use client';
 
-import Link from 'next/link';
 import React from 'react';
 
+import ScrollableLink from '@/components/links/ScrollableLink';
 import NextImage from '@/components/NextImage';
 
 import MyPhoto from '~/images/MyPhoto.png';
@@ -30,19 +30,19 @@ const HomeSection = () => {
   return (
     <section
       id='home'
-      className='hero place-items-start pt-24 md:place-items-center xl:min-h-screen xl:pt-0'
+      className='hero min-h-screen place-items-start pt-24 md:min-h-full md:place-items-center lg:min-h-screen xl:pt-0'
     >
-      <div className='container'>
+      <div className='layout'>
         <div className='flex flex-wrap'>
           {/* LEFT CONTENT */}
           <div className='w-full self-center px-4 md:w-1/2 lg:w-3/5'>
-            <div className='text-base-content/70 dark:text-lightpale text-base font-semibold md:text-xl'>
+            <div className='text-base-content/80 text-base font-semibold md:text-xl'>
               Hi, my name is
             </div>
-            <div className='block text-3xl font-black dark:text-white lg:text-5xl'>
+            <div className='text-neutral block text-3xl font-black dark:text-white lg:text-5xl'>
               Andi Setiawan
             </div>
-            <h2 className='text-base-content/70 dark:text-lightpale text-base font-medium  lg:text-2xl'>
+            <h2 className='text-base-content/80 text-base font-medium  lg:text-2xl'>
               I&apos;am
               <span className='text-primary ml-2 text-xl lg:text-3xl'>
                 Frontend Developer
@@ -54,15 +54,23 @@ const HomeSection = () => {
               repudiandae magni.
             </p>
 
-            <Link href='#' className='btn btn-primary btn-sm md:btn-md text-xs'>
-              DOWNLOAD CV
-            </Link>
-            <Link
-              href='#contact'
-              className='btn btn-primary btn-outline btn-sm md:btn-md ml-4 text-xs'
-            >
-              CONTACT ME
-            </Link>
+            <div className='flex flex-wrap gap-2'>
+              <a
+                href='/images/bg-opengraph.jpg'
+                download={true}
+                className='btn btn-primary btn-sm md:btn-md'
+              >
+                DOWNLOAD CV
+              </a>
+              <ScrollableLink
+                to='contact'
+                smooth={true}
+                href='contact'
+                className='btn btn-error btn-outline btn-sm md:btn-md'
+              >
+                CONTACT ME
+              </ScrollableLink>
+            </div>
           </div>
           {/* RIGHT CONTENT */}
           <div className='flex w-full justify-center self-center px-4 md:w-1/2 lg:w-2/5 lg:justify-end'>
