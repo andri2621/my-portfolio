@@ -1,15 +1,15 @@
 'use client';
 
 import clsx from 'clsx';
-import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { FaCloudRain } from 'react-icons/fa';
 
 import { useReactScrollWithFixedNavbar } from '@/lib/utils';
 
 import ScrollableLink from '@/components/links/ScrollableLink';
-import Setting from '@/components/settings';
+import ModalSetting from '@/components/settings/ModalSetting';
+import ThemeToggle from '@/components/settings/ThemeToggle';
 
 import { NavigationData } from '@/constant/NavigationData';
 
@@ -22,11 +22,6 @@ const Logo = () => (
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('');
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const handleScroll = (to: string) => {
     setActiveSection(to);
@@ -48,9 +43,9 @@ const Navbar = () => {
             <div className='px-4'>
               <Logo />
             </div>
-            {/* Navigation Links */}
-            <div className='flex items-center gap-4 px-4'>
-              <ul className='my-2 hidden flex-row gap-2 md:flex lg:mb-0 lg:mt-0 lg:items-center lg:gap-6'>
+            {/* NAVIGATION LINKS ON > MEDIUM DEVICE */}
+            <div className=' hidden items-center gap-4 px-4 sm:flex'>
+              <ul className='my-2 flex flex-row gap-2 lg:mb-0 lg:mt-0 lg:items-center lg:gap-6'>
                 {NavigationData.map((nav) => (
                   <li className='p-1' key={nav.id}>
                     <ScrollableLink
@@ -70,47 +65,17 @@ const Navbar = () => {
                   </li>
                 ))}
               </ul>
-              {/* Settings */}
-              <Setting />
-              {/* ======== */}
+              {/* <ThemeChanger /> */}
+              <ThemeToggle />
+            </div>
+            {/* SHOW MODAL ON SMALL DEVICE, IF > , HIDE THE MODAL */}
+            <div className='sm:hidden'>
+              <ModalSetting />
             </div>
           </div>
         </div>
       </nav>
 
-      <AnimatePresence>
-        {mounted && (
-          <motion.nav
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
-            className='navbar-bottom fixed bottom-5 z-50 flex w-full items-center justify-center md:hidden'
-          >
-            <ul className='menu menu-horizontal rounded-box dark:bg-neutral/20 border-neutral/30 gap-2 border bg-white/20 shadow-md backdrop-blur-sm dark:border-white/30'>
-              {NavigationData.map((nav) => (
-                <li key={nav.id}>
-                  <ScrollableLink
-                    to={nav.value}
-                    href={nav.link}
-                    smooth={true}
-                    spy={true}
-                    hashSpy={true}
-                    onSetActive={handleScroll}
-                    className={clsx(
-                      activeSection === nav.value
-                        ? 'dark:!text-neutral !bg-primary !text-white'
-                        : 'dark:text-base-content text-black '
-                    )}
-                  >
-                    <nav.icon size={18} />
-                  </ScrollableLink>
-                </li>
-              ))}
-            </ul>
-          </motion.nav>
-        )}
-      </AnimatePresence>
       {/* )} */}
     </>
   );

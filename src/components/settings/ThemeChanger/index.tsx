@@ -3,17 +3,7 @@
 import clsx from 'clsx';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
-
-import MoonIcon from '@/components/settings/ThemeChanger/MoonIcon';
-import SunIcon from '@/components/settings/ThemeChanger/SunIcon';
-
-const Moon = () => {
-  return <MoonIcon className='mr-1 h-4 w-4 fill-current' />;
-};
-
-const Sun = () => {
-  return <SunIcon className='mr-1 h-4 w-4 fill-current' />;
-};
+import { PiMoonFill, PiSunFill } from 'react-icons/pi';
 
 const ThemeChanger = () => {
   const [mounted, setMounted] = useState(false);
@@ -35,17 +25,23 @@ const ThemeChanger = () => {
 
   return (
     <>
-      <div className='w-full' onClick={handleToggle}>
+      <div className='w-full cursor-pointer p-2' onClick={handleToggle}>
         <div
-          className={clsx('flex items-center', theme === 'emerald' && 'hidden')}
+          className={clsx(
+            'flex items-center gap-2',
+            theme === 'emerald' && 'hidden'
+          )}
         >
-          <Sun />
+          <PiSunFill size={16} className='' />
           <span>Light Mode</span>
         </div>
         <div
-          className={clsx('flex items-center', theme === 'night' && 'hidden')}
+          className={clsx(
+            'flex items-center gap-2',
+            theme === 'night' && 'hidden'
+          )}
         >
-          <Moon />
+          <PiMoonFill size={16} className='' />
           <span>Dark Mode</span>
         </div>
       </div>

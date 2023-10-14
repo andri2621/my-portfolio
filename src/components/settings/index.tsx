@@ -7,7 +7,9 @@ import { PiGearFill, PiMoonFill, PiSunFill } from 'react-icons/pi';
 
 import { useClickOutside } from '@/lib/utils';
 
-import LocaleChanger from '@/components/settings/LocaleChanger';
+import ScrollableLink from '@/components/links/ScrollableLink';
+
+import { NavigationData } from '@/constant/NavigationData';
 
 const Setting = () => {
   const [mounted, setMounted] = useState(false);
@@ -54,11 +56,30 @@ const Setting = () => {
           >
             <ul
               tabIndex={0}
-              className='bg-base-200 menu shadow-3xl dark:shadow-4xl w-max rounded-lg border-none p-2 text-black outline-none hover:text-black dark:text-white dark:text-white dark:hover:text-white'
+              className='bg-base-200 menu shadow-3xl dark:shadow-4xl w-max rounded-lg border-none p-2 text-black outline-none hover:text-black  dark:text-white dark:hover:text-white'
             >
-              <li>
-                <LocaleChanger />
-              </li>
+              {/* <LocaleChanger /> */}
+
+              {NavigationData.map((nav) => (
+                <li key={nav.id}>
+                  <ScrollableLink
+                    to={nav.value}
+                    href={nav.link}
+                    smooth={true}
+                    spy={true}
+                    hashSpy={true}
+                    className='w-full px-2 py-2'
+                    // onSetActive={handleScroll}
+                    // className={clsx(
+                    //   activeSection === nav.value
+                    //     ? 'dark:!text-neutral !bg-primary !text-white'
+                    //     : 'dark:text-base-content text-black '
+                    // )}
+                  >
+                    {nav.value}
+                  </ScrollableLink>
+                </li>
+              ))}
 
               <hr className='my-1 border-slate-500' />
 

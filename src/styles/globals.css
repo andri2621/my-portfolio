@@ -108,3 +108,11 @@
     background-size: 0 2px, 100% 2px;
   }
 }
+
+.tab-active {
+  @apply !bg-primary  dark:text-neutral !px-2 font-semibold;
+}
+
+.tab-lifted {
+  @apply border-primary border-b-2 !px-2;
+}
