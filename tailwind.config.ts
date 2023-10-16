@@ -18,19 +18,8 @@ export default {
         '2xl': '1320px',
       },
       colors: {
-        primary: '#14b8a6',
-        secondary: '#ef9fbc',
-        accent: '#eeaf3a',
-        neutral: '#291534',
-        dark: '#291334',
-        base: { 100: '#faf7f5' },
-        info: '#3abff8',
-        success: '#36d399',
-        warning: '#fbbd23',
-        error: '#f87272',
-        lightpale: '#988B9C',
-        darkpale: '#666A77',
-        darkmodal: '#1D283A',
+        white: '#FFFFFF',
+        night: '#0f1729',
         slate: {
           50: '#f8fafc',
           100: '#f1f5f9',
@@ -76,47 +65,24 @@ export default {
       },
     },
   },
-  // plugins: [require('@tailwindcss/forms'), require('daisyui')], //! Default setting from template
-  plugins: [require('daisyui')],
+  plugins: [require('@tailwindcss/forms'), require('daisyui')], //! Default setting from template
+  // plugins: [require('daisyui')],
   daisyui: {
     themes: [
       {
-        cupcake: {
-          ...daisyuiThemes['[data-theme=cupcake]'],
+        emerald: {
+          ...daisyuiThemes['[data-theme=emerald]'],
           primary: '#14b8a6',
-          secondary: '#ef9fbc',
-          accent: '#eeaf3a',
-          neutral: '#291534',
-          base: { 100: '#faf7f5' },
-          info: '#3abff8',
-          success: '#36d399',
-          warning: '#fbbd23',
-          error: '#f87272',
-
-          '--rounded-box': '1rem', // border radius rounded-box utility class, used in card and other large boxes
-          '--rounded-btn': '0.5rem', // border radius rounded-btn utility class, used in buttons and similar element
-          '--rounded-badge': '1.9rem', // border radius rounded-badge utility class, used in badges and similar
-          '--animation-btn': '0.25s', // duration of animation when you click on button
-          '--animation-input': '0.2s', // duration of animation for inputs like checkbox, toggle, radio, etc
-          '--btn-text-case': 'uppercase', // set default text transform for buttons
-          '--btn-focus-scale': '0.95', // scale transform of button when you focus on it
-          '--border-btn': '1px', // border width of buttons
-          '--tab-border': '1px', // border width of tabs
-          '--tab-radius': '0.5rem', // border radius of tabs
+          secondary: '#828DF8',
+          accent: '#F471B5',
+          white: '#FFFFFF',
         },
       },
       {
         night: {
           ...daisyuiThemes['[data-theme=night]'],
           primary: '#14b8a6',
-          secondary: '#ef9fbc',
-          accent: '#eeaf3a',
-          neutral: '#291534',
-          base: { 100: '#faf7f5' },
-          info: '#3abff8',
-          success: '#36d399',
-          warning: '#fbbd23',
-          error: '#f87272',
+          white: '#FFFFFF',
         },
       },
     ],

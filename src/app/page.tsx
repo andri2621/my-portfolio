@@ -1,14 +1,20 @@
-'use client';
-
-import AboutSection from '@/app/(pages)/components/(section)/AboutSection';
-import HomeSection from '@/app/(pages)/components/(section)/HomeSection';
+import Navbar from '@/components/navbar/Navbar';
+import AboutSection from '@/components/sections/AboutSection';
+import ContactSection from '@/components/sections/ContactSection';
+import HomeSection from '@/components/sections/HomeSection';
+import PortfolioSection from '@/components/sections/PortfolioSection';
 
 const TestPage = () => {
   return (
-    <main>
+    <>
+      {/* NAVBAR TOP AND BOTTOM  */}
+      <Navbar />
+      {/* LANDING PAGE CONTENT */}
       <HomeSection />
       <AboutSection />
-    </main>
+      <PortfolioSection />
+      <ContactSection />
+    </>
   );
 };
 

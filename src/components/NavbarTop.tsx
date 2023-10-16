@@ -4,7 +4,7 @@ import { faCloudRain } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 
-import Setting from '@/components/Settings';
+import Setting from '@/components/settings';
 
 import { NavigationData } from '@/constant/NavigationData';
 

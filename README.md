@@ -72,7 +72,7 @@ You can also check all of the **details and demos** on my blog post:
 
 4. Deploy to Vercel
 
-   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Ftheodorusclarence%2Fts-nextjs-tailwind-starter)
+   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fandri2621%2Fmy-portfolio)
 
 ### 2. Install dependencies
 
