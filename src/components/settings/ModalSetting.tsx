@@ -60,7 +60,7 @@ const ModalSetting = () => {
           >
             <ul
               tabIndex={0}
-              className='bg-base-200 menu shadow-3xl dark:shadow-4xl w-max rounded-lg border-none p-2 text-black outline-none hover:text-black dark:text-white dark:hover:text-white'
+              className='bg-base-200 menu shadow-3xl dark:shadow-4xl w-[135px] rounded-lg border-none p-2 text-black outline-none hover:text-black dark:text-white dark:hover:text-white'
             >
               <li>
                 {NavigationData.map((nav) => (
