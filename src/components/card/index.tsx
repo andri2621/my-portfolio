@@ -18,7 +18,7 @@ const Card = ({ title, desc, tags }: CardProps) => {
       className={clsx(
         'card card-compact',
         'h-auto  sm:min-h-[425px]',
-        'bg-slate-800 shadow-xl'
+        'shadow-3xl dark:shadow-4xl border-base-content/30 border'
       )}
     >
       <figure className=''>
