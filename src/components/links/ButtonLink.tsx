@@ -15,7 +15,7 @@ const ButtonLinkVariant = [
   'light',
   'dark',
 ] as const;
-const ButtonLinkSize = ['sm', 'base'] as const;
+const ButtonLinkSize = ['sm', 'base', 'lg'] as const;
 
 type ButtonLinkProps = {
   isDarkBg?: boolean;
@@ -49,36 +49,37 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         ref={ref}
         {...rest}
         className={cn(
-          'inline-flex items-center rounded font-medium',
-          'focus-visible:ring-primary-500 focus:outline-none focus-visible:ring',
+          'btn btn-primary inline-flex items-center font-medium',
+          'focus:outline-none focus-visible:ring focus-visible:ring-teal-500',
           'shadow-sm',
           'transition-colors duration-75',
           //#region  //*=========== Size ===========
           [
-            size === 'base' && ['px-3 py-1.5', 'text-sm md:text-base'],
-            size === 'sm' && ['px-2 py-1', 'text-xs md:text-sm'],
+            size === 'sm' && ['btn-sm'],
+            size === 'base' && ['btn-md'],
+            size === 'lg' && ['btn-lg'],
           ],
           //#endregion  //*======== Size ===========
           //#region  //*=========== Variants ===========
           [
             variant === 'primary' && [
-              'bg-primary-500 text-white',
-              'border-primary-600 border',
-              'hover:bg-primary-600 hover:text-white',
-              'active:bg-primary-700',
-              'disabled:bg-primary-700',
+              'bg-teal-500 text-white',
+              'border border-teal-600',
+              'hover:bg-teal-600 hover:text-white',
+              'active:bg-teal-700',
+              'disabled:bg-teal-700',
             ],
             variant === 'outline' && [
-              'text-primary-500',
-              'border-primary-500 border',
-              'hover:bg-primary-50 active:bg-primary-100 disabled:bg-primary-100',
+              'text-teal-500',
+              'border border-teal-500',
+              'hover:bg-teal-50 active:bg-teal-100 disabled:bg-teal-100',
               isDarkBg &&
                 'hover:bg-gray-900 active:bg-gray-800 disabled:bg-gray-800',
             ],
             variant === 'ghost' && [
-              'text-primary-500',
+              'text-teal-500',
               'shadow-none',
-              'hover:bg-primary-50 active:bg-primary-100 disabled:bg-primary-100',
+              'hover:bg-teal-50 active:bg-teal-100 disabled:bg-teal-100',
               isDarkBg &&
                 'hover:bg-gray-900 active:bg-gray-800 disabled:bg-gray-800',
             ],

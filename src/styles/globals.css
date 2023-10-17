@@ -23,7 +23,7 @@
   }
 
   .cursor-newtab {
-    cursor: url('/images/new-tab.png') 10 10, pointer;
+    cursor: url('/images/new-tab.png') 10 10, pointer !important;
   }
 
   /* #region  /**=========== Typography =========== */
@@ -61,6 +61,10 @@
     -webkit-user-drag: none;
   }
 
+  embed {
+    width: 100%; /* for responsiveness */
+  }
+
   .navbar-fixed {
     @apply dark:bg-neutral/10 !fixed !z-[99] bg-white/20 shadow-md backdrop-blur-sm;
   }
@@ -89,17 +93,18 @@
 @layer utilities {
   .animated-underline {
     background-image: linear-gradient(#33333300, #33333300),
-      linear-gradient(
-        to right,
-        var(--color-primary-400),
-        var(--color-primary-500)
-      );
+      linear-gradient(to right, hsl(var(--pf)), hsl(var(--p)));
     background-size: 100% 2px, 0 2px;
     background-position: 100% 100%, 0 100%;
     background-repeat: no-repeat;
   }
   @media (prefers-reduced-motion: no-preference) {
     .animated-underline {
+      transition: 0.3s ease;
+      transition-property: background-size, color, background-color,
+        border-color;
+    }
+    .animated-color {
       transition: 0.3s ease;
       transition-property: background-size, color, background-color,
         border-color;
@@ -118,3 +123,5 @@
 .tab-lifted {
   @apply border-primary border-b-2 !px-2;
 }
+
+/* scale-100 hover:scale-[1.02] active:scale-[0.97] motion-safe:transform-gpu transition duration-100 motion-reduce:hover:scale-100 animate-shadow */

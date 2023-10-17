@@ -8,6 +8,8 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 
 import { getMetaData } from '@/lib/getMetaData';
 
+import Navbar from '@/components/navbar/Navbar';
+
 import { Providers } from '@/app/providers';
 
 // prevent fontawesome from adding its CSS since we did it manually
@@ -35,12 +37,15 @@ export default function RootLayout({
     <html
       lang='en-US'
       className='transition duration-200 ease-linear'
-      data-theme='emerald'
+      data-theme='night'
       suppressHydrationWarning
     >
       <body className={inter.className}>
         <Providers>
-          <main>{children}</main>
+          <main>
+            <Navbar />
+            {children}
+          </main>
         </Providers>
       </body>
     </html>

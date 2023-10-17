@@ -19,12 +19,12 @@ const PrimaryLink = React.forwardRef<HTMLAnchorElement, PrimaryLinkProps>(
         {...rest}
         className={cn(
           'inline-flex items-center',
-          'focus-visible:ring-primary-500 focus:outline-none focus-visible:rounded focus-visible:ring focus-visible:ring-offset-2',
+          'focus:outline-none focus-visible:rounded focus-visible:ring focus-visible:ring-teal-500 focus-visible:ring-offset-2',
           'font-medium',
           //#region  //*=========== Variant ===========
           variant === 'primary' && [
-            'text-primary-500 hover:text-primary-600 active:text-primary-700',
-            'disabled:text-primary-200',
+            'text-teal-500 hover:text-teal-600 active:text-teal-700',
+            'disabled:text-teal-200',
           ],
           variant === 'basic' && [
             'text-black hover:text-gray-600 active:text-gray-800',

@@ -45,12 +45,12 @@ const AboutSection = () => {
       <div className='layout'>
         <div className='flex h-screen flex-wrap  justify-center'>
           {/* LEFT CONTENT */}
-          <div className='hidden w-full self-center px-4 md:block md:w-1/3'>
+          <div className='hidden w-full self-center md:block md:w-1/3'>
             <div>LEFT</div>
           </div>
 
           {/* RIGHT CONTENT */}
-          <div className=' w-full self-start px-4 md:w-2/3'>
+          <div className=' w-full self-start md:w-2/3'>
             <div className='flex flex-col justify-center gap-8'>
               <div className='flex flex-row justify-center md:justify-start'>
                 {DataTab.map((tab, i) => (

@@ -1,18 +1,37 @@
+import Card from '@/components/card';
+
 const PortfolioSection = () => {
   return (
     <section
       id='portfolio'
-      className='flex min-h-screen items-center justify-center'
+      className='hero min-h-screen place-items-start  pt-24 md:min-h-full md:place-items-center lg:min-h-screen xl:pt-0'
     >
-      <div className='flex flex-col items-center gap-4'>
-        <div className='bg-primary h-5'>Button Primary</div>
-        <div className='bg-secondary h-5'>Button secondary</div>
-        <div className='bg-accent h-5'>Button accent</div>
-        <div className='bg-neutral text-color-white h-5'>Button neutral</div>
-        <div className='bg-info h-5'>Button info</div>
-        <div className='bg-success h-5'>Button success</div>
-        <div className='bg-warning h-5'>Button warning</div>
-        <div className='bg-error h-5'>Button error</div>
+      <div className='layout'>
+        <div className='flex flex-col items-center'>
+          <h4 className='text-primary'>Projects</h4>
+          <h1 className='h0 text-white'>My Latest Works</h1>
+          <div className='mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
+            <Card
+              title='Shoes!'
+              tags={['React', 'NextJS', 'angular', 'scss', 'redux', 'tailwind']}
+              desc='If a dog chews shoes whose shoes does he choose? If a dog chews shoes
+          whose shoes does he choose? If a dog chews shoes whose shoes does he
+          choose?'
+            />
+            <Card
+              title='My name is Andi Setiawan and im frontend developer!'
+              tags={['React', 'NextJS']}
+              desc='If a dog chews shoes whose shoes does he choose? If a dog chews shoes
+              whose shoes does he choose? If a dog chews shoes whose shoes does he
+              choose?'
+            />
+            <Card
+              title='Shoes!'
+              tags={['React', 'NextJS']}
+              desc='If a dog chews shoes whose shoes does he choose? If a dog chews shoes whose shoes does he choose?'
+            />
+          </div>
+        </div>
       </div>
     </section>
   );

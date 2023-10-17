@@ -1,6 +1,8 @@
 'use client';
 
+import Link from 'next/link';
 import React from 'react';
+import { BiSolidFilePdf } from 'react-icons/bi';
 
 import ScrollableLink from '@/components/links/ScrollableLink';
 import NextImage from '@/components/NextImage';
@@ -35,8 +37,8 @@ const HomeSection = () => {
       <div className='layout'>
         <div className='flex flex-wrap'>
           {/* LEFT CONTENT */}
-          <div className='w-full self-center px-4 md:w-1/2 lg:w-3/5'>
-            <div className='text-base-content/80 text-base font-semibold md:text-xl'>
+          <div className='w-full self-center md:w-1/2 lg:w-3/5'>
+            <div className='text-primary text-base font-semibold md:text-xl'>
               Hi, my name is
             </div>
             <div className='text-neutral block text-3xl font-black dark:text-white lg:text-5xl'>
@@ -54,26 +56,26 @@ const HomeSection = () => {
               repudiandae magni.
             </p>
 
+            {/* CTA */}
             <div className='flex flex-wrap gap-2'>
-              <a
-                href='/images/bg-opengraph.jpg'
-                download={true}
-                className='btn btn-primary btn-sm md:btn-md'
-              >
-                DOWNLOAD CV
-              </a>
+              <Link href='resume' className='btn btn-primary btn-sm '>
+                <BiSolidFilePdf size={18} />
+                <span>RESUME</span>
+              </Link>
+
+              {/* </a> */}
               <ScrollableLink
                 to='contact'
                 smooth={true}
                 href='contact'
-                className='btn btn-error btn-outline btn-sm md:btn-md'
+                className='btn btn-primary btn-outline btn-sm hover:!bg-primary/20 hover:!text-primary'
               >
                 CONTACT ME
               </ScrollableLink>
             </div>
           </div>
           {/* RIGHT CONTENT */}
-          <div className='flex w-full justify-center self-center px-4 md:w-1/2 lg:w-2/5 lg:justify-end'>
+          <div className='flex w-full justify-center self-center md:w-1/2 lg:w-2/5 lg:justify-end'>
             {/*  md:max-h-xs lg:max-h-sm */}
             <div className='box-image-blob relative mt-8 max-h-[18rem] max-w-[18rem] sm:mt-6 sm:max-h-[20rem] sm:max-w-[20rem] lg:max-h-full lg:w-full lg:max-w-md'>
               <NextImage
