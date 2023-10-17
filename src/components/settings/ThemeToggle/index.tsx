@@ -18,11 +18,7 @@ const ThemeToggle = () => {
   }
 
   function handleToggle() {
-    if (theme) {
-      setTheme(theme === 'night' ? 'emerald' : 'night');
-    } else {
-      setTheme('system');
-    }
+    setTheme(theme === 'night' ? 'emerald' : 'night');
   }
 
   const spring = {
