@@ -8,7 +8,7 @@ import { FaCloudRain } from 'react-icons/fa';
 
 import { useReactScrollWithFixedNavbar } from '@/lib/utils';
 
-import ScrollableLink from '@/components/links/ScrollableLink';
+import ReactScroll from '@/components/links/ReactScroll';
 import ModalSetting from '@/components/settings/ModalSetting';
 import ThemeToggle from '@/components/settings/ThemeToggle';
 
@@ -50,12 +50,9 @@ const Navbar = () => {
                 {pathName === '/' &&
                   NavigationData.map((nav) => (
                     <li className='p-1' key={nav.id}>
-                      <ScrollableLink
+                      <ReactScroll
                         to={nav.value}
                         href={nav.link}
-                        smooth={true}
-                        spy={true}
-                        hashSpy={true}
                         onSetActive={handleScroll}
                         className={clsx(
                           activeSection === nav.value && 'text-primary',
@@ -63,7 +60,7 @@ const Navbar = () => {
                         )}
                       >
                         {nav.label}
-                      </ScrollableLink>
+                      </ReactScroll>
                     </li>
                   ))}
               </ul>

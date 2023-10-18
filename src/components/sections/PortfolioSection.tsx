@@ -1,37 +1,42 @@
-import Card from '@/components/card';
+'use client';
+
+import Link from 'next/link';
+
+import { ProjectCard } from '@/components/card';
+
+import { ProjectsData } from '@/constant/ProjectsData';
 
 const PortfolioSection = () => {
   return (
     <section
       id='portfolio'
-      className='hero min-h-screen place-items-start  pt-24 md:min-h-full md:place-items-center lg:min-h-screen xl:pt-0'
+      className='hero  place-items-start py-20 md:place-items-center'
     >
-      <div className='layout'>
-        <div className='flex flex-col items-center'>
-          <h4 className='text-primary'>Projects</h4>
-          <h1 className='h0 text-white'>My Latest Works</h1>
-          <div className='mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
-            <Card
-              title='Shoes!'
-              tags={['React', 'NextJS', 'angular', 'scss', 'redux', 'tailwind']}
-              desc='If a dog chews shoes whose shoes does he choose? If a dog chews shoes
-          whose shoes does he choose? If a dog chews shoes whose shoes does he
-          choose?'
-            />
-            <Card
-              title='My name is Andi Setiawan and im frontend developer!'
-              tags={['React', 'NextJS']}
-              desc='If a dog chews shoes whose shoes does he choose? If a dog chews shoes
-              whose shoes does he choose? If a dog chews shoes whose shoes does he
-              choose?'
-            />
-            <Card
-              title='Shoes!'
-              tags={['React', 'NextJS']}
-              desc='If a dog chews shoes whose shoes does he choose? If a dog chews shoes whose shoes does he choose?'
-            />
-          </div>
+      <div className='flex flex-col items-center gap-6'>
+        <div>
+          <h4 className='text-primary text-center text-base font-semibold md:text-xl'>
+            Portfolio
+          </h4>
+          <h1 className='text-neutral text-center text-3xl dark:text-white'>
+            My Latest Works
+          </h1>
         </div>
+        <div className=' grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
+          {ProjectsData.map((project) => {
+            return (
+              <ProjectCard
+                key={project.id}
+                title={project.title}
+                tags={project.tags}
+                desc={project.desc}
+                link={project.link}
+              />
+            );
+          })}
+        </div>
+        <Link href='/projects' className='btn btn-primary btn-sm'>
+          <div>See More Project</div>
+        </Link>
       </div>
     </section>
   );

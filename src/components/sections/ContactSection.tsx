@@ -1,9 +1,6 @@
 const ContactSection = () => {
   return (
-    <section
-      id='contact'
-      className='flex min-h-screen items-center justify-center'
-    >
+    <section id='contact' className='flex min-h-screen py-20'>
       Contact Section
     </section>
   );

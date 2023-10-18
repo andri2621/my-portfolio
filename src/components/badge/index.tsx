@@ -16,7 +16,7 @@ const findIcon = (tagName: string) => {
 };
 
 const VisibleBadges: React.FC<{ tags: string[] }> = ({ tags }) => (
-  <div className='flex flex-wrap gap-2'>
+  <div className='mb-1 flex flex-wrap gap-2'>
     {tags.map((tag) => {
       const selectedIcon = findIcon(tag);
       return (
@@ -24,13 +24,13 @@ const VisibleBadges: React.FC<{ tags: string[] }> = ({ tags }) => (
           key={tag}
           className={clsx(
             selectedIcon && selectedIcon.badgeType,
-            'badge badge-md badge-outline',
+            'badge badge-sm badge-outline',
             'cursor-default',
             'gap-1',
             'capitalize'
           )}
         >
-          {selectedIcon && <selectedIcon.icon size={18} />}
+          {selectedIcon && <selectedIcon.icon size={14} />}
           <span>{tag}</span>
         </div>
       );
@@ -40,18 +40,18 @@ const VisibleBadges: React.FC<{ tags: string[] }> = ({ tags }) => (
 
 const HiddenBadges: React.FC<{ tags: string[] }> = ({ tags }) => (
   <div className='dropdown dropdown-hover dropdown-bottom dropdown-end'>
-    <label className='text-primary m-1 cursor-pointer font-medium'>
+    <div className='text-primary m-0 cursor-pointer text-sm font-medium'>
       +{tags.length} tags
-    </label>
+    </div>
     <ul className='dropdown-content menu bg-base-200 rounded-box z-[1] max-w-md p-2 shadow'>
       {tags.map((tag) => {
         const selectedIcon = findIcon(tag);
         return (
-          <li key={tag} className='capitalize'>
-            <a>
+          <li key={tag} className='text-primary capitalize'>
+            <span className='p-1'>
               {selectedIcon && <selectedIcon.icon size={18} />}
               {tag}
-            </a>
+            </span>
           </li>
         );
       })}

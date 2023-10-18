@@ -5,7 +5,7 @@ import React, { useRef, useState } from 'react';
 
 import { useClickOutside } from '@/lib/utils';
 
-import ScrollableLink from '@/components/links/ScrollableLink';
+import ReactScroll from '@/components/links/ReactScroll';
 import CloseIcon from '@/components/settings/CloseIcon';
 import HamburgerIcon from '@/components/settings/HamburgerIcon';
 import ThemeChanger from '@/components/settings/ThemeChanger';
@@ -32,8 +32,9 @@ const ModalSetting = () => {
       ref={boxRef}
     >
       {/* TRIGGER BUTTON */}
-      <label className='swap swap-rotate'>
+      <label htmlFor='toggle-modal' className='swap swap-rotate'>
         <input
+          id='toggle-modal'
           type='checkbox'
           className='hidden'
           checked={isOpen}
@@ -62,21 +63,17 @@ const ModalSetting = () => {
               tabIndex={0}
               className='bg-base-200 menu shadow-3xl dark:shadow-4xl w-[135px] rounded-lg border-none p-2 text-black outline-none hover:text-black dark:text-white dark:hover:text-white'
             >
-              <li>
-                {NavigationData.map((nav) => (
-                  <ScrollableLink
-                    key={nav.id}
+              {NavigationData.map((nav) => (
+                <li key={nav.id}>
+                  <ReactScroll
                     to={nav.value}
                     href={nav.link}
-                    smooth={true}
-                    spy={true}
-                    hashSpy={true}
                     className='w-full p-2'
                   >
                     {nav.value}
-                  </ScrollableLink>
-                ))}
-              </li>
+                  </ReactScroll>
+                </li>
+              ))}
 
               <hr className='my-1 border-slate-500' />
 

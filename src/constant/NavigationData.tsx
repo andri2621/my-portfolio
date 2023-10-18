@@ -3,13 +3,13 @@ import { AiFillHome } from 'react-icons/ai';
 import { BiSolidUser } from 'react-icons/bi';
 import { FaFileCode, FaPhoneAlt } from 'react-icons/fa';
 
-interface NavigationProps {
+type NavigationProps = {
   id: number;
   label: string;
   value: string;
   icon: IconType;
   link: string;
-}
+};
 
 export const NavigationData: NavigationProps[] = [
   {

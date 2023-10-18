@@ -38,13 +38,15 @@ export default function RootLayout({
       lang='en-US'
       className='transition duration-200 ease-linear'
       data-theme='night'
-      suppressHydrationWarning
+      suppressHydrationWarning={true}
     >
       <body className={inter.className}>
         <Providers>
           <main>
-            <Navbar />
-            {children}
+            <div className='layout'>
+              <Navbar />
+              {children}
+            </div>
           </main>
         </Providers>
       </body>

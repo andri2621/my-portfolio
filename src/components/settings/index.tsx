@@ -7,7 +7,7 @@ import { PiGearFill, PiMoonFill, PiSunFill } from 'react-icons/pi';
 
 import { useClickOutside } from '@/lib/utils';
 
-import ScrollableLink from '@/components/links/ScrollableLink';
+import ReactScroll from '@/components/links/ReactScroll';
 
 import { NavigationData } from '@/constant/NavigationData';
 
@@ -62,22 +62,13 @@ const Setting = () => {
 
               {NavigationData.map((nav) => (
                 <li key={nav.id}>
-                  <ScrollableLink
+                  <ReactScroll
                     to={nav.value}
                     href={nav.link}
-                    smooth={true}
-                    spy={true}
-                    hashSpy={true}
                     className='w-full px-2 py-2'
-                    // onSetActive={handleScroll}
-                    // className={clsx(
-                    //   activeSection === nav.value
-                    //     ? 'dark:!text-neutral !bg-primary !text-white'
-                    //     : 'dark:text-base-content text-black '
-                    // )}
                   >
                     {nav.value}
-                  </ScrollableLink>
+                  </ReactScroll>
                 </li>
               ))}
 
