@@ -1,14 +1,20 @@
 'use client';
 
-import clsx from 'clsx';
+import dynamic from 'next/dynamic';
 import { useState } from 'react';
+
+import TabButton from '@/components/buttons/TabButton';
+
+const Education = dynamic(() => import('@/components/sections/Education'), {
+  ssr: false,
+});
 
 const DataTab = [
   {
-    name: 'About',
-    value: 'about',
+    name: 'Skills',
+    value: 'skills',
     content: {
-      title: 'Title 1',
+      title: 'Title 3',
       desc: 'lorem ipsum dolor sit amet',
     },
   },
@@ -20,14 +26,7 @@ const DataTab = [
       desc: 'lorem ipsum dolor sit amet',
     },
   },
-  {
-    name: 'Skills',
-    value: 'skills',
-    content: {
-      title: 'Title 3',
-      desc: 'lorem ipsum dolor sit amet',
-    },
-  },
+
   {
     name: 'Experience',
     value: 'experience',
@@ -40,45 +39,30 @@ const DataTab = [
 
 const AboutSection = () => {
   const [activeTab, setActiveTab] = useState('about');
-  return (
-    <section id='about' className='min-h-screen bg-slate-800 py-20'>
-      <div className='flex h-screen flex-wrap  justify-center'>
-        {/* LEFT CONTENT */}
-        <div className='hidden w-full self-center md:block md:w-1/3'>
-          <div>LEFT</div>
-        </div>
 
-        {/* RIGHT CONTENT */}
-        <div className=' w-full self-start md:w-2/3'>
-          <div className='flex flex-col justify-center gap-8'>
-            <div className='flex flex-row justify-center md:justify-start'>
+  const handleTab = (value: string) => {
+    setActiveTab(value);
+  };
+
+  return (
+    <section id='about' className='min-h-screen py-24'>
+      <div className='flex flex-wrap  justify-center'>
+        {/* <div className=' w-full self-start md:w-2/3'> */}
+        <div className='w-full self-start md:w-4/5 lg:w-2/3'>
+          <div className='flex flex-col justify-center gap-20'>
+            <div className='flex flex-row justify-center'>
               {DataTab.map((tab, i) => (
-                <div
-                  key={i}
-                  tabIndex={0}
-                  onClick={() => setActiveTab(tab.value)}
-                >
-                  <div
-                    className={clsx(
-                      tab.value === activeTab && 'tab-active',
-                      'tab tab-lifted text-xs'
-                    )}
+                <div key={i}>
+                  <TabButton
+                    active={activeTab === tab.value}
+                    selectTab={() => handleTab(tab.value)}
                   >
                     {tab.name}
-                  </div>
+                  </TabButton>
                 </div>
               ))}
             </div>
-            {DataTab.map((tab, i) => {
-              if (tab.value === activeTab) {
-                return (
-                  <div className='' key={i}>
-                    <div>{tab.content.title}</div>
-                    <p>{tab.content.desc}</p>
-                  </div>
-                );
-              }
-            })}
+            {activeTab === 'education' && <Education />}
           </div>
         </div>
       </div>

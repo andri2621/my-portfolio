@@ -128,4 +128,15 @@
   @apply border-primary border-b-2 !px-2;
 }
 
-/* scale-100 hover:scale-[1.02] active:scale-[0.97] motion-safe:transform-gpu transition duration-100 motion-reduce:hover:scale-100 animate-shadow */
+/*
+section > * {
+  opacity: 0;
+  transform: translateY(2.5rem);
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+*/

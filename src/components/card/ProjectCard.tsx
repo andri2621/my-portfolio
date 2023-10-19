@@ -2,10 +2,10 @@
 
 import clsx from 'clsx';
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 
 import Badge from '@/components/badge';
+import UnderlineLink from '@/components/links/UnderlineLink';
 
 type CardProps = {
   title: string;
@@ -13,49 +13,51 @@ type CardProps = {
   tags?: string[];
   link: string;
 };
-const ProjectCard = ({ title, desc, tags, link }: CardProps) => {
+
+function ProjectCard({ title, desc, tags, link }: CardProps) {
   return (
-    <Link
+    <div
       key={link}
-      href={`/projects/${link ?? ''}`}
       className={clsx(
         'card card-compact group',
         'h-full',
-        'shadow-3xl dark:shadow-4xl border-base-content/30 rounded-md border',
-        'scale-100 hover:scale-[1.02] active:scale-90 motion-safe:transform-gpu motion-reduce:hover:scale-100',
+        'shadow-3xl border-base-content/30 rounded-md border',
+        'scale-100 hover:scale-[1.02] motion-safe:transform-gpu motion-reduce:hover:scale-100',
         'transition duration-100'
       )}
     >
-      <figure className='aspect-video pl-4 pr-4 pt-4'>
+      <figure className='relative h-40 w-full'>
         <Image
           src='/images/bg-opengraph.jpg'
           alt='Shoes'
-          width={100}
-          height={100}
+          fill
           loading='lazy'
-          className='aspect-video h-full w-full rounded-md'
+          decoding='async'
+          sizes='(max-width: 640px) 570px, (max-width: 1024px) 451px, 300px'
+          className='h-full w-full rounded-md object-cover'
         />
       </figure>
       {/* CONTENT BODY */}
-      <div className='card-body '>
+      <div className='card-body'>
         <h2 className='card-title !mb-0 line-clamp-1 capitalize'>{title}</h2>
         <div className='mb-auto'>
           <Badge tags={tags} />
         </div>
-        <p className='mb-auto line-clamp-2  sm:line-clamp-3'>{desc}</p>
+        <p className='mb-auto line-clamp-2 sm:line-clamp-2 '>{desc}</p>
         <div className='card-actions justify-end'>
-          <span
+          <UnderlineLink
+            href={`/projects/${link ?? ''}`}
             className={clsx(
-              'animated-underline  group-hover:animate-underline-hover',
-              'group-hover:text-primary font-bold'
+              // 'animated-underline  group-hover:animate-underline-hover',
+              'font-bold'
             )}
           >
             See more
-          </span>
+          </UnderlineLink>
         </div>
       </div>
-    </Link>
+    </div>
   );
-};
+}
 
 export default ProjectCard;

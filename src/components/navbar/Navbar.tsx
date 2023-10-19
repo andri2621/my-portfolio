@@ -55,8 +55,11 @@ const Navbar = () => {
                         href={nav.link}
                         onSetActive={handleScroll}
                         className={clsx(
-                          activeSection === nav.value && 'text-primary',
-                          'hover:text-primary dark:hover:text-primary flex items-center transition-colors'
+                          'flex items-center',
+                          'hover:text-primary dark:hover:text-primary',
+                          'font-medium',
+                          'transition-colors',
+                          activeSection === nav.value && 'text-primary'
                         )}
                       >
                         {nav.label}

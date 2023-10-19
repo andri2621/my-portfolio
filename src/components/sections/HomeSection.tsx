@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react';
 import { BiSolidFilePdf } from 'react-icons/bi';
@@ -14,27 +15,35 @@ const HomeSection = () => {
   return (
     <section
       id='home'
-      className='hero min-h-screen place-items-start pt-24 md:min-h-full md:place-items-center lg:min-h-screen xl:pt-0'
+      className='hero min-h-screen place-items-start py-24 md:min-h-full md:place-items-center lg:min-h-screen'
     >
-      <div className='flex flex-wrap'>
+      <div className='flex w-full flex-wrap'>
         {/* LEFT CONTENT */}
-        <div className='w-full self-center md:w-1/2 lg:w-3/5'>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className='w-full self-center md:w-1/2 lg:w-3/5 '
+        >
           <div className='text-primary text-base font-semibold md:text-xl'>
             Hi, my name is
           </div>
+
           <div className='text-neutral block text-3xl font-black dark:text-white lg:text-5xl'>
             Andi Setiawan
           </div>
-          <h2 className='text-base-content/80 text-base font-medium  lg:text-2xl'>
+
+          <h2 className='text-base-content text-base font-medium  lg:text-2xl'>
             I&apos;am
             <span className='text-primary ml-2 text-xl lg:text-3xl'>
-              Frontend Developer
+              Frontend Engineer
             </span>
           </h2>
-          <p className='text-base-content/50 mb-4 mt-4 text-sm leading-5 '>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam,
-            ipsum expedita. Dolore vero ad est nostrum quae autem saepe aut et
-            repudiandae magni.
+
+          <p className='text-base-content/60 text-md mb-4 mt-4  leading-5'>
+            Welcome to my digital playground.
+            <br />I work with React ecosystem and familiar with TypeScript and
+            Next.js. Let's create something amazing together!
           </p>
 
           {/* CTA */}
@@ -45,6 +54,7 @@ const HomeSection = () => {
             </Link>
 
             {/* </a> */}
+
             <ReactScroll
               to='contact'
               href='contact'
@@ -53,16 +63,21 @@ const HomeSection = () => {
               CONTACT ME
             </ReactScroll>
           </div>
-        </div>
+        </motion.div>
         {/* RIGHT CONTENT */}
-        <div className='flex w-full justify-center self-center md:w-1/2 lg:w-2/5 lg:justify-end'>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className='flex w-full justify-center self-center md:w-1/2 lg:w-2/5 lg:justify-end'
+        >
           {/*  md:max-h-xs lg:max-h-sm */}
           <div className='box-image-blob relative mt-8 max-h-[18rem] max-w-[18rem] sm:mt-6 sm:max-h-[20rem] sm:max-w-[20rem] lg:max-h-full lg:w-full lg:max-w-md'>
             <NextImage
               alt='My Photo'
               src={MyPhoto}
-              width={500}
-              height={500}
+              width={400}
+              height={400}
               priority={true}
               quality={100}
               className='pointer-events-none h-full w-full'
@@ -75,7 +90,7 @@ const HomeSection = () => {
               <LiquidBlob />
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
