@@ -5,27 +5,29 @@
 
 import dynamic from 'next/dynamic';
 
-const HomeSection = dynamic(() => import('@/components/sections/HomeSection'), {
-  ssr: false,
+const HomeSection = dynamic(() => import('@/app/(sections)/HomeSection'), {
+  ssr: true,
 });
-const AboutSection = dynamic(
-  () => import('@/components/sections/AboutSection'),
-  { ssr: false }
-);
+
+const IntroSection = dynamic(() => import('@/app/(sections)/IntroSection'), {
+  ssr: true,
+});
+
 const PortfolioSection = dynamic(
-  () => import('@/components/sections/PortfolioSection'),
-  { ssr: false }
+  () => import('@/app/(sections)/PortfolioSection'),
+  { ssr: true }
 );
 const ContactSection = dynamic(
-  () => import('@/components/sections/ContactSection'),
-  { ssr: false }
+  () => import('@/app/(sections)/ContactSection'),
+  { ssr: true }
 );
 
 const TestPage = () => {
   return (
     <>
       <HomeSection />
-      <AboutSection />
+      <IntroSection />
+      {/* <AboutSection /> */}
       <PortfolioSection />
       <ContactSection />
     </>

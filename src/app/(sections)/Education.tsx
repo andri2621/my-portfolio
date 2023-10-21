@@ -19,11 +19,7 @@ const Education = () => {
     },
   ];
 
-  return (
-    <div>
-      <TimeLine data={contentData} />
-    </div>
-  );
+  return <TimeLine data={contentData} />;
 };
 
 export default Education;

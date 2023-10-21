@@ -1,6 +1,8 @@
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React, { useRef } from 'react';
+
+import { fadeIn } from '@/lib/motion';
 
 interface TimelineData {
   title: string;
@@ -17,12 +19,6 @@ interface TimelineProps {
 
 const TimeLine: React.FC<TimelineProps> = ({ data }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  const cardVariants = {
-    initial: { y: 50, opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-  };
 
   return (
     <ol
@@ -31,11 +27,11 @@ const TimeLine: React.FC<TimelineProps> = ({ data }) => {
     >
       {data.map((item, index) => (
         <motion.li
-          variants={cardVariants}
-          initial='initial'
-          animate={isInView ? 'animate' : 'initial'}
-          transition={{ duration: 0.3, delay: index * 0.2 }}
           className='mb-10 ml-4'
+          variants={fadeIn('up', 'spring', index * 0.3, 0.5)}
+          viewport={{ once: true, amount: 0.25 }}
+          initial='hidden'
+          whileInView='show'
           key={index}
         >
           <div className='bg-primary dark:bg-primary absolute -left-1.5 mt-2 h-3 w-3 rounded-full'></div>

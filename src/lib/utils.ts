@@ -29,9 +29,6 @@ export function useClickOutside(
 export function useReactScrollWithFixedNavbar(
   handleScrollBegin: (to: string, element: HTMLElement) => void
 ) {
-  // Reference to the sections
-  // const sectionsRef = useRef<HTMLElement[]>([]);
-
   const handleScrollNav = () => {
     // Fixed navbar
     const nav = document.querySelector<HTMLElement>('#navbar-top');
@@ -40,35 +37,9 @@ export function useReactScrollWithFixedNavbar(
       const isFixed = window.scrollY > fixedNav;
       nav.classList.toggle('navbar-fixed', isFixed);
     }
-
-    // Calculate viewport bounds
-    // const screen = window.innerHeight - 200;
-    // Add 'fade-in' class to sections in view
-    // sectionsRef.current.forEach((section) => {
-    //   const sectionTop = section.getBoundingClientRect().top;
-
-    //   // if (sectionTop < screen && !section.classList.contains('fade-in')) {
-    //   //   section.classList.add('fade-in');
-    //   // }
-
-    //   // Check if the section's child elements are within the viewport
-    //   if (sectionTop < screen) {
-    //     const childElements = section.querySelectorAll('*');
-    //     childElements.forEach((child) => {
-    //       if (!child.classList.contains('fade-in')) {
-    //         child.classList.add('fade-in');
-    //       }
-    //     });
-    //   }
-    // });
   };
 
   useEffect(() => {
-    // Initialize sections and calculate positions
-    // sectionsRef.current = Array.from(
-    //   document.querySelectorAll<HTMLElement>('section')
-    // );
-
     // Check scroll position on component mount
     handleScrollNav();
     window.addEventListener('scroll', handleScrollNav);

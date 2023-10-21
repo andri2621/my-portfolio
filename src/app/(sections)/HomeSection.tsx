@@ -20,7 +20,7 @@ const HomeSection = () => {
       <div className='flex w-full flex-wrap'>
         {/* LEFT CONTENT */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
+          initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
           className='w-full self-center md:w-1/2 lg:w-3/5 '
@@ -36,14 +36,21 @@ const HomeSection = () => {
           <h2 className='text-base-content text-base font-medium  lg:text-2xl'>
             I&apos;am
             <span className='text-primary ml-2 text-xl lg:text-3xl'>
-              Frontend Engineer
+              Frontend Developer
             </span>
           </h2>
 
           <p className='text-base-content/60 text-md mb-4 mt-4  leading-5'>
-            Welcome to my digital playground.
-            <br />I work with React ecosystem and familiar with TypeScript and
-            Next.js. Let's create something amazing together!
+            {/* Welcome to my digital playground, a space where I proudly showcase
+              my projects, share my experiences, write personal documentation
+              about what I've learned, and express my thoughts about web
+              development. */}
+            {/* I work with react ecosystem, proficient with TypeScript and
+              NextJS. Currently iam a full-time worker at CodeID, where i
+              involved on several projects. */}
+            Passionate about crafting beautiful and user-friendly websites. I
+            specialize in the React ecosystem and am proficient in TypeScript
+            and Next.js. Let's create something amazing together!
           </p>
 
           {/* CTA */}
@@ -66,7 +73,7 @@ const HomeSection = () => {
         </motion.div>
         {/* RIGHT CONTENT */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
+          initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
           className='flex w-full justify-center self-center md:w-1/2 lg:w-2/5 lg:justify-end'

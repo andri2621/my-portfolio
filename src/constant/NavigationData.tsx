@@ -21,10 +21,10 @@ export const NavigationData: NavigationProps[] = [
   },
   {
     id: 2,
-    label: 'About',
-    value: 'about',
+    label: 'Intro',
+    value: 'intro',
     icon: BiSolidUser,
-    link: '#about',
+    link: '#intro',
   },
   {
     id: 3,
