@@ -65,7 +65,11 @@ export default {
       },
     },
   },
-  plugins: [require('@tailwindcss/forms'), require('daisyui')], //! Default setting from template
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('daisyui'),
+  ], //! Default setting from template
   // plugins: [require('daisyui')],
   daisyui: {
     themes: [
