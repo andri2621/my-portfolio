@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
 import { FaCloudRain } from 'react-icons/fa';
 
-import { useReactScrollWithFixedNavbar } from '@/lib/utils';
+import { useReactScrollWithFixedNavbar } from '@/hooks/useReactScrollWithFixedNavbar';
 
 import ReactScroll from '@/components/links/ReactScroll';
 import ModalSetting from '@/components/settings/ModalSetting';

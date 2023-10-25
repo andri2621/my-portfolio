@@ -5,7 +5,7 @@ import { useTheme } from 'next-themes';
 import React, { useEffect, useRef, useState } from 'react';
 import { PiGearFill, PiMoonFill, PiSunFill } from 'react-icons/pi';
 
-import { useClickOutside } from '@/lib/utils';
+import { useClickOutside } from '@/hooks/useClickOutside';
 
 import ReactScroll from '@/components/links/ReactScroll';
 

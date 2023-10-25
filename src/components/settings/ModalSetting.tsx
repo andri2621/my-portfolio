@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import React, { useRef, useState } from 'react';
 
-import { useClickOutside } from '@/lib/utils';
+import { useClickOutside } from '@/hooks/useClickOutside';
 
 import ReactScroll from '@/components/links/ReactScroll';
 import CloseIcon from '@/components/settings/CloseIcon';
