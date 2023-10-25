@@ -11,7 +11,7 @@ import { formatDate } from '@/lib/utils';
 export default async function AllBlogPage() {
   // const allBlogs = await getAllFile('blogs');
   const blogs = allBlogs
-    .filter((blog) => blog.publishedAt)
+    .filter((blog) => blog.isPublished === true)
     .sort((a, b) => {
       return compareDesc(new Date(a.publishedAt), new Date(b.publishedAt));
     });

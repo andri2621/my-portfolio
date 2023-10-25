@@ -23,7 +23,9 @@ export async function generateStaticParams() {
 }
 
 export default async function SingleBlogPage({ params }: BlogPageProps) {
-  const blog = allBlogs.find((blog) => blog.slugAsParams === params.slug);
+  const blog = allBlogs
+    .filter((blog) => blog.isPublished === true)
+    .find((blog) => blog.slugAsParams === params.slug);
 
   if (!blog) return notFound();
 

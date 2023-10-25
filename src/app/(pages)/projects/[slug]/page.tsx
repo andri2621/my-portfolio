@@ -4,12 +4,27 @@ import React from 'react';
 
 import '@/styles/mdx.css';
 
-import { MdxComponent } from '@/components/MdxComponent';
+import { cn, formatDate } from '@/lib/utils';
 
-const ProjectsDetail = ({ params }: { params: { slug: string } }) => {
-  const project = allProjects.find(
-    (project) => project.slugAsParams === params.slug
-  );
+import CustomImage from '@/components/CustomImage';
+import { MDXComponentsWrapper } from '@/components/MDX/MDXComponentsWrapper';
+
+type ProjectPageProps = {
+  params: {
+    slug: string;
+  };
+};
+
+export async function generateStaticParams() {
+  return allProjects.map((project) => ({
+    slug: project.slugAsParams,
+  }));
+}
+
+export default async function SingleProjectPage({ params }: ProjectPageProps) {
+  const project = allProjects
+    .filter((project) => project.isPublished === true)
+    .find((project) => project.slugAsParams === params.slug);
 
   if (!project) {
     return notFound();
@@ -17,14 +32,27 @@ const ProjectsDetail = ({ params }: { params: { slug: string } }) => {
 
   return (
     <>
-      <div className='flex flex-col'>
-        <div>Projects Detail</div>
-        <div className='mb-20'>Title : {params.slug}</div>
+      <div className='min-h-screen'>
+        <article
+          className={cn(
+            'prose prose-sm md:prose-base lg:prose-lg !prose-custom prose-img:rounded-lg ',
+            'mx-auto'
+          )}
+        >
+          <h1>{project.title}</h1>
+          <div>Published on {formatDate(project.publishedAt)}</div>
 
-        <MdxComponent code={project.body.code} />
+          {project.banner && (
+            <CustomImage
+              src={project.banner.replace('/public', '')}
+              alt={project.title}
+              className='bg-muted transition-colors'
+            />
+          )}
+
+          <MDXComponentsWrapper code={project.body.code} />
+        </article>
       </div>
     </>
   );
-};
-
-export default ProjectsDetail;
+}

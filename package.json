@@ -80,7 +80,7 @@
       "eslint --max-warnings=2",
       "prettier -w"
     ],
-    "**/*.{json,css,scss,md,webmanifest}": [
+    "**/*.{json,css,scss,webmanifest}": [
       "prettier -w"
     ]
   }

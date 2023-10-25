@@ -30,8 +30,8 @@ const computedFields = {
   },
 };
 
-export const Docs = defineDocumentType(() => ({
-  name: 'Docs',
+export const Doc = defineDocumentType(() => ({
+  name: 'Doc',
   filePathPattern: `docs/**/*.mdx`,
   contentType: 'mdx',
   fields: {
@@ -50,8 +50,8 @@ export const Docs = defineDocumentType(() => ({
   computedFields,
 }));
 
-export const Blogs = defineDocumentType(() => ({
-  name: 'Blogs',
+export const Blog = defineDocumentType(() => ({
+  name: 'Blog',
   filePathPattern: `blogs/**/*.mdx`,
   contentType: 'mdx',
   fields: {
@@ -68,6 +68,7 @@ export const Blogs = defineDocumentType(() => ({
     },
     lastUpdated: {
       type: 'date',
+      required: false,
     },
     isPublished: {
       type: 'boolean',
@@ -77,11 +78,15 @@ export const Blogs = defineDocumentType(() => ({
       type: 'string',
       required: true,
     },
+    tags: {
+      type: 'list',
+      of: { type: 'string' },
+    },
     authors: {
       // Reference types are not embedded.
       // Until this is fixed, we can use a simple list.
       // type: "reference",
-      // of: Authors,
+      // of: Author,
       type: 'list',
       of: { type: 'string' },
       required: true,
@@ -90,8 +95,36 @@ export const Blogs = defineDocumentType(() => ({
   computedFields,
 }));
 
-export const Authors = defineDocumentType(() => ({
-  name: 'Authors',
+export const Project = defineDocumentType(() => ({
+  name: 'Project',
+  filePathPattern: `projects/**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: {
+      type: 'string',
+      required: true,
+    },
+    description: {
+      type: 'string',
+    },
+    publishedAt: {
+      type: 'date',
+      required: true,
+    },
+    isPublished: {
+      type: 'boolean',
+      default: true,
+    },
+    banner: {
+      type: 'string',
+      required: false,
+    },
+  },
+  computedFields,
+}));
+
+export const Author = defineDocumentType(() => ({
+  name: 'Author',
   filePathPattern: `authors/**/*.mdx`,
   contentType: 'mdx',
   fields: {
@@ -114,25 +147,9 @@ export const Authors = defineDocumentType(() => ({
   computedFields,
 }));
 
-export const Projects = defineDocumentType(() => ({
-  name: 'Projects',
-  filePathPattern: `projects/**/*.mdx`,
-  contentType: 'mdx',
-  fields: {
-    title: {
-      type: 'string',
-      required: true,
-    },
-    description: {
-      type: 'string',
-    },
-  },
-  computedFields,
-}));
-
 export default makeSource({
   contentDirPath: 'src/content',
-  documentTypes: [Projects, Docs, Blogs, Authors],
+  documentTypes: [Doc, Blog, Project, Author],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
