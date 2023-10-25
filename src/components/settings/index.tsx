@@ -9,7 +9,7 @@ import { useClickOutside } from '@/hooks/useClickOutside';
 
 import ReactScroll from '@/components/links/ReactScroll';
 
-import { NavigationData } from '@/constant/NavigationData';
+import { NavigationData } from '@/constant/config';
 
 const Setting = () => {
   const [mounted, setMounted] = useState(false);

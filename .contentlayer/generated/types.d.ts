@@ -26,6 +26,8 @@ export type Authors = {
   body: MDX;
   slug: string;
   slugAsParams: string;
+  readingTime: string;
+  wordCount: number;
 };
 
 export type Blogs = {
@@ -36,7 +38,7 @@ export type Blogs = {
   title: string;
   description?: string | undefined;
   publishedAt: IsoDateTimeString;
-  lastUpdated: IsoDateTimeString;
+  lastUpdated?: IsoDateTimeString | undefined;
   isPublished: boolean;
   banner: string;
   authors: string[];
@@ -44,6 +46,8 @@ export type Blogs = {
   body: MDX;
   slug: string;
   slugAsParams: string;
+  readingTime: string;
+  wordCount: number;
 };
 
 export type Docs = {
@@ -58,6 +62,8 @@ export type Docs = {
   body: MDX;
   slug: string;
   slugAsParams: string;
+  readingTime: string;
+  wordCount: number;
 };
 
 export type Projects = {
@@ -71,6 +77,8 @@ export type Projects = {
   body: MDX;
   slug: string;
   slugAsParams: string;
+  readingTime: string;
+  wordCount: number;
 };
 
 /** Nested types */

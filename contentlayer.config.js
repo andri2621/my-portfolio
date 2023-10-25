@@ -1,8 +1,14 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import readingTime from 'reading-time';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
+
+function computeReadingTime(source) {
+  const time = readingTime(source, { wordsPerMinute: 275 });
+  return time.text;
+}
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
@@ -13,6 +19,14 @@ const computedFields = {
   slugAsParams: {
     type: 'string',
     resolve: (doc) => doc._raw.flattenedPath.split('/').slice(1).join('/'),
+  },
+  readingTime: {
+    type: 'string',
+    resolve: (doc) => computeReadingTime(doc.body.raw),
+  },
+  wordCount: {
+    type: 'number',
+    resolve: (doc) => doc.body.raw.split(/\s+/gu).length,
   },
 };
 
@@ -54,7 +68,6 @@ export const Blogs = defineDocumentType(() => ({
     },
     lastUpdated: {
       type: 'date',
-      required: true,
     },
     isPublished: {
       type: 'boolean',

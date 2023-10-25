@@ -10,7 +10,7 @@ import CloseIcon from '@/components/settings/CloseIcon';
 import HamburgerIcon from '@/components/settings/HamburgerIcon';
 import ThemeChanger from '@/components/settings/ThemeChanger';
 
-import { NavigationData } from '@/constant/NavigationData';
+import { NavigationData } from '@/constant/config';
 
 const ModalSetting = () => {
   const [isOpen, setIsOpen] = useState(false);
