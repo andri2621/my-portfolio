@@ -38,7 +38,7 @@ export default function ArrowLink<C extends React.ElementType>({
         xmlns='http://www.w3.org/2000/svg'
         className={cn(
           'relative',
-          'transition-transform duration-200',
+          'transition-transform ',
           direction === 'right' ? 'motion-safe:-translate-x-1' : 'rotate-180',
           'group-hover:translate-x-0'
         )}
@@ -53,7 +53,8 @@ export default function ArrowLink<C extends React.ElementType>({
           strokeWidth='1.5'
           strokeLinecap='round'
           className={cn(
-            'origin-left transition-all duration-200',
+            'fill-primary',
+            'origin-left',
             'opacity-0 motion-safe:-translate-x-1',
             'group-hover:translate-x-0 group-hover:opacity-100'
           )}

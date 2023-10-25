@@ -8,7 +8,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 
 import { getMetaData } from '@/lib/getMetaData';
 
-import Navbar from '@/components/navbar/Navbar';
+import { Footer, Navbar } from '@/components/layout/';
 
 import { Providers } from '@/app/providers';
 
@@ -43,10 +43,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <main>
-            <div className='layout'>
-              <Navbar />
-              {children}
-            </div>
+            <Navbar />
+            <div className='layout'>{children}</div>
+            <Footer />
           </main>
         </Providers>
       </body>

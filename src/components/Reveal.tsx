@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import { motion, useInView } from 'framer-motion';
 import React, { useRef } from 'react';

@@ -1,33 +1,13 @@
-// import AboutSection from '@/components/sections/AboutSection';
-// import ContactSection from '@/components/sections/ContactSection';
-// import HomeSection from '@/components/sections/HomeSection';
-// import PortfolioSection from '@/components/sections/PortfolioSection';
-
-import dynamic from 'next/dynamic';
-
-const HomeSection = dynamic(() => import('@/app/(sections)/HomeSection'), {
-  ssr: true,
-});
-
-const IntroSection = dynamic(() => import('@/app/(sections)/IntroSection'), {
-  ssr: true,
-});
-
-const PortfolioSection = dynamic(
-  () => import('@/app/(sections)/PortfolioSection'),
-  { ssr: true }
-);
-const ContactSection = dynamic(
-  () => import('@/app/(sections)/ContactSection'),
-  { ssr: true }
-);
+import ContactSection from '@/app/(sections)/ContactSection';
+import HomeSection from '@/app/(sections)/HomeSection';
+import IntroSection from '@/app/(sections)/IntroSection';
+import PortfolioSection from '@/app/(sections)/PortfolioSection';
 
 const TestPage = () => {
   return (
     <>
       <HomeSection />
       <IntroSection />
-      {/* <AboutSection /> */}
       <PortfolioSection />
       <ContactSection />
     </>

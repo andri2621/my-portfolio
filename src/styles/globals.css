@@ -4,7 +4,7 @@
 
 :root {
   /* #region  /**=========== Primary Color =========== */
-  /* !STARTERCONF Customize these variable, copy and paste from /styles/colors.css for list of colors */
+
   /* #endregion  /**======== Primary Color =========== */
 }
 
@@ -65,8 +65,8 @@
     width: 100%; /* for responsiveness */
   }
 
-  .navbar-fixed {
-    @apply dark:bg-neutral/10 !fixed !z-[99] bg-white/20 shadow-md backdrop-blur-sm;
+  .navbar-top.navbar-fixed {
+    @apply dark:bg-neutral/10 !fixed z-[99px] bg-white/20 shadow-md backdrop-blur-sm;
   }
 
   .navbar-top .active {
@@ -114,10 +114,6 @@
   .animated-underline:focus-visible {
     background-size: 0 2px, 100% 2px;
   }
-
-  .animate-underline-hover {
-    background-size: 0 2px, 100% 2px;
-  }
 }
 
 .tab-active {
@@ -128,15 +124,6 @@
   @apply border-primary border-b-2 !px-2;
 }
 
-/*
-section > * {
-  opacity: 0;
-  transform: translateY(2.5rem);
-  transition: opacity 300ms ease, transform 300ms ease;
-}
-
-.fade-in {
-  opacity: 1;
-  transform: translateY(0);
-}
-*/
+/* .hash-anchor {
+  @apply border-b-0;
+} */

@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 import React, { useRef, useState } from 'react';
 
-import { useClickOutside } from '@/lib/utils';
+import { useClickOutside } from '@/hooks';
 
 import { IconsData } from '@/constant/IconsData';
 

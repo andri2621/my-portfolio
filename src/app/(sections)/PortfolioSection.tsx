@@ -23,7 +23,7 @@ const PortfolioSection = () => {
       id='portfolio'
       className='hero place-items-start py-20 md:place-items-center'
     >
-      <div className='flex flex-col items-center gap-6'>
+      <article className='flex flex-col items-center gap-6'>
         <div>
           <Reveal>
             <h4 className='text-primary text-center text-base font-semibold md:text-xl'>
@@ -61,7 +61,7 @@ const PortfolioSection = () => {
         <Link href='/projects' className='btn btn-primary btn-sm'>
           <div>See More Project</div>
         </Link>
-      </div>
+      </article>
     </section>
   );
 };

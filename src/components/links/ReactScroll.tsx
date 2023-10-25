@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Link as CustomScroll } from 'react-scroll';
 
 type LinkProps = {
   to: string;
   href: string;
-  children: React.ReactNode;
+  children: ReactNode;
   smooth?: boolean;
   activeClass?: string;
   spy?: boolean;
@@ -26,7 +26,13 @@ const DefaultLinkProps: LinkProps = {
 
 const ReactScroll: React.FC<LinkProps> = (props) => {
   const mergedProps = { ...DefaultLinkProps, ...props };
-  return <CustomScroll {...mergedProps}>{props.children}</CustomScroll>;
+
+  // Handle asynchronous rendering and return a Promise if necessary
+  if (typeof window !== 'undefined') {
+    return <CustomScroll {...mergedProps}>{props.children}</CustomScroll>;
+  } else {
+    return <></>; // Return an empty fragment when rendering on the server side
+  }
 };
 
 export default ReactScroll;

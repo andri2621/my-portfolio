@@ -17,7 +17,7 @@ const HomeSection = () => {
       id='home'
       className='hero min-h-screen place-items-start py-24 md:min-h-full md:place-items-center lg:min-h-screen'
     >
-      <div className='flex w-full flex-wrap'>
+      <article className='flex w-full flex-wrap'>
         {/* LEFT CONTENT */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -98,7 +98,7 @@ const HomeSection = () => {
             </div>
           </div>
         </motion.div>
-      </div>
+      </article>
     </section>
   );
 };

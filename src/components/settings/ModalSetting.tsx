@@ -3,14 +3,14 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import React, { useRef, useState } from 'react';
 
-import { useClickOutside } from '@/lib/utils';
+import { useClickOutside } from '@/hooks';
 
 import ReactScroll from '@/components/links/ReactScroll';
 import CloseIcon from '@/components/settings/CloseIcon';
 import HamburgerIcon from '@/components/settings/HamburgerIcon';
 import ThemeChanger from '@/components/settings/ThemeChanger';
 
-import { NavigationData } from '@/constant/NavigationData';
+import { NavigationData } from '@/constant/config';
 
 const ModalSetting = () => {
   const [isOpen, setIsOpen] = useState(false);

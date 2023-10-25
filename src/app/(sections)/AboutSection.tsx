@@ -1,18 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import dynamic from 'next/dynamic';
 import { useState } from 'react';
 
 import { textVariant } from '@/lib/motion';
 
 import TabButton from '@/components/buttons/TabButton';
 
-import { SectionWrapper } from '@/hoc';
-
-const Education = dynamic(() => import('./Education'), {
-  ssr: false,
-});
+import Education from '@/app/(sections)/Education';
+import { SectionWrapper } from '@/hoc-motion';
 
 const DataTab = [
   {
@@ -75,4 +71,4 @@ const AboutSection = () => {
   );
 };
 
-export default SectionWrapper(AboutSection, 'about');
+export default SectionWrapper(AboutSection, 'about', 'layout');

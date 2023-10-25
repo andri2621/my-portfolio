@@ -1,0 +1,7 @@
+node_modules
+dist
+public
+
+#files
+*.contentlayer/generated/types.d.*
+*.contentlayer/generated/index.d.*

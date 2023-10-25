@@ -48,7 +48,7 @@ function ProjectCard({ title, desc, tags, link }: CardProps) {
           <UnderlineLink
             href={`/projects/${link ?? ''}`}
             className={clsx(
-              // 'animated-underline  group-hover:animate-underline-hover',
+              // 'animated-underline ',
               'font-bold'
             )}
           >

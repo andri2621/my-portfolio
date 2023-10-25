@@ -13,7 +13,8 @@
   "git": {
     "deploymentEnabled": {
       "master": true,
-      "development": false
+      "development": false,
+      "feat/mdx": false
     }
   }
 }
