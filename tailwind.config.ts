@@ -63,10 +63,25 @@ export default {
         flicker: 'flicker 3s linear infinite',
         shimmer: 'shimmer 1.3s linear infinite',
       },
+
+      // PROSE MARKDOWN STYLE
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      typography: ({ theme }: any) => ({
+        custom: {
+          css: {
+            '--tw-prose-hr': theme('colors.teal[300]'),
+            '--tw-prose-quote-borders': theme('colors.teal[500]'),
+          },
+        },
+      }),
     },
   },
-  plugins: [require('@tailwindcss/forms'), require('daisyui')], //! Default setting from template
-  // plugins: [require('daisyui')],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('daisyui'),
+  ],
   daisyui: {
     themes: [
       {

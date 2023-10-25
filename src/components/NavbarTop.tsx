@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 import Setting from '@/components/settings';
 
-import { NavigationData } from '@/constant/NavigationData';
+import { NavigationData } from '@/constant/config';
 
 function NavList() {
   return (

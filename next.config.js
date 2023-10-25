@@ -8,13 +8,15 @@ const nextConfig = {
   swcMinify: true,
 
   // Uncoment to add domain whitelist
-  // images: {
-  //   domains: [
-  //     'res.cloudinary.com',
-  //   ],
-  // },
+  images: {
+    domains: [
+      'github.com',
+      'avatars.githubusercontent.com',
+      'res.cloudinary.com',
+      'awandri.com',
+    ],
+  },
 
-  // !uncomment if you want to use SVG directly as a react component
   webpack(config) {
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) =>
