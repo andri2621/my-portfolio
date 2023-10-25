@@ -6,6 +6,7 @@
     "dev": "concurrently \"contentlayer dev\" \"next dev\"",
     "build": "contentlayer build && next build",
     "start": "next start",
+    "preview": "contentlayer build && next build && next start",
     "lint": "next lint",
     "lint:fix": "eslint src --fix && yarn format",
     "lint:strict": "eslint --max-warnings=2 src",

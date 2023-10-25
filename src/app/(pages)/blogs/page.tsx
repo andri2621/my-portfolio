@@ -4,6 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+import '@/styles/mdx.css';
+
 import { formatDate } from '@/lib/utils';
 
 export default async function AllBlogPage() {

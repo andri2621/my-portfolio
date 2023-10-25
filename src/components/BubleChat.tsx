@@ -3,10 +3,16 @@ import Link from 'next/link';
 import React from 'react';
 import { BsGithub, BsLinkedin, BsTwitter } from 'react-icons/bs';
 
-const BubleChat = () => {
+import { cn } from '@/lib/utils';
+
+type BubbleProps = {
+  className?: string;
+};
+
+const BubleChat = ({ className }: BubbleProps) => {
   return (
     <>
-      <div className='chat chat-start'>
+      <div className={cn(className, 'chat chat-start')}>
         <div className='chat-image avatar'>
           <div className='bg-neutral w-10 rounded-full'>
             <Image src='/images/MyPhoto.png' alt='chat photo' fill />

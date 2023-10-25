@@ -2,6 +2,8 @@ import { allProjects } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
 import React from 'react';
 
+import '@/styles/mdx.css';
+
 import { MdxComponent } from '@/components/MdxComponent';
 
 const ProjectsDetail = ({ params }: { params: { slug: string } }) => {

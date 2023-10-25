@@ -1,11 +1,13 @@
 import { allAuthors, allBlogs } from 'contentlayer/generated';
 import Image from 'next/image';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
+
+import '@/styles/mdx.css';
 
 import { cn, formatDate } from '@/lib/utils';
 
 import CustomImage from '@/components/CustomImage';
+import UnstyledLink from '@/components/links/UnstyledLink';
 import { MDXComponentsWrapper } from '@/components/MDX/MDXComponentsWrapper';
 
 type BlogPageProps = {
@@ -47,10 +49,10 @@ export default async function SingleBlogPage({ params }: BlogPageProps) {
             <div className='mt-4 flex space-x-4'>
               {authors.map((author) =>
                 author ? (
-                  <Link
+                  <UnstyledLink
                     key={author._id}
                     href={`https://twitter.com/${author.twitter}`}
-                    className='flex items-center space-x-2 text-sm'
+                    className='text-md flex items-center space-x-2 no-underline'
                   >
                     <Image
                       src={author.avatar}
@@ -60,12 +62,12 @@ export default async function SingleBlogPage({ params }: BlogPageProps) {
                       className='rounded-full bg-white'
                     />
                     <div className='flex-1 text-left leading-tight'>
-                      <p className='font-medium'>{author.title}</p>
-                      <p className='text-muted-foreground text-[12px]'>
+                      <div className='font-medium'>{author.title}</div>
+                      <div className='text-muted-foreground text-base-content/60 text-sm'>
                         @{author.twitter}
-                      </p>
+                      </div>
                     </div>
-                  </Link>
+                  </UnstyledLink>
                 ) : null
               )}
             </div>

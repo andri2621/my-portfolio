@@ -16,13 +16,16 @@ export default function Footer() {
             {footerLink.map((item) => {
               if (item.underConstruction) {
                 return (
-                  <div
+                  <Tooltip
+                    text='Under Construction'
+                    variant='center'
                     key={item.name}
-                    className='flex cursor-not-allowed gap-2'
                   >
-                    {item.label}
-                    <LucideConstruction size={16} />
-                  </div>
+                    <div className='flex cursor-not-allowed items-center gap-1'>
+                      <span>{item.label}</span>
+                      <LucideConstruction size={16} />
+                    </div>
+                  </Tooltip>
                 );
               } else {
                 return (
