@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import * as React from 'react';
-import { FaCloudRain } from 'react-icons/fa';
 
 import { cn } from '@/lib/utils';
 import { useFixedNavOnScroll } from '@/hooks/useFixedNavOnScroll';
@@ -11,13 +10,7 @@ import ModalSetting from '@/components/settings/ModalSetting';
 import ThemeToggle from '@/components/settings/ThemeToggle';
 
 import { NavigationData } from '@/constant/config';
-
-const Logo = () => (
-  <Link href='/#home' className='text-primary block text-lg font-bold'>
-    <FaCloudRain className='2xl inline-block' size={36} />
-    <span className='ml-2'>Awandri</span>
-  </Link>
-);
+import { Icons } from '@/constant/IconsData';
 
 const Navbar = () => {
   const [activePage, setActivePage] = React.useState('/home');
@@ -39,24 +32,30 @@ const Navbar = () => {
       >
         <div className='layout flex items-center justify-between py-4'>
           {/* Logo */}
-          <Logo />
+          <div className='mb-0 mt-0 flex flex-row gap-4 lg:items-center lg:gap-6'>
+            <Link
+              href='/#home'
+              className='text-primary inline-block text-lg font-bold'
+            >
+              <Icons.logo className='inline-block h-6 w-6' />
+              <span className='ml-2'>Awandri</span>
+            </Link>
+          </div>
 
           {/* NAVIGATION LINKS ON > MEDIUM DEVICE */}
           <div className=' hidden items-center gap-4  sm:flex'>
-            <div className='flex flex-row gap-4 lg:mb-0 lg:mt-0 lg:items-center lg:gap-6'>
-              {NavigationData.map((nav) => (
-                <Link
-                  href={nav.link}
-                  key={nav.id}
-                  className={cn('hover:!text-primary/50', {
-                    active: activePage === nav.link,
-                  })}
-                >
-                  {nav.label}
-                </Link>
-                // </li>
-              ))}
-            </div>
+            {NavigationData.map((nav) => (
+              <Link
+                href={nav.link}
+                key={nav.id}
+                className={cn('hover:!text-primary/50', {
+                  'active font-medium': activePage === nav.link,
+                })}
+              >
+                {nav.label}
+              </Link>
+              // </li>
+            ))}
             {/* <ThemeChanger /> */}
             <ThemeToggle />
           </div>

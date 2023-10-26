@@ -8,7 +8,9 @@ import {
   BiLogoSass as Scss,
   BiLogoTailwindCss as Tailwind,
   BiLogoTwitter as Twitter,
+  BiTime as Time,
 } from 'react-icons/bi';
+import { FaCloudRain } from 'react-icons/fa';
 import { SiPrisma as Prisma } from 'react-icons/si';
 import { TbBrandNextjs as Next } from 'react-icons/tb';
 
@@ -27,4 +29,6 @@ export const Icons: Icons = {
   github: Github,
   linkedin: Linkedin,
   twitter: Twitter,
+  logo: FaCloudRain,
+  time: Time,
 };

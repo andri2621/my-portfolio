@@ -10,7 +10,7 @@ const LayoutPage = ({ children }: { children: React.ReactNode }) => {
   const baseLabel = arrRoute.length > 2 ? arrRoute[1] : 'Home';
 
   return (
-    <section className='min-h-screen pt-24'>
+    <section className='min-h-screen py-24'>
       <ArrowLink
         direction='left'
         className='mb-10 mt-2'

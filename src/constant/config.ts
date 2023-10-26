@@ -2,14 +2,35 @@ import { AiFillHome } from 'react-icons/ai';
 import { BiSolidUser } from 'react-icons/bi';
 import { FaFileCode, FaPhoneAlt } from 'react-icons/fa';
 
-import { FooterLinkProps, NavigationProps } from '@/types/config';
+import { FooterLinkProps, NavigationProps } from '@/types';
 
 export const siteConfig = {
+  name: 'Awandri',
   title: 'Next.js + Tailwind CSS + TypeScript Starter',
   description:
     'A starter for Next.js, Tailwind CSS, and TypeScript with Absolute Import, Seo, Link component, pre-configured with Husky',
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
   url: 'https://awandri.com',
+  socialLink: {
+    github: {
+      label: 'Github',
+      name: 'github link',
+      link: 'https://github.com/andri2621',
+      tooltip: 'See my projects on Github!',
+    },
+    linkedin: {
+      label: 'LinkedIn',
+      name: 'linkedin link',
+      link: 'https://www.linkedin.com/in/andisetiawan2621/',
+      tooltip: 'Find me on LinkedIn!',
+    },
+    twitter: {
+      label: 'Twitter',
+      name: 'twitter link',
+      link: 'https://twitter.com/andri2621',
+      tooltip: 'Follow me on Twitter!',
+    },
+  },
 };
 
 export const NavigationData: NavigationProps[] = [

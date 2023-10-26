@@ -4,6 +4,8 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import React from 'react';
 
+import { cn } from '@/lib/utils';
+
 import Badge from '@/components/badge';
 import UnderlineLink from '@/components/links/UnderlineLink';
 
@@ -18,7 +20,7 @@ function ProjectCard({ title, desc, tags, link }: CardProps) {
   return (
     <div
       key={link}
-      className={clsx(
+      className={cn(
         'card card-compact group',
         'h-full',
         'shadow-3xl border-base-content/30 rounded-md border',
