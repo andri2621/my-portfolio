@@ -6,7 +6,7 @@ import '@/styles/mdx.css';
 
 import { cn, formatDate } from '@/lib/utils';
 
-import CustomImage from '@/components/CustomImage';
+import CloudinaryImage from '@/components/CloudinaryImage';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import { MDXComponentsWrapper } from '@/components/MDX/MDXComponentsWrapper';
 
@@ -61,7 +61,7 @@ export default async function SingleBlogPage({ params }: BlogPageProps) {
                       alt={author.title}
                       width={42}
                       height={42}
-                      className='rounded-full bg-white'
+                      className='!m-0 rounded-full bg-white'
                     />
                     <div className='flex-1 text-left leading-tight'>
                       <div className='font-medium'>{author.title}</div>
@@ -75,10 +75,13 @@ export default async function SingleBlogPage({ params }: BlogPageProps) {
             </div>
           ) : null}
           {blog.banner && (
-            <CustomImage
-              src={blog.banner.replace('/public', '')}
+            <CloudinaryImage
+              publicId={blog.banner.replace('/public', '')}
               alt={blog.title}
-              className='bg-muted transition-colors'
+              className='transition-colors'
+              width={731}
+              height={411}
+              mdx
             />
           )}
 

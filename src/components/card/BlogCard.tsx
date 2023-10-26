@@ -18,7 +18,7 @@ type CardProps = {
 export default function BlogCard({ data, index }: CardProps) {
   return (
     <UnstyledLink
-      href={`/blogs/${data.slug ?? ''}`}
+      href={data.slug}
       className={cn(
         'card card-compact group',
         'h-full',
