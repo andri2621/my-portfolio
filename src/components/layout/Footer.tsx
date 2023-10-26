@@ -1,5 +1,7 @@
 import { LucideConstruction } from 'lucide-react';
 
+import { getIcon } from '@/lib/utils';
+
 import CustomLink from '@/components/links/CustomLink';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import Tooltip from '@/components/Tooltip';
@@ -48,11 +50,13 @@ export default function Footer() {
                   variant = 'left';
                 }
 
+                const SocialIcon = getIcon(social.label.toLowerCase());
+
                 return (
                   <UnstyledLink href={social.link} key={social.name}>
                     <Tooltip text={social.tooltip} variant={variant}>
                       <div className='hover:text-primary flex items-center gap-2 font-semibold'>
-                        <social.icon size={18} />
+                        {SocialIcon && <SocialIcon className='h-6 w-6' />}
                         <span>{social.label}</span>
                       </div>
                     </Tooltip>

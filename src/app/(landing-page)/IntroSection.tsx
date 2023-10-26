@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 
-import BubleChat from '@/components/BubleChat';
+import BubbleChat from '@/components/BubbleChat';
 import UnderlineLink from '@/components/links/UnderlineLink';
 
 import RocketBox from '~/svg/RocketBox.svg';
@@ -29,12 +29,12 @@ const IntroSection = () => {
         </span>
         <p className='mb-5 mt-5'>
           a space where I showcase my{' '}
-          <span className='font-bold text-white'>projects</span>, share my{' '}
-          <span className='font-bold text-white'>experiences</span>, write
-          personal documentation about what I've learned, and express my
+          <span className='text-base-content font-bold'>projects</span>, share
+          my <span className='text-base-content font-bold'>experiences</span>,
+          write personal documentation about what I've learned, and express my
           thoughts about web development.
         </p>
-        <BubleChat className='min-w-full self-center md:min-w-[375px]' />
+        <BubbleChat className='self-center' />
       </div>
     </section>
   );

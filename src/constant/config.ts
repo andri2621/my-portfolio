@@ -1,6 +1,5 @@
 import { AiFillHome } from 'react-icons/ai';
 import { BiSolidUser } from 'react-icons/bi';
-import { BsGithub, BsLinkedin, BsTwitter } from 'react-icons/bs';
 import { FaFileCode, FaPhoneAlt } from 'react-icons/fa';
 
 import { FooterLinkProps, NavigationProps } from '@/types/config';
@@ -83,7 +82,7 @@ export const footerLink: FooterLinkProps[] = [
   {
     label: 'OG Generator',
     name: 'OG Generator',
-    link: 'https://github.com/andri2621/og-generator',
+    link: 'https://og.awandri.com',
     underConstruction: false,
   },
 ];
@@ -94,20 +93,17 @@ export const socialLink = [
     name: 'github link',
     link: 'https://github.com/andri2621',
     tooltip: 'See my projects on Github!',
-    icon: BsGithub,
   },
   {
     label: 'LinkedIn',
     name: 'linkedin link',
     link: 'https://www.linkedin.com/in/andisetiawan2621/',
     tooltip: 'Find me on LinkedIn!',
-    icon: BsLinkedin,
   },
   {
     label: 'Twitter',
     name: 'twitter link',
     link: 'https://twitter.com/andri2621',
     tooltip: 'Follow me on Twitter!',
-    icon: BsTwitter,
   },
 ];

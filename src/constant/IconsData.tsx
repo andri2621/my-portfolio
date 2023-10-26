@@ -1,48 +1,30 @@
 import { IconType } from 'react-icons';
 import {
-  BiLogoAngular as IconAngular,
-  BiLogoReact as IconReact,
-  BiLogoRedux as IconRedux,
-  BiLogoSass as IconScss,
-  BiLogoTailwindCss as IconTailwind,
+  BiLogoAngular as Angular,
+  BiLogoGithub as Github,
+  BiLogoLinkedinSquare as Linkedin,
+  BiLogoReact as React,
+  BiLogoRedux as Redux,
+  BiLogoSass as Scss,
+  BiLogoTailwindCss as Tailwind,
+  BiLogoTwitter as Twitter,
 } from 'react-icons/bi';
-import { TbBrandNextjs as IconNext } from 'react-icons/tb';
+import { SiPrisma as Prisma } from 'react-icons/si';
+import { TbBrandNextjs as Next } from 'react-icons/tb';
 
-type IconProps = {
-  name: string;
-  icon: IconType;
-  badgeType?: string;
+type Icons = {
+  [key: string]: IconType;
 };
 
-export const IconsData: IconProps[] = [
-  {
-    name: 'react',
-    icon: IconReact,
-    badgeType: 'badge-info',
-  },
-  {
-    name: 'nextjs',
-    icon: IconNext,
-    badgeType: 'badge-ghost',
-  },
-  {
-    name: 'angular',
-    icon: IconAngular,
-    badgeType: 'badge-error',
-  },
-  {
-    name: 'tailwind',
-    icon: IconTailwind,
-    badgeType: 'badge-primary',
-  },
-  {
-    name: 'redux',
-    icon: IconRedux,
-    badgeType: 'badge-secondary',
-  },
-  {
-    name: 'scss',
-    icon: IconScss,
-    badgeType: 'badge-accent',
-  },
-];
+export const Icons: Icons = {
+  react: React,
+  angular: Angular,
+  nextjs: Next,
+  tailwind: Tailwind,
+  redux: Redux,
+  scss: Scss,
+  prisma: Prisma,
+  github: Github,
+  linkedin: Linkedin,
+  twitter: Twitter,
+};

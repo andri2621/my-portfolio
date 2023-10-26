@@ -43,18 +43,20 @@ const Navbar = () => {
 
           {/* NAVIGATION LINKS ON > MEDIUM DEVICE */}
           <div className=' hidden items-center gap-4  sm:flex'>
-            <ul className='flex flex-row gap-2 lg:mb-0 lg:mt-0 lg:items-center lg:gap-6'>
+            <div className='flex flex-row gap-4 lg:mb-0 lg:mt-0 lg:items-center lg:gap-6'>
               {NavigationData.map((nav) => (
-                <li
-                  className={cn('p-1', 'hover:!text-primary/50', {
+                <Link
+                  href={nav.link}
+                  key={nav.id}
+                  className={cn('hover:!text-primary/50', {
                     active: activePage === nav.link,
                   })}
-                  key={nav.id}
                 >
-                  <Link href={nav.link}>{nav.label}</Link>
-                </li>
+                  {nav.label}
+                </Link>
+                // </li>
               ))}
-            </ul>
+            </div>
             {/* <ThemeChanger /> */}
             <ThemeToggle />
           </div>
