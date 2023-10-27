@@ -5,8 +5,7 @@ import * as React from 'react';
 
 import '@/styles/mdx.css';
 
-import BlogCard from '@/components/card/BlogCard';
-import StyledInput from '@/components/form/StyledInput';
+import BlogViewComponent from '@/components/buttons/BlogViewComponent';
 
 export default async function AllBlogPage() {
   // const allBlogs = await getAllFile('blogs');
@@ -29,23 +28,11 @@ export default async function AllBlogPage() {
             <p className=''>
               A blog built using Contentlayer. Posts are written in MDX.
             </p>
-            <StyledInput placeholder='Search blog...' />
           </div>
         </div>
-        <div className='divider my-8'></div>
-        {blogs?.length ? (
-          <div className=' grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
-            {blogs.map((blog, index) => {
-              return (
-                <div key={blog._id}>
-                  <BlogCard data={blog} index={index} />
-                </div>
-              );
-            })}
-          </div>
-        ) : (
-          <p>Sorry, No blog published :(</p>
-        )}
+        <div>
+          <BlogViewComponent blogs={blogs} />
+        </div>
       </div>
     </>
   );

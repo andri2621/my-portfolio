@@ -40,9 +40,9 @@ This changelog is manually generated and not accurate with the package.json, onl
 
 ### New Features
 
-- #### Shimmer for NextImage and Skeleton
+- #### Shimmer for CustomImage and Skeleton
     
-    Addition of shimmer & blur placeholder for NextImage, and new Skeleton Component with shimmer effect.
+    Addition of shimmer & blur placeholder for CustomImage, and new Skeleton Component with shimmer effect.
 
     https://user-images.githubusercontent.com/55318172/155867729-8c3176ad-ede4-4443-b42b-780517615e5a.mp4
 
@@ -130,7 +130,7 @@ This changelog is manually generated and not accurate with the package.json, onl
 
 ### Improvements & Bug Fixes
 
-- #### Can't Use Layout Fill on NextImage
+- #### Can't Use Layout Fill on CustomImage
 
     Using layout fill will make the width and height optional
 

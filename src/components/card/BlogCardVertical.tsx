@@ -15,15 +15,16 @@ type CardProps = {
   index: number;
 };
 
-export default function BlogCard({ data, index }: CardProps) {
+export default function BlogCardVertical({ data, index }: CardProps) {
   return (
     <UnstyledLink
       href={data.slug}
       className={cn(
         'card card-compact group',
-        'h-full',
-        'shadow-3xl border-base-content/30 rounded-md border ',
-        'scale-100 hover:scale-[1.02] motion-safe:transform-gpu motion-reduce:hover:scale-100',
+        'h-full rounded-md',
+        'shadow-3xl dark:shadow-base-content/20',
+        'border-primary/30 hover:border',
+        'scale-100 hover:scale-[1.02] active:scale-100 motion-safe:transform-gpu motion-reduce:hover:scale-100',
         'transition duration-100'
       )}
     >
@@ -39,7 +40,7 @@ export default function BlogCard({ data, index }: CardProps) {
       </figure>
 
       <div className='card-body'>
-        <h2 className='card-title !mb-0 line-clamp-1 capitalize text-black dark:text-white'>
+        <h2 className='card-title !mb-0 line-clamp-2 capitalize text-black dark:text-white'>
           {data.title}
         </h2>
         <div className='mb-auto'>
@@ -51,7 +52,7 @@ export default function BlogCard({ data, index }: CardProps) {
         <div className='mb-auto font-semibold text-black dark:text-white'>
           {formatDate(data.publishedAt)}
         </div>
-        <p className='mb-auto line-clamp-2 sm:line-clamp-2 '>
+        <p className='mb-auto line-clamp-2 sm:line-clamp-2'>
           {data.description}
         </p>
         <div className='card-actions justify-end'>
@@ -61,7 +62,7 @@ export default function BlogCard({ data, index }: CardProps) {
               'font-bold'
             )}
           >
-            See more
+            Read more
           </div>
         </div>
       </div>

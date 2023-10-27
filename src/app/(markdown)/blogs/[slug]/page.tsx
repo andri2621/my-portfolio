@@ -6,7 +6,7 @@ import '@/styles/mdx.css';
 
 import { cn, formatDate } from '@/lib/utils';
 
-import CloudinaryImage from '@/components/CloudinaryImage';
+import CloudinaryImage from '@/components/image/CloudinaryImage';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import { MDXComponentsWrapper } from '@/components/MDX/MDXComponentsWrapper';
 

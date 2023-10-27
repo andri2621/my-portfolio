@@ -1,5 +1,6 @@
 import { IconType } from 'react-icons';
 import {
+  BiListUl as List,
   BiLogoAngular as Angular,
   BiLogoGithub as Github,
   BiLogoLinkedinSquare as Linkedin,
@@ -8,9 +9,12 @@ import {
   BiLogoSass as Scss,
   BiLogoTailwindCss as Tailwind,
   BiLogoTwitter as Twitter,
+  // BiSolidGridAlt as Grid,
   BiTime as Time,
 } from 'react-icons/bi';
 import { FaCloudRain } from 'react-icons/fa';
+import { HiViewGrid as Grid } from 'react-icons/hi';
+import { IoClose as CloseX } from 'react-icons/io5';
 import { SiPrisma as Prisma } from 'react-icons/si';
 import { TbBrandNextjs as Next } from 'react-icons/tb';
 
@@ -31,4 +35,7 @@ export const Icons: Icons = {
   twitter: Twitter,
   logo: FaCloudRain,
   time: Time,
+  grid: Grid,
+  list: List,
+  close: CloseX,
 };

@@ -6,7 +6,7 @@ import '@/styles/mdx.css';
 
 import { cn, formatDate } from '@/lib/utils';
 
-import CustomImage from '@/components/CustomImage';
+import CustomImage from '@/components/image/CustomImage';
 import { MDXComponentsWrapper } from '@/components/MDX/MDXComponentsWrapper';
 
 type ProjectPageProps = {
@@ -46,7 +46,8 @@ export default async function SingleProjectPage({ params }: ProjectPageProps) {
             <CustomImage
               src={project.banner.replace('/public', '')}
               alt={project.title}
-              className='bg-muted transition-colors'
+              className='bg-muted aspect-video transition-colors'
+              fill
             />
           )}
 

@@ -7,7 +7,8 @@ import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
-import CustomImage from '@/components/CustomImage';
+import CloudinaryImage from '@/components/image/CloudinaryImage';
+import CustomImage from '@/components/image/CustomImage';
 import CustomLink from '@/components/links/CustomLink';
 import UnderlineLink from '@/components/links/UnderlineLink';
 import { Callout } from '@/components/MDX/Callout';
@@ -167,6 +168,7 @@ const components = {
   Callout,
   Card: MdxCard,
   CustomImage,
+  CloudinaryImage,
   CustomLink,
   UnderlineLink,
 };

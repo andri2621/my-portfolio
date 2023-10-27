@@ -39,3 +39,8 @@ export function getIcon(iconName: string) {
     return null;
   }
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function isRemoteURL(source: any): boolean {
+  return typeof source === 'string';
+}

@@ -6,7 +6,7 @@ import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { useFixedNavOnScroll } from '@/hooks/useFixedNavOnScroll';
 
-import ModalSetting from '@/components/settings/ModalSetting';
+import MenuMobile from '@/components/layout/MenuMobile';
 import ThemeToggle from '@/components/settings/ThemeToggle';
 
 import { NavigationData } from '@/constant/config';
@@ -28,7 +28,7 @@ const Navbar = () => {
     <>
       <nav
         id='navbar-top'
-        className='navbar-top absolute left-0 right-0 top-0 z-10 transition-shadow'
+        className='navbar-top absolute left-0 right-0 top-0 z-[99] transition-shadow'
       >
         <div className='layout flex items-center justify-between py-4'>
           {/* Logo */}
@@ -61,7 +61,7 @@ const Navbar = () => {
           </div>
           {/* SHOW MODAL ON SMALL DEVICE, IF > , HIDE THE MODAL */}
           <div className='sm:hidden'>
-            <ModalSetting />
+            <MenuMobile activePage={activePage} />
           </div>
         </div>
       </nav>

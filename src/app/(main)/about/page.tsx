@@ -1,6 +1,9 @@
 import React from 'react';
 
-import CloudinaryImg from '@/components/CloudinaryImage';
+import CloudinaryImg from '@/components/image/CloudinaryImage';
+import CustomImage from '@/components/image/CustomImage';
+
+import bgOpengraph from '~/images/bg-opengraph.jpg';
 
 export default function AboutPage() {
   return (
@@ -13,7 +16,16 @@ export default function AboutPage() {
         height={411}
         alt=''
       />
-      <div>Custom Image</div>
+
+      <span>ini Next Image Fill</span>
+      <CustomImage
+        src={bgOpengraph}
+        alt=''
+        // width={731}
+        // height={411}
+        fill
+        ImageClassName='rounded-lg aspect-video'
+      />
     </div>
   );
 }

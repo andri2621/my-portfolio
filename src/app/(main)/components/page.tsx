@@ -14,12 +14,12 @@ import React from 'react';
 import Button from '@/components/buttons/Button';
 import IconButton from '@/components/buttons/IconButton';
 import TextButton from '@/components/buttons/TextButton';
+import CustomImage from '@/components/image/CustomImage';
 import ArrowLink from '@/components/links/ArrowLink';
 import ButtonLink from '@/components/links/ButtonLink';
 import PrimaryLink from '@/components/links/PrimaryLink';
 import UnderlineLink from '@/components/links/UnderlineLink';
 import UnstyledLink from '@/components/links/UnstyledLink';
-import NextImage from '@/components/NextImage';
 import Skeleton from '@/components/Skeleton';
 
 type Color = (typeof colorList)[number];
@@ -409,8 +409,7 @@ export default function ComponentPage() {
               <p className={clsx('!mt-1 text-sm', textColor)}>
                 Next Image with default props and skeleton animation
               </p>
-              <NextImage
-                useSkeleton
+              <CustomImage
                 className='w-32 md:w-40'
                 src='/favicon/android-chrome-192x192.png'
                 width='180'

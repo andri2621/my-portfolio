@@ -61,6 +61,7 @@ export const Blog = defineDocumentType(() => ({
     },
     description: {
       type: 'string',
+      required: true,
     },
     publishedAt: {
       type: 'date',
@@ -81,6 +82,7 @@ export const Blog = defineDocumentType(() => ({
     tags: {
       type: 'list',
       of: { type: 'string' },
+      required: true,
     },
     authors: {
       // Reference types are not embedded.
