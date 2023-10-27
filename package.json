@@ -9,7 +9,7 @@
     "preview": "contentlayer build && next build && next start",
     "lint": "next lint",
     "lint:fix": "eslint src --fix && yarn format",
-    "lint:strict": "eslint --max-warnings=2 src",
+    "lint:strict": "eslint --max-warnings=0 src",
     "typecheck": "tsc --noEmit --incremental false",
     "test:watch": "jest --watch",
     "test": "jest",
@@ -79,7 +79,7 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "eslint --max-warnings=2",
+      "eslint --max-warnings=0",
       "prettier -w"
     ],
     "**/*.{json,css,scss,webmanifest}": [
