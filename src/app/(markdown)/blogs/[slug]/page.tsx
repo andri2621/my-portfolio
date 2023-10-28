@@ -1,6 +1,7 @@
 import { allAuthors, allBlogs } from 'contentlayer/generated';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import * as React from 'react';
 
 import '@/styles/mdx.css';
 
@@ -84,7 +85,6 @@ export default async function SingleBlogPage({ params }: BlogPageProps) {
               mdx
             />
           )}
-
           <MDXComponentsWrapper code={blog.body.code} />
         </article>
       </div>
