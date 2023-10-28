@@ -12,8 +12,11 @@
   ],
   "git": {
     "deploymentEnabled": {
-      "master": true,
-      "development": false
+      "master": false,
+      "development": false,
+      "feat/mdx": false,
+      "feat/counter-view": false,
+      "feat/**": false
     }
   }
 }
