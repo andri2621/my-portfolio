@@ -140,3 +140,20 @@ section > * {
   transform: translateY(0);
 }
 */
+
+/* MENU SCROLLBAR IF OVERFLOW */
+/* For WebKit-based browsers like Google Chrome */
+ul::-webkit-scrollbar {
+  width: 8px;
+}
+
+ul::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 6px;
+}
+
+/* For Firefox */
+ul {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f0f0f0;
+}

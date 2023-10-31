@@ -13,13 +13,19 @@ import { Icons } from '@/constant/IconsData';
 type CardProps = {
   data: Blog;
   index: number;
+  className?: string;
 };
 
-export default function BlogCardVertical({ data, index }: CardProps) {
+export default function BlogCardVertical({
+  data,
+  index,
+  className,
+}: CardProps) {
   return (
     <UnstyledLink
       href={data.slug}
       className={cn(
+        className,
         'card card-compact group',
         'h-full rounded-md',
         'shadow-3xl dark:shadow-base-content/20',
@@ -43,16 +49,17 @@ export default function BlogCardVertical({ data, index }: CardProps) {
         <h2 className='card-title !mb-0 line-clamp-2 capitalize text-black dark:text-white'>
           {data.title}
         </h2>
-        <div className='mb-auto'>
+
+        <div className=' flex items-center gap-4'>
+          <div className='font-semibold'>{formatDate(data.publishedAt)}</div>
+
           <div className='text-primary flex items-center gap-1'>
             <Icons.time />
             {data.readingTime}
           </div>
         </div>
-        <div className='mb-auto font-semibold text-black dark:text-white'>
-          {formatDate(data.publishedAt)}
-        </div>
-        <p className='mb-auto line-clamp-2 sm:line-clamp-2'>
+
+        <p className='mb-auto line-clamp-2 flex-grow-0 sm:line-clamp-3'>
           {data.description}
         </p>
         <div className='card-actions justify-end'>

@@ -3,16 +3,16 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
-  const responses = await prisma.contentMeta.upsert({
-    where: { slug: 'weekend' },
-    update: {},
-    create: {
-      slug: 'weekend',
-    },
-  });
+  // const responses = await prisma.contentMeta.upsert({
+  //   where: { slug: 'weekend' },
+  //   update: {},
+  //   create: {
+  //     slug: 'weekend',
+  //   },
+  // });
 
   // eslint-disable-next-line no-console
-  console.log(responses);
+  console.log('hehe');
 }
 
 main()

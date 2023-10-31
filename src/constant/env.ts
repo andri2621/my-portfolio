@@ -13,7 +13,8 @@ export const showLogger = isLocal
  */
 export const contentMetaFlag =
   // isProd || process.env.NEXT_PUBLIC_FLAG_CONTENT_META === 'true';
-  process.env.NEXT_PUBLIC_FLAG_CONTENT_META === 'true';
+  // process.env.NEXT_PUBLIC_FLAG_CONTENT_META === 'true';
+  true;
 
 /**
  * Increment content views

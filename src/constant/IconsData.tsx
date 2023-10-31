@@ -1,5 +1,7 @@
 import { IconType } from 'react-icons';
 import {
+  BiChevronDown as ChevronDown,
+  BiChevronUp as ChevronUp,
   BiListUl as List,
   BiLogoAngular as Angular,
   BiLogoGithub as Github,
@@ -38,4 +40,6 @@ export const Icons: Icons = {
   grid: Grid,
   list: List,
   close: CloseX,
+  chevronUp: ChevronUp,
+  chevronDown: ChevronDown,
 };

@@ -1,28 +1,35 @@
+'use client';
+
 import axios from 'axios';
-import debounce from 'lodash/debounce';
-import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import useSWR from 'swr';
 
 import { contentMetaFlag, incrementMetaFlag } from '@/constant/env';
 import { cacheOnly } from '@/constant/swr';
 
-import { ContentMeta, SingleContentMeta } from '@/types/meta';
+async function fetcher(url: string) {
+  const res = await axios.get(url);
+  return res?.data?.data;
+}
 
 export default function useContentMeta(
   slug: string,
   { runIncrement = false }: { runIncrement?: boolean } = {}
 ) {
+  const key = `/api/content`;
+
   //#region  //*=========== Get content cache ===========
-  const { data: allContentMeta } = useSWR<Array<ContentMeta>>(
-    contentMetaFlag ? '/api/content' : null,
+  const { data: allContentMeta } = useSWR(
+    contentMetaFlag ? key : null,
+    fetcher,
     cacheOnly
   );
-  const _preloadMeta = allContentMeta?.find((meta) => meta.slug === slug);
-  const preloadMeta: SingleContentMeta | undefined = _preloadMeta
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const _preloadMeta = allContentMeta?.find((meta: any) => meta.slug === slug);
+  const preloadMeta = _preloadMeta
     ? {
-        contentLikes: _preloadMeta.likes,
-        contentViews: _preloadMeta.views,
-        likesByUser: _preloadMeta.likesByUser,
+        contentLikes: _preloadMeta._count.likes,
+        contentViews: _preloadMeta._count.views,
       }
     : undefined;
   //#endregion  //*======== Get content cache ===========
@@ -31,63 +38,37 @@ export default function useContentMeta(
     data,
     error: isError,
     mutate,
-  } = useSWR<SingleContentMeta>(
-    contentMetaFlag ? '/api/content/' + slug : null,
-    {
-      fallbackData: preloadMeta,
-    }
-  );
+  } = useSWR(`${key}?slug=${slug}`, fetcher, { fallbackData: preloadMeta });
 
-  React.useEffect(() => {
-    if (runIncrement && incrementMetaFlag) {
-      incrementViews(slug).then((fetched) => {
+  // to only make increment once
+  const hasRunIncrementEffect = useRef(false);
+
+  useEffect(() => {
+    if (runIncrement && incrementMetaFlag && !hasRunIncrementEffect.current) {
+      incrementViews(key, slug).then((fetched) => {
         mutate({
           ...fetched,
         });
       });
+      hasRunIncrementEffect.current = true;
     }
-  }, [mutate, runIncrement, slug]);
-
-  const addLike = () => {
-    // Don't run if data not populated,
-    // and if maximum likes
-    if (!data || data.likesByUser >= 5) return;
-
-    // Mutate optimistically
-    mutate(
-      {
-        contentViews: data.contentViews,
-        contentLikes: data.contentLikes + 1,
-        likesByUser: data.likesByUser + 1,
-      },
-      false
-    );
-
-    incrementLikes(slug).then(() => {
-      debounce(() => {
-        mutate();
-      }, 1000)();
-    });
-  };
+  }, [mutate, runIncrement, slug, key]);
 
   return {
     isLoading: !isError && !data,
     isError,
-    views: data?.contentViews,
-    contentLikes: data?.contentLikes ?? 0,
-    likesByUser: data?.likesByUser ?? 0,
-    addLike,
+    views: data?.views,
   };
 }
 
-async function incrementViews(slug: string) {
-  const res = await axios.post<SingleContentMeta>('/api/content/' + slug);
+async function incrementViews(key: string, slug: string) {
+  const result = await axios
+    .post(key, {
+      slug: slug,
+    })
+    .then((res) => {
+      return res?.data?.data;
+    });
 
-  return res.data;
-}
-
-async function incrementLikes(slug: string) {
-  const res = await axios.post<SingleContentMeta>('/api/like/' + slug);
-
-  return res.data;
+  return result;
 }

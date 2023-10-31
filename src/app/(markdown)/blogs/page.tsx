@@ -5,7 +5,7 @@ import * as React from 'react';
 
 import '@/styles/mdx.css';
 
-import BlogViewComponent from '@/components/buttons/BlogViewComponent';
+import BlogViewComponent from '@/components/blog/BlogViewComponent';
 
 export default async function AllBlogPage() {
   // const allBlogs = await getAllFile('blogs');

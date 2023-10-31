@@ -11,6 +11,8 @@ import CloudinaryImage from '@/components/image/CloudinaryImage';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import { MDXComponentsWrapper } from '@/components/MDX/MDXComponentsWrapper';
 
+import ViewComponent from '@/app/(markdown)/blogs/[slug]/ViewComponent ';
+
 type BlogPageProps = {
   params: {
     slug: string;
@@ -48,6 +50,7 @@ export default async function SingleBlogPage({ params }: BlogPageProps) {
         >
           <h1>{blog.title}</h1>
           <div>Published on {formatDate(blog.publishedAt)}</div>
+          <ViewComponent slug={blog.slugAsParams} />
           {authors?.length ? (
             <div className='mt-4 flex space-x-4'>
               {authors.map((author) =>

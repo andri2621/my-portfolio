@@ -1,9 +1,5 @@
-const Resume = () => {
-  return (
-    <section className='flex min-h-screen items-center justify-center'>
-      Resume Page
-    </section>
-  );
-};
+import React from 'react';
 
-export default Resume;
+export default function ResumePage() {
+  return <div>Resume Page</div>;
+}

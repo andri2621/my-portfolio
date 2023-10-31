@@ -9,13 +9,15 @@ import { Icons } from '@/constant/IconsData';
 
 type CardProps = {
   data: Blog;
+  className?: string;
 };
 
-export default function BlogList({ data }: CardProps) {
+export default function BlogList({ data, className }: CardProps) {
   return (
     <UnstyledLink
       href={data.slug}
       className={cn(
+        className,
         'card card-compact group',
         'h-full rounded-md',
         'shadow-3xl dark:shadow-base-content/20',

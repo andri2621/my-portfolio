@@ -1,16 +1,14 @@
-import { PrismaClient } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 
 import { getSessionId } from '@/lib/helper.server';
-
-const prisma = new PrismaClient();
+import { prismaClient } from '@/lib/prisma.client';
 
 export async function GET(request: NextRequest) {
   try {
     const slug = request.nextUrl?.searchParams?.get('slug');
 
     if (slug) {
-      const content = await prisma.contentMeta.findFirst({
+      const content = await prismaClient.contentMeta.findFirst({
         where: {
           slug,
         },
@@ -41,7 +39,7 @@ export async function GET(request: NextRequest) {
         });
       }
     } else {
-      const content = await prisma.contentMeta.findMany({
+      const content = await prismaClient.contentMeta.findMany({
         include: {
           _count: {
             select: {
@@ -66,7 +64,7 @@ export async function GET(request: NextRequest) {
       message: err instanceof Error ? err.message : 'Internal Server Error',
     });
   } finally {
-    await prisma.$disconnect();
+    await prismaClient.$disconnect();
   }
 }
 
@@ -83,7 +81,7 @@ export async function POST(req: NextRequest) {
 
     const sessionId = getSessionId(req);
 
-    const content = await prisma.contentMeta.upsert({
+    const content = await prismaClient.contentMeta.upsert({
       where: { slug },
       create: {
         slug,
@@ -129,6 +127,6 @@ export async function POST(req: NextRequest) {
       });
     }
   } finally {
-    await prisma.$disconnect();
+    await prismaClient.$disconnect();
   }
 }
