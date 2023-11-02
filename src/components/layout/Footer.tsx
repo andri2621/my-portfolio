@@ -1,5 +1,3 @@
-import { LucideConstruction } from 'lucide-react';
-
 import { getIcon } from '@/lib/utils';
 
 import CustomLink from '@/components/links/CustomLink';
@@ -7,6 +5,7 @@ import UnstyledLink from '@/components/links/UnstyledLink';
 import Tooltip from '@/components/Tooltip';
 
 import { footerLink, socialLink } from '@/constant/config';
+import { Icons } from '@/constant/IconsData';
 
 export default function Footer() {
   return (
@@ -25,7 +24,7 @@ export default function Footer() {
                   >
                     <div className='flex cursor-not-allowed items-center gap-1'>
                       <span>{item.label}</span>
-                      <LucideConstruction size={16} />
+                      <Icons.underConstruction size={16} />
                     </div>
                   </Tooltip>
                 );

@@ -40,6 +40,7 @@ export const NavigationData: NavigationProps[] = [
     value: 'home',
     icon: AiFillHome,
     link: '/',
+    isUnderConstruction: false,
   },
   {
     id: 2,
@@ -47,6 +48,7 @@ export const NavigationData: NavigationProps[] = [
     value: 'blogs',
     icon: BiSolidUser,
     link: '/blogs',
+    isUnderConstruction: false,
   },
   {
     id: 3,
@@ -54,6 +56,7 @@ export const NavigationData: NavigationProps[] = [
     value: 'projects',
     icon: FaFileCode,
     link: '/projects',
+    isUnderConstruction: false,
   },
   {
     id: 4,
@@ -61,6 +64,7 @@ export const NavigationData: NavigationProps[] = [
     value: 'docs',
     icon: FaFileCode,
     link: '/docs',
+    isUnderConstruction: true,
   },
   {
     id: 5,
@@ -68,6 +72,7 @@ export const NavigationData: NavigationProps[] = [
     value: 'about',
     icon: FaPhoneAlt,
     link: '/about',
+    isUnderConstruction: false,
   },
 ];
 
@@ -128,3 +133,5 @@ export const socialLink = [
     tooltip: 'Follow me on Twitter!',
   },
 ];
+
+export const POSTS_PER_PAGE = 6;

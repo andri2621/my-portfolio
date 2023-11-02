@@ -1,21 +1,13 @@
-import { allBlogs } from 'contentlayer/generated';
-import { compareDesc } from 'date-fns';
-import { notFound } from 'next/navigation';
 import * as React from 'react';
 
 import '@/styles/mdx.css';
 
+import { getAllBlogs } from '@/lib/utils';
+
 import BlogViewComponent from '@/components/blog/BlogViewComponent';
 
 export default async function AllBlogPage() {
-  // const allBlogs = await getAllFile('blogs');
-  const blogs = allBlogs
-    .filter((blog) => blog.isPublished === true)
-    .sort((a, b) => {
-      return compareDesc(new Date(a.publishedAt), new Date(b.publishedAt));
-    });
-
-  if (!blogs) return notFound();
+  const blogs = getAllBlogs();
 
   return (
     <>
@@ -31,7 +23,7 @@ export default async function AllBlogPage() {
           </div>
         </div>
         <div>
-          <BlogViewComponent blogs={blogs} />
+          <BlogViewComponent allBlogs={blogs} />
         </div>
       </div>
     </>

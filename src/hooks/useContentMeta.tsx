@@ -7,6 +7,8 @@ import useSWR from 'swr';
 import { contentMetaFlag, incrementMetaFlag } from '@/constant/env';
 import { cacheOnly } from '@/constant/swr';
 
+import { ContentMeta, SingleContentMeta } from '@/types/meta';
+
 async function fetcher(url: string) {
   const res = await axios.get(url);
   return res?.data?.data;
@@ -19,26 +21,28 @@ export default function useContentMeta(
   const key = `/api/content`;
 
   //#region  //*=========== Get content cache ===========
-  const { data: allContentMeta } = useSWR(
-    contentMetaFlag ? key : null,
+  const { data: allContentMeta } = useSWR<Array<ContentMeta>>(
+    contentMetaFlag ? `${key}` : null,
     fetcher,
     cacheOnly
   );
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const _preloadMeta = allContentMeta?.find((meta: any) => meta.slug === slug);
-  const preloadMeta = _preloadMeta
+
+  const _preloadMeta = allContentMeta?.find((meta) => meta.slug === slug);
+  const preloadMeta: SingleContentMeta | undefined = _preloadMeta
     ? {
-        contentLikes: _preloadMeta._count.likes,
-        contentViews: _preloadMeta._count.views,
+        contentLikes: _preloadMeta.likes,
+        contentViews: _preloadMeta.views,
+        likesByUser: _preloadMeta.likesByUser,
       }
     : undefined;
-  //#endregion  //*======== Get content cache ===========
+
+  //*======== Get content cache ===========
 
   const {
     data,
     error: isError,
     mutate,
-  } = useSWR(`${key}?slug=${slug}`, fetcher, { fallbackData: preloadMeta });
+  } = useSWR(`${key}/` + slug, fetcher, { fallbackData: preloadMeta });
 
   // to only make increment once
   const hasRunIncrementEffect = useRef(false);
@@ -57,7 +61,10 @@ export default function useContentMeta(
   return {
     isLoading: !isError && !data,
     isError,
-    views: data?.views,
+    views: data?.contentViews,
+    contentLikes: data?.contentLikes ?? 0,
+    likesByUser: data?.likesByUser ?? 0,
+    // addLike,
   };
 }
 

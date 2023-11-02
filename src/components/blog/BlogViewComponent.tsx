@@ -4,54 +4,71 @@ import Fuse from 'fuse.js';
 import React, { useEffect, useState } from 'react';
 
 import { cn, getFromLocalStorage } from '@/lib/utils';
+import useAllContentMeta from '@/hooks/useAllContentMeta';
 import { useMounted } from '@/hooks/useMounted';
 
-import BlogCardHorizontal from '@/components/blog/BlogCardHorizontal';
-import BlogCardVertical from '@/components/blog/BlogCardVertical';
+import BlogCard from '@/components/blog/BlogCard';
+import BlogList from '@/components/blog/BlogList';
+import Pagination from '@/components/blog/Pagination';
 import SelectTags from '@/components/blog/SelectTags';
+import ToggleView from '@/components/blog/ToggleView';
 import InputSearch from '@/components/form/InputSearch';
 
-import { Icons } from '@/constant/IconsData';
+import { POSTS_PER_PAGE } from '@/constant/config';
 
-type BlogViewComponentProps = {
-  blogs: Blog[];
+type BlogViewProps = {
+  allBlogs: Blog[];
+  pageNumber?: number;
 };
 
-export default function BlogViewComponent({ blogs }: BlogViewComponentProps) {
-  const [filteredData, setFilteredData] = useState(blogs);
-  const [viewStyle, setViewStyle] = useState('grid');
-
+export default function BlogViewComponent({
+  allBlogs,
+  pageNumber = 1,
+}: BlogViewProps) {
+  // get content views
+  const { data: allContentMeta } = useAllContentMeta();
+  //======================
   // create array of Tags
-  const tagCounts = CalculateTagCounts(blogs);
-  const tagKeys = Object.keys(tagCounts);
-  const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a]);
+  const tagCounts = CalculateTagCounts(allBlogs);
+  const sortedTags = Object.keys(tagCounts).sort(
+    (a, b) => tagCounts[b] - tagCounts[a]
+  );
   //======================
 
-  const [activeTag, setActiveTag] = useState('');
-  const [searchText, setSearchText] = useState('');
-
+  //======================
+  const [filteredData, setFilteredData] = useState<Blog[]>(allBlogs);
+  const [viewStyle, setViewStyle] = useState<string>('');
+  const [activeTag, setActiveTag] = useState<string>('');
+  const [searchText, setSearchText] = useState<string>('');
+  //======================
   const mounted = useMounted();
+  //======================
+  // PAGINATION
+  const initialDisplayPosts = filteredData.slice(
+    POSTS_PER_PAGE * (pageNumber - 1),
+    POSTS_PER_PAGE * pageNumber
+  );
 
-  useEffect(() => {
-    const filteredData = blogs.filter((blog) => {
-      if (activeTag && !blog.tags.includes(activeTag)) {
-        return false;
-      }
+  const pagination = {
+    currentPage: pageNumber,
+    totalPages: Math.ceil(filteredData.length / POSTS_PER_PAGE),
+  };
+  //======================
 
-      if (searchText) {
-        const fuse = new Fuse([blog], {
-          keys: ['title', 'description', 'tags'],
-          threshold: 0.4,
-        });
-        const searchResults = fuse.search(searchText);
-        return searchResults.length > 0;
-      }
+  const handleToggleViewStyle = () => {
+    const newViewStyle = viewStyle === 'grid' ? 'list' : 'grid';
+    setViewStyle(newViewStyle);
+    localStorage.setItem('blogCardViewStyle', newViewStyle);
+  };
 
-      return true;
-    });
+  function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
+    const searchTerm = event.target.value.trim();
+    setSearchText(searchTerm);
+  }
 
-    setFilteredData(filteredData);
-  }, [searchText, activeTag, blogs]);
+  const handleTag = (tag: string) => {
+    setActiveTag(tag);
+  };
 
   useEffect(() => {
     if (mounted) {
@@ -60,65 +77,43 @@ export default function BlogViewComponent({ blogs }: BlogViewComponentProps) {
     }
   }, [mounted]);
 
+  useEffect(() => {
+    let filteredBlogs = allBlogs;
+
+    if (activeTag !== '') {
+      filteredBlogs = allBlogs.filter((blog) => blog.tags.includes(activeTag));
+    }
+
+    if (searchText !== '') {
+      const fuse = new Fuse(filteredBlogs, {
+        keys: ['title', 'description', 'tags'],
+        threshold: 0.4,
+      });
+
+      filteredBlogs = fuse.search(searchText).map((result) => result.item);
+    }
+
+    setFilteredData(filteredBlogs);
+  }, [searchText, activeTag, allBlogs]);
+
   if (!mounted) {
     return null;
-  }
-
-  const handleToggleViewStyle = (type: string) => {
-    setViewStyle(type);
-    localStorage.setItem('blogCardViewStyle', type);
-  };
-
-  function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
-    const searchTerm = event.target.value.trim();
-    setSearchText(searchTerm);
-  }
-
-  function handleTag(tag: string) {
-    setActiveTag(tag);
   }
 
   return (
     <div className='my-4'>
       <InputSearch
         type='search'
-        placeholder='Search blog title, description, or tags...'
+        placeholder='Search by title, description, or tags...'
         className=''
         onChange={handleSearch}
       />
       <div className='my-4 flex items-center justify-between gap-4'>
         <SelectTags tags={sortedTags} handleTag={handleTag} />
-        <div
-          onClick={() =>
-            handleToggleViewStyle(viewStyle === 'grid' ? 'list' : 'grid')
-          }
-          tabIndex={0}
-          className={cn(
-            'btn btn-outline',
-            'flex gap-2',
-            'h-10 min-h-0 w-[120px]',
-            'normal-case',
-            'rounded-md p-0',
-            'border-gray-300 dark:border-gray-600',
-            'hover:!bg-base-100 hover:!text-primary',
-            'hover:border-primary dark:hover:border-primary'
-          )}
-        >
-          {viewStyle === 'grid' ? (
-            <>
-              <Icons.grid className='text-2xl' />
-              <span>Grid View</span>
-            </>
-          ) : (
-            <>
-              <Icons.list className='scale-110 text-2xl' />
-              <span>List View</span>
-            </>
-          )}
-        </div>
+        <ToggleView viewStyle={viewStyle} onClick={handleToggleViewStyle} />
       </div>
 
-      {blogs?.length ? (
+      {initialDisplayPosts.length ? (
         <div
           className={cn(
             { 'flex flex-col gap-4': viewStyle === 'list' },
@@ -127,18 +122,29 @@ export default function BlogViewComponent({ blogs }: BlogViewComponentProps) {
             }
           )}
         >
-          {filteredData.map((blog: Blog, index: number) => (
-            <div key={blog._id}>
-              {viewStyle === 'grid' && (
-                <BlogCardVertical data={blog} index={index} />
-              )}
-
-              {viewStyle === 'list' && <BlogCardHorizontal data={blog} />}
-            </div>
-          ))}
+          {initialDisplayPosts.map((blog: Blog, index: number) => {
+            const meta = allContentMeta?.find(
+              (meta) => meta.slug === blog.slugAsParams
+            );
+            return (
+              <div key={blog._id}>
+                {viewStyle === 'grid' && (
+                  <BlogCard data={blog} index={index} meta={meta} />
+                )}
+                {viewStyle === 'list' && <BlogList data={blog} meta={meta} />}
+              </div>
+            );
+          })}
         </div>
       ) : (
         <p>Sorry, No blog published :(</p>
+      )}
+
+      {pagination && pagination.totalPages > 1 && (
+        <Pagination
+          currentPage={pagination.currentPage}
+          totalPages={pagination.totalPages}
+        />
       )}
     </div>
   );

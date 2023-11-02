@@ -1,31 +1,27 @@
-'use client';
-
-import { Blog } from 'contentlayer/generated';
-import Image from 'next/image';
 import React from 'react';
 
 import { cn, formatDate } from '@/lib/utils';
 
+import Badge from '@/components/badge';
 import UnstyledLink from '@/components/links/UnstyledLink';
 
 import { Icons } from '@/constant/IconsData';
 
 type CardProps = {
-  data: Blog;
-  index: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  meta?: any;
   className?: string;
 };
 
-export default function BlogCardVertical({
-  data,
-  index,
-  className,
-}: CardProps) {
+export default function BlogList({ data, meta, className }: CardProps) {
   return (
     <UnstyledLink
       href={data.slug}
       className={cn(
         className,
+        'relative',
         'card card-compact group',
         'h-full rounded-md',
         'shadow-3xl dark:shadow-base-content/20',
@@ -34,32 +30,32 @@ export default function BlogCardVertical({
         'transition duration-100'
       )}
     >
-      <figure className='relative h-40 w-full'>
-        <Image
-          src='/images/bg-opengraph.jpg'
-          alt='Shoes'
-          fill
-          sizes='(max-width: 640px) 570px, (max-width: 1024px) 451px, 300px'
-          className='h-full w-full object-cover transition-colors'
-          priority={index <= 2}
-        />
-      </figure>
-
       <div className='card-body'>
         <h2 className='card-title !mb-0 line-clamp-2 capitalize text-black dark:text-white'>
           {data.title}
         </h2>
-
-        <div className=' flex items-center gap-4'>
-          <div className='font-semibold'>{formatDate(data.publishedAt)}</div>
-
-          <div className='text-primary flex items-center gap-1'>
+        <div className='mb-auto flex gap-2'>
+          <div className=' '>{formatDate(data.publishedAt)}</div>
+          <div className='text-primary flex items-center gap-1 font-semibold '>
             <Icons.time />
             {data.readingTime}
           </div>
         </div>
 
-        <p className='mb-auto line-clamp-2 flex-grow-0 sm:line-clamp-3'>
+        <div
+          className={cn(
+            'mb-auto',
+            'w-max',
+            'rounded-sm px-1',
+            'bg-primary text-neutral text-xs font-semibold'
+          )}
+        >
+          {meta?.views ?? '---'} Views
+        </div>
+        <div className='mb-auto'>
+          <Badge tags={data.tags} />
+        </div>
+        <p className='mb-auto line-clamp-2 sm:line-clamp-2'>
           {data.description}
         </p>
         <div className='card-actions justify-end'>

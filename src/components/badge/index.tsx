@@ -22,7 +22,7 @@ const VisibleBadges: React.FC<{ tags: string[] }> = ({ tags }) => (
             // selectedIcon && selectedIcon.badgeType,
             'badge badge-sm badge-outline',
             'cursor-default',
-            'gap-1',
+            'items-center justify-center gap-1 py-2',
             'capitalize'
           )}
         >

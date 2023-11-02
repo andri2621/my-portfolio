@@ -13,7 +13,7 @@ import { NavigationData } from '@/constant/config';
 import { Icons } from '@/constant/IconsData';
 
 const Navbar = () => {
-  const [activePage, setActivePage] = React.useState('/home');
+  const [activePage, setActivePage] = React.useState('/');
   const pathName = usePathname();
 
   React.useEffect(() => {
@@ -34,7 +34,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className='mb-0 mt-0 flex flex-row gap-4 lg:items-center lg:gap-6'>
             <Link
-              href='/#home'
+              href='/'
               className='text-primary inline-block text-lg font-bold'
             >
               <Icons.logo className='inline-block h-6 w-6' />
@@ -44,19 +44,39 @@ const Navbar = () => {
 
           {/* NAVIGATION LINKS ON > MEDIUM DEVICE */}
           <div className=' hidden items-center gap-4  sm:flex'>
-            {NavigationData.map((nav) => (
-              <Link
-                href={nav.link}
-                key={nav.id}
-                className={cn('hover:!text-primary/50', {
-                  'active font-medium': activePage === nav.link,
-                })}
-              >
-                {nav.label}
-              </Link>
-              // </li>
-            ))}
-            {/* <ThemeChanger /> */}
+            {NavigationData.map((nav) => {
+              if (nav.isUnderConstruction) {
+                return (
+                  <div
+                    key={nav.id}
+                    className={cn(
+                      'hover:!text-primary/50',
+                      'flex items-center',
+                      {
+                        'active font-medium': activePage === nav.link,
+                        'cursor-not-allowed': nav.isUnderConstruction,
+                      }
+                    )}
+                  >
+                    {nav.label}
+                    <Icons.underConstruction className='ml-1' />
+                  </div>
+                );
+              } else {
+                return (
+                  <Link
+                    href={nav.link}
+                    key={nav.id}
+                    className={cn('hover:!text-primary/50', {
+                      'active font-medium': activePage === nav.link,
+                      'cursor-not-allowed': nav.isUnderConstruction,
+                    })}
+                  >
+                    {nav.label}
+                  </Link>
+                );
+              }
+            })}
             <ThemeToggle />
           </div>
           {/* SHOW MODAL ON SMALL DEVICE, IF > , HIDE THE MODAL */}

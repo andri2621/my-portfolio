@@ -14,9 +14,11 @@ import {
   // BiSolidGridAlt as Grid,
   BiTime as Time,
 } from 'react-icons/bi';
+import { BsEye as Views } from 'react-icons/bs';
 import { FaCloudRain } from 'react-icons/fa';
 import { HiViewGrid as Grid } from 'react-icons/hi';
 import { IoClose as CloseX } from 'react-icons/io5';
+import { LuConstruction as UnderConstruction } from 'react-icons/lu';
 import { SiPrisma as Prisma } from 'react-icons/si';
 import { TbBrandNextjs as Next } from 'react-icons/tb';
 
@@ -42,4 +44,6 @@ export const Icons: Icons = {
   close: CloseX,
   chevronUp: ChevronUp,
   chevronDown: ChevronDown,
+  views: Views,
+  underConstruction: UnderConstruction,
 };

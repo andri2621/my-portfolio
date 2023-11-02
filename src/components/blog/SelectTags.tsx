@@ -49,8 +49,8 @@ export default function SelectTags({ tags, handleTag }: SelectTagsProps) {
         <div
           className={cn(
             'swap-off fill-primary',
-            'flex items-center justify-between gap-4',
-            'h-10 rounded-md px-4 md:w-40',
+            'flex items-center justify-between',
+            'h-10 w-32 rounded-md px-4 md:w-40',
             'border border-gray-300 dark:border-gray-600',
             'focus:border-primary dark:focus:border-primary focus:outline-none focus:ring-0',
             'text-sm capitalize'
@@ -65,7 +65,7 @@ export default function SelectTags({ tags, handleTag }: SelectTagsProps) {
             'flex justify-between',
             'swap-on fill-primary',
             'flex items-center justify-between',
-            'h-10 rounded-md px-4 md:w-40',
+            'h-10 w-32 rounded-md px-4 md:w-40',
             'border border-gray-300 dark:border-gray-600',
             'focus:border-primary dark:focus:border-primary focus:outline-none focus:ring-0',
             'text-sm capitalize'
@@ -90,7 +90,7 @@ export default function SelectTags({ tags, handleTag }: SelectTagsProps) {
               tabIndex={0}
               className={cn(
                 'bg-base-200 menu flex-nowrap overflow-hidden overflow-y-auto',
-                'h-60 p-2 md:w-40',
+                'h-60 w-32 p-2 md:w-40',
                 'dark:shadow-4xl shadow-3xl',
                 'rounded-lg border-none outline-none',
                 'capitalize text-black hover:text-black dark:text-white dark:hover:text-white'

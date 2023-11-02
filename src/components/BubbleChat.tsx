@@ -19,7 +19,7 @@ export default function BubbleChat({ className }: BubbleProps) {
             <Image src='/images/MyPhoto.png' alt='chat photo' fill />
           </div>
         </div>
-        <div className='chat-bubble bg-base-200 w-full max-w-[290px]'>
+        <div className='chat-bubble bg-base-200 text-base-content w-full max-w-[290px]'>
           Lets get in touch.
           <br />
           <br />
@@ -31,7 +31,7 @@ export default function BubbleChat({ className }: BubbleProps) {
                   key={social.label}
                   target='_blank'
                   href={social.link}
-                  className='hover:text-primary cursor-newtab flex items-center gap-1'
+                  className='hover:text-primary text-base-content cursor-newtab flex items-center gap-1'
                 >
                   {SocialIcon && <SocialIcon className='h-4 w-4' />}
                   {social.label}

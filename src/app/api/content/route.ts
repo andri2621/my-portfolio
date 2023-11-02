@@ -1,63 +1,37 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+import { getUserLikeCount } from '@/lib/api.server';
 import { getSessionId } from '@/lib/helper.server';
 import { prismaClient } from '@/lib/prisma.client';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
-    const slug = request.nextUrl?.searchParams?.get('slug');
-
-    if (slug) {
-      const content = await prismaClient.contentMeta.findFirst({
-        where: {
-          slug,
-        },
-        include: {
-          _count: {
-            select: {
-              views: true,
-              likes: true,
-            },
+    const _content = await prismaClient.contentMeta.findMany({
+      include: {
+        _count: {
+          select: {
+            views: true,
+            likes: true,
           },
         },
-      });
+      },
+    });
 
-      if (content) {
-        return NextResponse.json({
-          data: {
-            slug: content.slug,
-            views: content._count.views ?? 0,
-            likes: content._count.likes ?? 0,
-          },
-          status: 200,
-          message: 'Success',
-        });
-      } else {
-        return NextResponse.json({
-          status: 404,
-          message: 'Blog Not Found',
-        });
-      }
-    } else {
-      const content = await prismaClient.contentMeta.findMany({
-        include: {
-          _count: {
-            select: {
-              views: true,
-              likes: true,
-            },
-          },
-        },
-      });
+    const content = _content.map((meta) => {
+      return {
+        slug: meta.slug,
+        views: meta._count.views,
+        likes: meta._count.likes,
+      };
+    });
 
-      content.sort((a, b) => a.slug.localeCompare(b.slug));
+    content.sort((a, b) => a.slug.localeCompare(b.slug));
 
-      return NextResponse.json({
-        data: content,
-        status: 200,
-        message: 'Success',
-      });
-    }
+    return NextResponse.json({
+      data: content,
+      status: 200,
+      message: 'Success Get All Data',
+    });
   } catch (err) {
     return NextResponse.json({
       status: 500,
@@ -71,6 +45,7 @@ export async function GET(request: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const { slug } = await req.json();
+    const sessionId = getSessionId(req);
 
     if (!slug) {
       return NextResponse.json({
@@ -78,8 +53,6 @@ export async function POST(req: NextRequest) {
         message: 'Bad Request: No slug provided',
       });
     }
-
-    const sessionId = getSessionId(req);
 
     const content = await prismaClient.contentMeta.upsert({
       where: { slug },
@@ -101,9 +74,9 @@ export async function POST(req: NextRequest) {
 
     const response = {
       slug: content.slug,
-      sessionId,
-      views: content._count.views ?? 0,
-      likes: content._count.likes ?? 0,
+      contentViews: content._count.views ?? 0,
+      contentLikes: content._count.likes ?? 0,
+      likesByUser: await getUserLikeCount({ sessionId, slug }),
     };
 
     return NextResponse.json({

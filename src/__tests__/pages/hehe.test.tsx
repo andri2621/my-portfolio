@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import TesPage from '@/app/(main)/jest-tes/page';
+import TesPage from '@/app/jest-tes/page';
 
 describe('Homepage', () => {
   it('renders the Components', () => {
