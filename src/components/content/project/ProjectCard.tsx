@@ -1,25 +1,20 @@
 'use client';
 
 import { Project } from 'contentlayer/generated';
-import Image from 'next/image';
 import React from 'react';
 
 import { cn } from '@/lib/utils';
 
 import Badge from '@/components/badge';
+import CloudinaryImage from '@/components/image/CloudinaryImage';
 import UnstyledLink from '@/components/links/UnstyledLink';
 
 type ProjectCardProps = {
   data: Project;
-  index: number;
   className?: string;
 };
 
-export default function ProjectCard({
-  data,
-  index,
-  className,
-}: ProjectCardProps) {
+export default function ProjectCard({ data, className }: ProjectCardProps) {
   return (
     <UnstyledLink
       href={data.slug}
@@ -43,16 +38,13 @@ export default function ProjectCard({
 
         <Badge tags={data.tags} maxBadges={2} />
 
-        <figure className='relative aspect-video w-full'>
-          <Image
-            src='/images/bg-opengraph.jpg'
-            alt='Shoes'
-            fill
-            sizes='(max-width: 640px) 570px, (max-width: 1024px) 451px, 300px'
-            className='h-full w-full rounded-md object-cover transition-colors'
-            priority={index <= 2}
-          />
-        </figure>
+        <CloudinaryImage
+          publicId={data.banner.replace('/public', '')}
+          alt={data.title}
+          className='transition-colors'
+          width={731}
+          height={411}
+        />
 
         <div className='card-actions justify-start'>
           <div

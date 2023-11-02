@@ -3,15 +3,12 @@ import { Blog } from 'contentlayer/generated';
 import Fuse from 'fuse.js';
 import React, { useEffect, useState } from 'react';
 
-import { cn, getFromLocalStorage } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 import useAllContentMeta from '@/hooks/useAllContentMeta';
-import { useMounted } from '@/hooks/useMounted';
 
 import BlogCard from '@/components/content/blog/BlogCard';
-import BlogList from '@/components/content/blog/BlogList';
 import Pagination from '@/components/content/blog/Pagination';
 import SelectTags from '@/components/content/blog/SelectTags';
-import ToggleView from '@/components/content/blog/ToggleView';
 import InputSearch from '@/components/form/InputSearch';
 
 import { POSTS_PER_PAGE } from '@/constant/config';
@@ -34,14 +31,9 @@ export default function BlogViewComponent({
     (a, b) => tagCounts[b] - tagCounts[a]
   );
   //======================
-
-  //======================
   const [filteredData, setFilteredData] = useState<Blog[]>(allBlogs);
-  const [viewStyle, setViewStyle] = useState<string>('');
   const [activeTag, setActiveTag] = useState<string>('');
   const [searchText, setSearchText] = useState<string>('');
-  //======================
-  const mounted = useMounted();
   //======================
   // PAGINATION
   const initialDisplayPosts = filteredData.slice(
@@ -55,12 +47,6 @@ export default function BlogViewComponent({
   };
   //======================
 
-  const handleToggleViewStyle = () => {
-    const newViewStyle = viewStyle === 'grid' ? 'list' : 'grid';
-    setViewStyle(newViewStyle);
-    localStorage.setItem('blogCardViewStyle', newViewStyle);
-  };
-
   function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
     const searchTerm = event.target.value.trim();
     setSearchText(searchTerm);
@@ -69,13 +55,6 @@ export default function BlogViewComponent({
   const handleTag = (tag: string) => {
     setActiveTag(tag);
   };
-
-  useEffect(() => {
-    if (mounted) {
-      const viewStore = getFromLocalStorage('blogCardViewStyle') ?? 'grid';
-      setViewStyle(viewStore);
-    }
-  }, [mounted]);
 
   useEffect(() => {
     let filteredBlogs = allBlogs;
@@ -87,7 +66,7 @@ export default function BlogViewComponent({
     if (searchText !== '') {
       const fuse = new Fuse(filteredBlogs, {
         keys: ['title', 'description', 'tags'],
-        threshold: 0.4,
+        threshold: 0.2,
       });
 
       filteredBlogs = fuse.search(searchText).map((result) => result.item);
@@ -95,10 +74,6 @@ export default function BlogViewComponent({
 
     setFilteredData(filteredBlogs);
   }, [searchText, activeTag, allBlogs]);
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <div className='my-4'>
@@ -110,34 +85,23 @@ export default function BlogViewComponent({
       />
       <div className='my-4 flex items-center justify-between gap-4'>
         <SelectTags tags={sortedTags} handleTag={handleTag} />
-        <ToggleView viewStyle={viewStyle} onClick={handleToggleViewStyle} />
       </div>
 
       {initialDisplayPosts.length ? (
-        <div
-          className={cn(
-            { 'flex flex-col gap-4': viewStyle === 'list' },
-            {
-              'grid gap-4 sm:grid-cols-2 lg:grid-cols-3': viewStyle === 'grid',
-            }
-          )}
-        >
-          {initialDisplayPosts.map((blog: Blog, index: number) => {
+        <div className={cn('grid gap-4 lg:grid-cols-2')}>
+          {initialDisplayPosts.map((blog: Blog) => {
             const meta = allContentMeta?.find(
               (meta) => meta.slug === blog.slugAsParams
             );
             return (
               <div key={blog._id}>
-                {viewStyle === 'grid' && (
-                  <BlogCard data={blog} index={index} meta={meta} />
-                )}
-                {viewStyle === 'list' && <BlogList data={blog} meta={meta} />}
+                <BlogCard data={blog} meta={meta} />
               </div>
             );
           })}
         </div>
       ) : (
-        <p>Sorry, No blog published :(</p>
+        <p>Sorry, No blog published.</p>
       )}
 
       {pagination && pagination.totalPages > 1 && (

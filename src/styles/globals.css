@@ -80,10 +80,6 @@
     /*======================*/
   }
 
-  .bg-dark a.custom-link {
-    @apply border-slate-500 hover:border-slate-500/0;
-  }
-
   /* Class to adjust with sticky footer */
   .min-h-main {
     @apply min-h-[calc(100vh-56px)];

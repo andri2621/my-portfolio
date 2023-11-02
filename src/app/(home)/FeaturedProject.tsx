@@ -5,14 +5,12 @@ import Link from 'next/link';
 import { useRef } from 'react';
 
 import { getAllProjects } from '@/lib/utils';
-import useAllContentMeta from '@/hooks/useAllContentMeta';
 
 import ProjectCard from '@/components/content/project/ProjectCard';
 import Reveal from '@/components/Reveal';
 
 export default function FeaturedProject() {
   const projects = getAllProjects();
-  const { data: allContentMeta } = useAllContentMeta();
 
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -44,23 +42,15 @@ export default function FeaturedProject() {
         </div>
         <div ref={ref} className=' grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
           {lastProjects.map((project, index) => {
-            const meta = allContentMeta?.find(
-              (meta) => meta.slug === project.slugAsParams
-            );
             return (
               <motion.div
-                key={index}
+                key={project._id}
                 variants={cardVariants}
                 initial='initial'
                 animate={isInView ? 'animate' : 'initial'}
                 transition={{ duration: 0.3, delay: index * 0.4 }}
               >
-                <ProjectCard
-                  key={project._id}
-                  data={project}
-                  index={index}
-                  meta={meta}
-                />
+                <ProjectCard key={project._id} data={project} />
               </motion.div>
             );
           })}

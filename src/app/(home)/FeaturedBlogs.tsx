@@ -60,14 +60,14 @@ export default function FeaturedBlogs() {
                 animate={isInView ? 'animate' : 'initial'}
                 transition={{ duration: 0.3, delay: index * 0.4 }}
               >
-                <BlogCard data={blog} index={index} meta={meta} />
+                <BlogCard data={blog} meta={meta} />
               </motion.div>
             );
           })}
         </div>
 
         <Link href='/blogs' className='btn btn-primary btn-sm'>
-          <div>See All Posts</div>
+          <div>See More Posts</div>
         </Link>
       </div>
     </section>

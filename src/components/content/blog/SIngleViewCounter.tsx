@@ -7,7 +7,7 @@ const SingleViewCounter = ({ slug }: { slug: string }) => {
     runIncrement: true,
   });
 
-  return <div>Total Views: {views}</div>;
+  return <div>{views ?? '---'} views</div>;
 };
 
 export default SingleViewCounter;

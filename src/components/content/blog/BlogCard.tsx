@@ -1,12 +1,12 @@
 'use client';
 
 import { Blog } from 'contentlayer/generated';
-import Image from 'next/image';
 import React from 'react';
 
 import { cn, formatDate } from '@/lib/utils';
 
 import Badge from '@/components/badge';
+import CloudinaryImage from '@/components/image/CloudinaryImage';
 import UnstyledLink from '@/components/links/UnstyledLink';
 
 import { Icons } from '@/constant/IconsData';
@@ -14,20 +14,13 @@ import { Icons } from '@/constant/IconsData';
 import { ContentMeta } from '@/types/meta';
 
 type BlogCardProps = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: Blog;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   meta?: ContentMeta;
-  index: number;
   className?: string;
 };
 
-export default function BlogCard({
-  data,
-  meta,
-  index,
-  className,
-}: BlogCardProps) {
+export default function BlogCard({ data, meta, className }: BlogCardProps) {
   return (
     <UnstyledLink
       href={data.slug}
@@ -43,8 +36,7 @@ export default function BlogCard({
         'transition duration-100'
       )}
     >
-      {/* <figure className='relative h-40 w-full'> */}
-      <figure className='relative h-40 sm:h-full sm:w-1/3'>
+      {/* <figure className='relative h-40 sm:h-full sm:w-1/3'>
         <Image
           src='/images/bg-opengraph.jpg'
           alt='Shoes'
@@ -56,7 +48,14 @@ export default function BlogCard({
         <div className='absolute left-0 top-2 flex w-full px-4 sm:hidden'>
           <Badge tags={data.tags} className='w-full' maxBadges={10} />
         </div>
-      </figure>
+      </figure> */}
+      <CloudinaryImage
+        publicId={data.banner.replace('/public', '')}
+        alt={data.title}
+        className='relative h-40 transition-colors sm:h-full sm:w-1/3'
+        width={731}
+        height={411}
+      />
 
       <div className='card-body sm:w-2/3'>
         <div className='flex items-center gap-4'>
