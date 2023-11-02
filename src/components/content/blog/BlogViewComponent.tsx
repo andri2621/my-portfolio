@@ -7,11 +7,11 @@ import { cn, getFromLocalStorage } from '@/lib/utils';
 import useAllContentMeta from '@/hooks/useAllContentMeta';
 import { useMounted } from '@/hooks/useMounted';
 
-import BlogCard from '@/components/blog/BlogCard';
-import BlogList from '@/components/blog/BlogList';
-import Pagination from '@/components/blog/Pagination';
-import SelectTags from '@/components/blog/SelectTags';
-import ToggleView from '@/components/blog/ToggleView';
+import BlogCard from '@/components/content/blog/BlogCard';
+import BlogList from '@/components/content/blog/BlogList';
+import Pagination from '@/components/content/blog/Pagination';
+import SelectTags from '@/components/content/blog/SelectTags';
+import ToggleView from '@/components/content/blog/ToggleView';
 import InputSearch from '@/components/form/InputSearch';
 
 import { POSTS_PER_PAGE } from '@/constant/config';

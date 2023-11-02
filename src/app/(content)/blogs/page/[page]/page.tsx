@@ -5,7 +5,7 @@ import '@/styles/mdx.css';
 
 import { getAllBlogs } from '@/lib/utils';
 
-import BlogViewComponent from '@/components/blog/BlogViewComponent';
+import BlogViewComponent from '@/components/content/blog/BlogViewComponent';
 
 import { POSTS_PER_PAGE } from '@/constant/config';
 

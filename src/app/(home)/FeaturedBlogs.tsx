@@ -7,20 +7,21 @@ import { useRef } from 'react';
 import { getAllBlogs } from '@/lib/utils';
 import useAllContentMeta from '@/hooks/useAllContentMeta';
 
-import BlogCard from '@/components/blog/BlogCard';
+import BlogCard from '@/components/content/blog/BlogCard';
 import Reveal from '@/components/Reveal';
 
 export default function FeaturedBlogs() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
   const blogs = getAllBlogs();
   const { data: allContentMeta } = useAllContentMeta();
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   // const allBlogsWithViews = getAllBlogWithViews(data);
 
   // const sortedBlogs = blogs.sort((a, b) => b.views - a.views);
   // Take the top 6 blogs with the most views
-  const top6Blogs = blogs.slice(0, 6);
+  const featuredBlogs = blogs.slice(0, 4);
 
   const cardVariants = {
     initial: { y: 50, opacity: 0 },
@@ -45,8 +46,9 @@ export default function FeaturedBlogs() {
             </h1>
           </Reveal>
         </div>
-        <div ref={ref} className=' grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
-          {top6Blogs.map((blog, index) => {
+        {/* <div ref={ref} className='grid gap-4 sm:grid-cols-2 lg:grid-cols-2'> */}
+        <div ref={ref} className='grid gap-4 lg:grid-cols-2'>
+          {featuredBlogs.map((blog, index) => {
             const meta = allContentMeta?.find(
               (meta) => meta.slug === blog.slugAsParams
             );

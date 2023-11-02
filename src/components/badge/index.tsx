@@ -9,6 +9,7 @@ import { useClickOutside } from '@/hooks/useClickOutside';
 type BadgeProps = {
   tags?: string[];
   className?: string;
+  maxBadges?: number;
 };
 
 const VisibleBadges: React.FC<{ tags: string[] }> = ({ tags }) => (
@@ -20,10 +21,11 @@ const VisibleBadges: React.FC<{ tags: string[] }> = ({ tags }) => (
           key={tag}
           className={clsx(
             // selectedIcon && selectedIcon.badgeType,
-            'badge badge-sm badge-outline',
+            // 'badge badge-sm badge-outline',
+            'badge badge-accent badge-sm',
             'cursor-default',
             'items-center justify-center gap-1 py-2',
-            'capitalize'
+            'font-semibold uppercase'
           )}
         >
           {SelectedIcon && <SelectedIcon size={14} />}
@@ -37,8 +39,8 @@ const VisibleBadges: React.FC<{ tags: string[] }> = ({ tags }) => (
 const Badge: React.FC<BadgeProps> = ({
   tags = ['uncategorized'],
   className,
+  maxBadges = 2,
 }) => {
-  const maxBadges = 2;
   const visibleBadges = tags.slice(0, maxBadges);
   const hiddenBadges = tags.slice(maxBadges);
 
@@ -64,7 +66,7 @@ const Badge: React.FC<BadgeProps> = ({
             setIsOpen((prev) => !prev);
           }}
         >
-          <div className='text-primary m-0 cursor-pointer text-sm font-medium'>
+          <div className='text-accent m-0 cursor-pointer text-sm font-medium'>
             +{hiddenBadges.length} tags
           </div>
           {isOpen && (

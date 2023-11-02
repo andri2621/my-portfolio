@@ -4,7 +4,7 @@ import '@/styles/mdx.css';
 
 import { getAllBlogs } from '@/lib/utils';
 
-import BlogViewComponent from '@/components/blog/BlogViewComponent';
+import BlogViewComponent from '@/components/content/blog/BlogViewComponent';
 
 export default async function AllBlogPage() {
   const blogs = getAllBlogs();

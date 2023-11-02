@@ -117,9 +117,18 @@ export const Project = defineDocumentType(() => ({
       type: 'boolean',
       default: true,
     },
+    lastUpdated: {
+      type: 'date',
+      required: false,
+    },
     banner: {
       type: 'string',
-      required: false,
+      required: true,
+    },
+    tags: {
+      type: 'list',
+      of: { type: 'string' },
+      required: true,
     },
   },
   computedFields,

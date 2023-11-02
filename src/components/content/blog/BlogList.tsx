@@ -1,3 +1,4 @@
+import { Blog } from 'contentlayer/generated';
 import React from 'react';
 
 import { cn, formatDate } from '@/lib/utils';
@@ -7,15 +8,14 @@ import UnstyledLink from '@/components/links/UnstyledLink';
 
 import { Icons } from '@/constant/IconsData';
 
-type CardProps = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any;
+type BlogListProps = {
+  data: Blog;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   meta?: any;
   className?: string;
 };
 
-export default function BlogList({ data, meta, className }: CardProps) {
+export default function BlogList({ data, meta, className }: BlogListProps) {
   return (
     <UnstyledLink
       href={data.slug}

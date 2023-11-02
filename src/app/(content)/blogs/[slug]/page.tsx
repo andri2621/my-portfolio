@@ -7,7 +7,7 @@ import '@/styles/mdx.css';
 
 import { cn, formatDate } from '@/lib/utils';
 
-import SingleViewCounter from '@/components/blog/SIngleViewCounter';
+import SingleViewCounter from '@/components/content/blog/SIngleViewCounter';
 import CloudinaryImage from '@/components/image/CloudinaryImage';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import { MDXComponentsWrapper } from '@/components/MDX/MDXComponentsWrapper';

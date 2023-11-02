@@ -4,14 +4,20 @@ import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
 import { useRef } from 'react';
 
-import { ProjectCard } from '@/components/card';
+import { getAllProjects } from '@/lib/utils';
+import useAllContentMeta from '@/hooks/useAllContentMeta';
+
+import ProjectCard from '@/components/content/project/ProjectCard';
 import Reveal from '@/components/Reveal';
 
-import { ProjectsData } from '@/constant/ProjectsData';
+export default function FeaturedProject() {
+  const projects = getAllProjects();
+  const { data: allContentMeta } = useAllContentMeta();
 
-const PortfolioSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+
+  const lastProjects = projects.slice(0, 3);
 
   const cardVariants = {
     initial: { y: 50, opacity: 0 },
@@ -37,7 +43,10 @@ const PortfolioSection = () => {
           </Reveal>
         </div>
         <div ref={ref} className=' grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
-          {ProjectsData.map((project, index) => {
+          {lastProjects.map((project, index) => {
+            const meta = allContentMeta?.find(
+              (meta) => meta.slug === project.slugAsParams
+            );
             return (
               <motion.div
                 key={index}
@@ -47,11 +56,10 @@ const PortfolioSection = () => {
                 transition={{ duration: 0.3, delay: index * 0.4 }}
               >
                 <ProjectCard
-                  key={project.id}
-                  title={project.title}
-                  tags={project.tags}
-                  desc={project.desc}
-                  link={project.link}
+                  key={project._id}
+                  data={project}
+                  index={index}
+                  meta={meta}
                 />
               </motion.div>
             );
@@ -64,6 +72,4 @@ const PortfolioSection = () => {
       </div>
     </section>
   );
-};
-
-export default PortfolioSection;
+}
