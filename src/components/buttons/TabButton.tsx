@@ -25,6 +25,7 @@ const TabButton = ({ active, selectTab, children }: TabButtonProps) => {
       >
         {children}
       </p>
+
       <motion.div
         animate={active ? 'active' : 'default'}
         variants={variants}
