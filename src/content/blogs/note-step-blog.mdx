@@ -1,0 +1,102 @@
+---
+title: 'Note - Step By Step To Add Counter View in Blog Page'
+description: 'This is my raw note how to make a views and likes counter in PostgreSQL with Prisma and SWR.'
+publishedAt: '2023-10-29'
+isPublished: true
+banner: 'photo-1682687982167-d7fb3ed8541d_lvoyk4'
+tags:
+  - nextjs
+  - SWR
+  - javascript
+  - postgresql
+  - prisma
+author: Andi Setiawan
+---
+
+# Step To Blog Page:
+
+## All Blog Page
+1. open blog page
+2. get /api/content with SWR to get all frontmatter (content meta).
+3. (optional)= remember the meta with react.useMemo???
+
+>  *see file `useInjectedContentMeta`*
+
+4. sorting all content with any like (sort by popular view, likes, recommendation, etc).
+5. show all list with counter views and likes.
+
+## Single Blog Page
+1. get current blog with `slug` or `slugAsParams`. then caching with SWR `(can see in useContentMeta file)`.
+2. get all content cache `views`, likes count with SWR. 
+3. get current content meta (frontmatter) using SWR to **/api/content?slug**.
+4. if runIncrement **POST** to **/api/content?slug** to increment `view`.
+
+
+```ts
+React.useEffect(() => {
+    if (runIncrement && incrementMetaFlag) {
+      incrementViews(slug).then((fetched) => {
+        mutate({
+          ...fetched,
+        });
+      });
+    }
+  }, [mutate, runIncrement, slug]);
+  
+async function incrementViews(slug: string) {
+  const res = await axios.post<SingleContentMeta>('/api/content/' + slug);
+  return res.data;
+}
+```
+5. add `like` function.
+
+
+```ts
+const addLike = () => {
+    // Don't run if data not populated,
+    // and if maximum likes
+    if (!data || data.likesByUser >= 5) return;
+
+    // Mutate optimistically
+    mutate(
+      {
+        contentViews: data.contentViews,
+        contentLikes: data.contentLikes + 1,
+        likesByUser: data.likesByUser + 1,
+        devtoViews: data.devtoViews,
+      },
+      false
+    );
+
+    incrementLikes(slug).then(() => {
+      debounce(() => {
+        mutate();
+      }, 1000)();
+    });
+  };
+
+  return {
+    isLoading: !isError && !data,
+    isError,
+    views: data?.contentViews,
+    contentLikes: data?.contentLikes ?? 0,
+    devtoViews: data?.devtoViews,
+    likesByUser: data?.likesByUser ?? 0,
+    addLike,
+  };
+  
+  
+  
+async function incrementLikes(slug: string) {
+  const res = await axios.post<SingleContentMeta>('/api/like/' + slug);
+
+  return res.data;
+}
+```
+
+
+6. get 3 recommendation blog in simillar tags (exclude the current blog). if not enough, pick random.
+
+>**options** - add scrollSpy to make Table Of Contents button `(scroll to element)`
+ 
+ 

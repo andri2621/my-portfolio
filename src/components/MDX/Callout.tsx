@@ -14,7 +14,7 @@ export function Callout({
 }: CalloutProps) {
   return (
     <div
-      className={cn('my-2 flex items-start rounded-md border border-l-8 p-4', {
+      className={cn('my-2 flex items-start rounded-md border border-l-4 p-4', {
         'border-primary': type === 'default',
         'border-error bg-error/10': type === 'danger',
         'border-warning bg-warning/10': type === 'warning',

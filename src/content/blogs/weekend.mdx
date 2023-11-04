@@ -1,27 +1,19 @@
 ---
 title: 'Post for the Weekend'
+description: 'the post in queing for the weekend'
 publishedAt: '2023-05-03'
 isPublished: true
-banner: '/public/images/bg-opengraph.jpg'
+banner: 'photo-1682687982167-d7fb3ed8541d_lvoyk4'
 tags:
   - nextjs
   - stuff
   - javascript
-authors:
-  - andri2621
+author: Andi Setiawan
 ---
 
 <CustomLink href='awandri.com'>awandri.com</CustomLink>
 
 ini dengan `Image` dari nextjs
-
-<CustomImage
-  src='https://awandri.com/images/bg-opengraph.jpg'
-  width='741'
-  height='411'
-  alt='Image'
-  className='aspect-video'
-/>
 
 I think most people are going to use [highlight.js](https://highlightjs.org/) or [Prism](https://prismjs.com/) or something if they want to style their code blocks but it wouldn't hurt to make them look _okay_ out of the box, even with no syntax highlighting.
 
@@ -58,7 +50,7 @@ you can write text [with links](http://example.com), optionally
 
 We recommend using **Static Generation** (with and without data) whenever possible because your page can be built once and served by CDN, which makes it much faster than having a server render the page on every request.
 
-```ts /sum/#v
+```ts /sum/#v showLineNumbers
 const sum = (num1: number, num2: number): number => {
   return num1 + num2;
 };

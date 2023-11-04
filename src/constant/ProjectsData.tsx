@@ -10,7 +10,7 @@ export const ProjectsData: ProjectsProps[] = [
   {
     id: 1,
     title: 'Shoes!',
-    tags: ['react', 'nextjs', 'tailwind', 'redux'],
+    tags: ['react', 'nextjs', 'tailwind', 'redux', 'prisma'],
     link: 'shoes',
     desc: 'If a dog chews shoes whose shoes does he choose? If a dog chews shoes whose shoes does he choose?',
   },

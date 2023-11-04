@@ -1,10 +1,7 @@
-import { config } from '@fortawesome/fontawesome-svg-core';
 import { Inter } from 'next/font/google';
 import * as React from 'react';
 
 import '@/styles/globals.css';
-// Prevent fontawesome from adding its CSS since we did it manually above:
-import '@fortawesome/fontawesome-svg-core/styles.css';
 
 import { getMetaData } from '@/lib/getMetaData';
 
@@ -12,9 +9,6 @@ import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 
 import { Providers } from '@/app/providers';
-
-// prevent fontawesome from adding its CSS since we did it manually
-config.autoAddCss = false;
 
 const inter = Inter({ subsets: ['latin'] });
 

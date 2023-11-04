@@ -2,25 +2,18 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import * as React from 'react';
-import { FaCloudRain } from 'react-icons/fa';
 
 import { cn } from '@/lib/utils';
 import { useFixedNavOnScroll } from '@/hooks/useFixedNavOnScroll';
 
-import ModalSetting from '@/components/settings/ModalSetting';
+import MenuMobile from '@/components/layout/MenuMobile';
 import ThemeToggle from '@/components/settings/ThemeToggle';
 
 import { NavigationData } from '@/constant/config';
-
-const Logo = () => (
-  <Link href='/#home' className='text-primary block text-lg font-bold'>
-    <FaCloudRain className='2xl inline-block' size={36} />
-    <span className='ml-2'>Awandri</span>
-  </Link>
-);
+import { Icons } from '@/constant/IconsData';
 
 const Navbar = () => {
-  const [activePage, setActivePage] = React.useState('/home');
+  const [activePage, setActivePage] = React.useState('');
   const pathName = usePathname();
 
   React.useEffect(() => {
@@ -35,32 +28,59 @@ const Navbar = () => {
     <>
       <nav
         id='navbar-top'
-        className='navbar-top absolute left-0 right-0 top-0 z-10 transition-shadow'
+        className='navbar-top absolute left-0 right-0 top-0 z-[99] transition-shadow'
       >
         <div className='layout flex items-center justify-between py-4'>
           {/* Logo */}
-          <Logo />
+          <div className='mb-0 mt-0 flex flex-row gap-4 lg:items-center lg:gap-6'>
+            <Link
+              href='/'
+              className='text-primary inline-block text-lg font-bold'
+            >
+              <Icons.logo className='inline-block h-6 w-6' />
+              <span className='ml-2'>Awandri</span>
+            </Link>
+          </div>
 
           {/* NAVIGATION LINKS ON > MEDIUM DEVICE */}
           <div className=' hidden items-center gap-4  sm:flex'>
-            <ul className='flex flex-row gap-2 lg:mb-0 lg:mt-0 lg:items-center lg:gap-6'>
-              {NavigationData.map((nav) => (
-                <li
-                  className={cn('p-1', 'hover:!text-primary/50', {
-                    active: activePage === nav.link,
-                  })}
-                  key={nav.id}
-                >
-                  <Link href={nav.link}>{nav.label}</Link>
-                </li>
-              ))}
-            </ul>
-            {/* <ThemeChanger /> */}
+            {NavigationData.map((nav) => {
+              if (nav.isUnderConstruction) {
+                return (
+                  <div
+                    key={nav.id}
+                    className={cn(
+                      'hover:!text-primary/50',
+                      'flex items-center',
+                      {
+                        'active font-medium': activePage === nav.link,
+                        'cursor-not-allowed': nav.isUnderConstruction,
+                      }
+                    )}
+                  >
+                    {nav.label}
+                    <Icons.underConstruction className='ml-1' />
+                  </div>
+                );
+              } else {
+                return (
+                  <Link
+                    href={nav.link}
+                    key={nav.id}
+                    className={cn('hover:!text-primary/50', {
+                      'active font-medium': activePage === nav.link,
+                    })}
+                  >
+                    {nav.label}
+                  </Link>
+                );
+              }
+            })}
             <ThemeToggle />
           </div>
           {/* SHOW MODAL ON SMALL DEVICE, IF > , HIDE THE MODAL */}
           <div className='sm:hidden'>
-            <ModalSetting />
+            <MenuMobile activePage={activePage} />
           </div>
         </div>
       </nav>

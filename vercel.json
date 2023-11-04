@@ -12,7 +12,7 @@
   ],
   "git": {
     "deploymentEnabled": {
-      "master": false,
+      "master": true,
       "development": false,
       "feat/mdx": false,
       "feat/counter-view": false,

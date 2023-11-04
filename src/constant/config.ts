@@ -1,16 +1,36 @@
 import { AiFillHome } from 'react-icons/ai';
 import { BiSolidUser } from 'react-icons/bi';
-import { BsGithub, BsLinkedin, BsTwitter } from 'react-icons/bs';
 import { FaFileCode, FaPhoneAlt } from 'react-icons/fa';
 
-import { FooterLinkProps, NavigationProps } from '@/types/config';
+import { FooterLinkProps, NavigationProps } from '@/types';
 
 export const siteConfig = {
+  name: 'Awandri',
   title: 'Next.js + Tailwind CSS + TypeScript Starter',
   description:
     'A starter for Next.js, Tailwind CSS, and TypeScript with Absolute Import, Seo, Link component, pre-configured with Husky',
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
   url: 'https://awandri.com',
+  socialLink: {
+    github: {
+      label: 'Github',
+      name: 'github link',
+      link: 'https://github.com/andri2621',
+      tooltip: 'See my projects on Github!',
+    },
+    linkedin: {
+      label: 'LinkedIn',
+      name: 'linkedin link',
+      link: 'https://www.linkedin.com/in/andisetiawan2621/',
+      tooltip: 'Find me on LinkedIn!',
+    },
+    twitter: {
+      label: 'Twitter',
+      name: 'twitter link',
+      link: 'https://twitter.com/andri2621',
+      tooltip: 'Follow me on Twitter!',
+    },
+  },
 };
 
 export const NavigationData: NavigationProps[] = [
@@ -20,6 +40,7 @@ export const NavigationData: NavigationProps[] = [
     value: 'home',
     icon: AiFillHome,
     link: '/',
+    isUnderConstruction: false,
   },
   {
     id: 2,
@@ -27,6 +48,7 @@ export const NavigationData: NavigationProps[] = [
     value: 'blogs',
     icon: BiSolidUser,
     link: '/blogs',
+    isUnderConstruction: false,
   },
   {
     id: 3,
@@ -34,6 +56,7 @@ export const NavigationData: NavigationProps[] = [
     value: 'projects',
     icon: FaFileCode,
     link: '/projects',
+    isUnderConstruction: false,
   },
   {
     id: 4,
@@ -41,6 +64,7 @@ export const NavigationData: NavigationProps[] = [
     value: 'docs',
     icon: FaFileCode,
     link: '/docs',
+    isUnderConstruction: true,
   },
   {
     id: 5,
@@ -48,6 +72,7 @@ export const NavigationData: NavigationProps[] = [
     value: 'about',
     icon: FaPhoneAlt,
     link: '/about',
+    isUnderConstruction: false,
   },
 ];
 
@@ -83,7 +108,7 @@ export const footerLink: FooterLinkProps[] = [
   {
     label: 'OG Generator',
     name: 'OG Generator',
-    link: 'https://github.com/andri2621/og-generator',
+    link: 'https://og.awandri.com',
     underConstruction: false,
   },
 ];
@@ -94,20 +119,81 @@ export const socialLink = [
     name: 'github link',
     link: 'https://github.com/andri2621',
     tooltip: 'See my projects on Github!',
-    icon: BsGithub,
   },
   {
     label: 'LinkedIn',
     name: 'linkedin link',
     link: 'https://www.linkedin.com/in/andisetiawan2621/',
     tooltip: 'Find me on LinkedIn!',
-    icon: BsLinkedin,
   },
   {
     label: 'Twitter',
     name: 'twitter link',
     link: 'https://twitter.com/andri2621',
     tooltip: 'Follow me on Twitter!',
-    icon: BsTwitter,
   },
 ];
+
+export const FEskills = [
+  {
+    label: 'NextJs',
+    tooltip: 'Next JS',
+  },
+  {
+    label: 'React',
+    tooltip: 'React JS',
+  },
+  {
+    label: 'Typescript',
+    tooltip: 'Typescript',
+  },
+  {
+    label: 'Redux',
+    tooltip: 'Redux',
+  },
+  {
+    label: 'mui',
+    tooltip: 'MaterialUI',
+  },
+  {
+    label: 'Bootstrap',
+    tooltip: 'Bootstrap',
+  },
+  {
+    label: 'Tailwind',
+    tooltip: 'Tailwind',
+  },
+];
+
+export const BEskills = [
+  {
+    label: 'Nodejs',
+    tooltip: 'Node JS',
+  },
+  {
+    label: 'Postgresql',
+    tooltip: 'PostgreSQL',
+  },
+  {
+    label: 'MongoDB',
+    tooltip: 'MongoDB',
+  },
+  {
+    label: 'Firebase',
+    tooltip: 'Firebase',
+  },
+  {
+    label: 'Prisma',
+    tooltip: 'Prisma',
+  },
+];
+
+export const currentLearn = [
+  {
+    label: 'Angular',
+    tooltip: 'Learn Angular from Udemy course.',
+    course: 'Udemy',
+  },
+];
+
+export const POSTS_PER_PAGE = 6;

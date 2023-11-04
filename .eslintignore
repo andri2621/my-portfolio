@@ -1,3 +1,4 @@
 # contentlayer
 .contentlayer/
 **/.contentlayer/*
+.contentlayer/*
