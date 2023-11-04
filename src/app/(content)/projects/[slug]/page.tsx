@@ -2,8 +2,6 @@ import { allProjects } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
 import React from 'react';
 
-import '@/styles/mdx.css';
-
 import { cn } from '@/lib/utils';
 
 import CloudinaryImage from '@/components/image/CloudinaryImage';

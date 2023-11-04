@@ -1,7 +1,5 @@
 import React from 'react';
 
-import '@/styles/mdx.css';
-
 import { cn, getAllProjects } from '@/lib/utils';
 
 import ProjectCard from '@/components/content/project/ProjectCard';

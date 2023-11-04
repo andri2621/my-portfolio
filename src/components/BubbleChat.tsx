@@ -15,7 +15,7 @@ export default function BubbleChat({ className }: BubbleProps) {
     <>
       <div className={cn(className, 'chat chat-start')}>
         <div className='chat-image avatar'>
-          <div className='bg-neutral w-10 rounded-full'>
+          <div className='bg-neutral relative w-10 rounded-full'>
             <Image src='/images/MyPhoto.png' alt='chat photo' fill />
           </div>
         </div>

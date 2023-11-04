@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import * as React from 'react';
 
+import '@/styles/mdx.css';
+
 import { cn } from '@/lib/utils';
 
 import CloudinaryImage from '@/components/image/CloudinaryImage';

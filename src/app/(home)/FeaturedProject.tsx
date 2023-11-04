@@ -24,7 +24,7 @@ export default function FeaturedProject() {
 
   return (
     <section
-      id='portfolio'
+      id='featured-project'
       className='hero place-items-start py-20 md:place-items-center'
     >
       <div className='flex flex-col items-center gap-6'>

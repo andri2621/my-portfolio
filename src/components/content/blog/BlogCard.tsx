@@ -61,7 +61,7 @@ export default function BlogCard({ data, meta, className }: BlogCardProps) {
         <div className='flex items-center gap-4'>
           <div className='font-semibold'>{formatDate(data.publishedAt)}</div>
         </div>
-        <h2 className='card-title !mb-0 line-clamp-2 text-lg capitalize leading-snug text-black dark:text-white'>
+        <h2 className='card-title text-neutral !mb-0 line-clamp-2 text-lg capitalize leading-snug dark:text-white'>
           {data.title}
         </h2>
         <div className={cn('flex gap-2', 'text-primary text-sm font-semibold')}>

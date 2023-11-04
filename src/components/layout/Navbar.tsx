@@ -13,7 +13,7 @@ import { NavigationData } from '@/constant/config';
 import { Icons } from '@/constant/IconsData';
 
 const Navbar = () => {
-  const [activePage, setActivePage] = React.useState('/');
+  const [activePage, setActivePage] = React.useState('');
   const pathName = usePathname();
 
   React.useEffect(() => {
@@ -69,7 +69,6 @@ const Navbar = () => {
                     key={nav.id}
                     className={cn('hover:!text-primary/50', {
                       'active font-medium': activePage === nav.link,
-                      'cursor-not-allowed': nav.isUnderConstruction,
                     })}
                   >
                     {nav.label}

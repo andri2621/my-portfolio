@@ -2,8 +2,6 @@ import { allBlogs } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
 import * as React from 'react';
 
-import '@/styles/mdx.css';
-
 import { cn, formatDate } from '@/lib/utils';
 
 import SingleViewCounter from '@/components/content/blog/SIngleViewCounter';

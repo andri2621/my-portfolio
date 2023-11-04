@@ -3,10 +3,11 @@ const nextConfig = {
   eslint: {
     dirs: ['src'],
   },
-
+  experimental: {
+    serverActions: true,
+  },
   reactStrictMode: true,
   swcMinify: true,
-
   // Uncoment to add domain whitelist
   images: {
     domains: [

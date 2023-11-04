@@ -30,7 +30,7 @@ export default function FeaturedBlogs() {
 
   return (
     <section
-      id='portfolio'
+      id='featured-blog'
       className='hero place-items-start py-20 md:place-items-center'
     >
       <div className='flex flex-col items-center gap-6'>

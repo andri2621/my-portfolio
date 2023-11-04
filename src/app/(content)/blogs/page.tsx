@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import '@/styles/mdx.css';
-
 import { getAllBlogs } from '@/lib/utils';
 
 import BlogViewComponent from '@/components/content/blog/BlogViewComponent';

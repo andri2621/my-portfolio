@@ -31,7 +31,7 @@ export default function BlogList({ data, meta, className }: BlogListProps) {
       )}
     >
       <div className='card-body'>
-        <h2 className='card-title !mb-0 line-clamp-2 capitalize text-black dark:text-white'>
+        <h2 className='card-title text-neutral !mb-0 line-clamp-2 capitalize dark:text-white'>
           {data.title}
         </h2>
         <div className='mb-auto flex gap-2'>

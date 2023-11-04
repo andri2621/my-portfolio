@@ -30,7 +30,7 @@ export default function ProjectCard({ data, className }: ProjectCardProps) {
       )}
     >
       <div className='card-body'>
-        <h2 className='card-title !mb-0 line-clamp-2 text-lg capitalize leading-snug text-black dark:text-white'>
+        <h2 className='card-title text-neutral !mb-0 line-clamp-2 text-lg capitalize leading-snug dark:text-white'>
           {data.title}
         </h2>
 

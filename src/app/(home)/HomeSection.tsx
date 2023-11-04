@@ -1,12 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { BiSolidFilePdf } from 'react-icons/bi';
 
 import LiquidBlob from '@/components/icons/LiquidBlob';
-import CustomImage from '@/components/image/CustomImage';
 import ReactScroll from '@/components/links/ReactScroll';
 
 import MyPhoto from '~/images/MyPhoto.png';
@@ -80,7 +80,7 @@ const HomeSection = () => {
         >
           {/*  md:max-h-xs lg:max-h-sm */}
           <div className='box-image-blob relative mt-8 max-h-[18rem] max-w-[18rem] sm:mt-6 sm:max-h-[20rem] sm:max-w-[20rem] lg:max-h-full lg:w-full lg:max-w-md'>
-            <CustomImage
+            <Image
               alt='My Photo'
               src={MyPhoto}
               width={400}
