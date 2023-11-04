@@ -40,6 +40,7 @@ export const NavigationData: NavigationProps[] = [
     value: 'home',
     icon: AiFillHome,
     link: '/',
+    isUnderConstruction: false,
   },
   {
     id: 2,
@@ -47,6 +48,7 @@ export const NavigationData: NavigationProps[] = [
     value: 'blogs',
     icon: BiSolidUser,
     link: '/blogs',
+    isUnderConstruction: false,
   },
   {
     id: 3,
@@ -54,6 +56,7 @@ export const NavigationData: NavigationProps[] = [
     value: 'projects',
     icon: FaFileCode,
     link: '/projects',
+    isUnderConstruction: false,
   },
   {
     id: 4,
@@ -61,6 +64,7 @@ export const NavigationData: NavigationProps[] = [
     value: 'docs',
     icon: FaFileCode,
     link: '/docs',
+    isUnderConstruction: true,
   },
   {
     id: 5,
@@ -68,6 +72,7 @@ export const NavigationData: NavigationProps[] = [
     value: 'about',
     icon: FaPhoneAlt,
     link: '/about',
+    isUnderConstruction: false,
   },
 ];
 
@@ -128,3 +133,67 @@ export const socialLink = [
     tooltip: 'Follow me on Twitter!',
   },
 ];
+
+export const FEskills = [
+  {
+    label: 'NextJs',
+    tooltip: 'Next JS',
+  },
+  {
+    label: 'React',
+    tooltip: 'React JS',
+  },
+  {
+    label: 'Typescript',
+    tooltip: 'Typescript',
+  },
+  {
+    label: 'Redux',
+    tooltip: 'Redux',
+  },
+  {
+    label: 'mui',
+    tooltip: 'MaterialUI',
+  },
+  {
+    label: 'Bootstrap',
+    tooltip: 'Bootstrap',
+  },
+  {
+    label: 'Tailwind',
+    tooltip: 'Tailwind',
+  },
+];
+
+export const BEskills = [
+  {
+    label: 'Nodejs',
+    tooltip: 'Node JS',
+  },
+  {
+    label: 'Postgresql',
+    tooltip: 'PostgreSQL',
+  },
+  {
+    label: 'MongoDB',
+    tooltip: 'MongoDB',
+  },
+  {
+    label: 'Firebase',
+    tooltip: 'Firebase',
+  },
+  {
+    label: 'Prisma',
+    tooltip: 'Prisma',
+  },
+];
+
+export const currentLearn = [
+  {
+    label: 'Angular',
+    tooltip: 'Learn Angular from Udemy course.',
+    course: 'Udemy',
+  },
+];
+
+export const POSTS_PER_PAGE = 6;

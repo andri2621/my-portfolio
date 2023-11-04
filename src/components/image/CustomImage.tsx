@@ -32,7 +32,7 @@ export default function CustomImage({
   return (
     <figure
       className={cn(className, {
-        'h-full w-full': !widthIsSet,
+        'relative h-full w-full': !widthIsSet,
       })}
     >
       <Image

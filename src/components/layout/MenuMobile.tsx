@@ -12,6 +12,7 @@ import HamburgerIcon from '@/components/settings/HamburgerIcon';
 import ThemeChanger from '@/components/settings/ThemeChanger';
 
 import { NavigationData } from '@/constant/config';
+import { Icons } from '@/constant/IconsData';
 
 type MenuMobileProps = {
   activePage: string;
@@ -68,19 +69,39 @@ const MenuMobile = ({ activePage }: MenuMobileProps) => {
               tabIndex={0}
               className='bg-base-200 menu shadow-3xl dark:shadow-4xl w-[135px] rounded-lg border-none p-2 text-black outline-none hover:text-black dark:text-white dark:hover:text-white'
             >
-              {NavigationData.map((nav) => (
-                <li key={nav.id}>
-                  <UnstyledLink
-                    href={nav.link}
-                    className={cn(
-                      { active: nav.link === activePage },
-                      'w-full p-2'
-                    )}
-                  >
-                    {nav.value}
-                  </UnstyledLink>
-                </li>
-              ))}
+              {NavigationData.map((nav) => {
+                if (nav.isUnderConstruction) {
+                  return (
+                    <li key={nav.id}>
+                      <div
+                        className={cn(
+                          { active: nav.link === activePage },
+                          'w-full p-2',
+                          'flex items-center',
+                          '!cursor-not-allowed'
+                        )}
+                      >
+                        {nav.value}
+                        <Icons.underConstruction />
+                      </div>
+                    </li>
+                  );
+                } else {
+                  return (
+                    <li key={nav.id}>
+                      <UnstyledLink
+                        href={nav.link}
+                        className={cn(
+                          { active: nav.link === activePage },
+                          'w-full p-2'
+                        )}
+                      >
+                        {nav.value}
+                      </UnstyledLink>
+                    </li>
+                  );
+                }
+              })}
 
               <hr className='my-1 border-slate-500' />
 

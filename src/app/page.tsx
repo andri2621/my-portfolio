@@ -1,29 +1,18 @@
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 
-const HomeSection = dynamic(() => import('@/app/(main)/home/HomeSection'), {
-  ssr: true,
-});
-
-const IntroSection = dynamic(() => import('@/app/(main)/home/IntroSection'), {
-  ssr: true,
-});
-
-const PortfolioSection = dynamic(
-  () => import('@/app/(main)/home/PortfolioSection'),
-  { ssr: true }
-);
-const ContactSection = dynamic(
-  () => import('@/app/(main)/home/ContactSection'),
-  { ssr: true }
-);
+import ContactSection from '@/app/(home)/ContactSection';
+import FeaturedBlogs from '@/app/(home)/FeaturedBlogs';
+import FeaturedProject from '@/app/(home)/FeaturedProject';
+import HomeSection from '@/app/(home)/HomeSection';
+import IntroSection from '@/app/(home)/IntroSection';
 
 const HomePage = () => {
   return (
     <>
       <HomeSection />
       <IntroSection />
-      {/* <AboutSection /> */}
-      <PortfolioSection />
+      <FeaturedProject />
+      <FeaturedBlogs />
       <ContactSection />
     </>
   );

@@ -6,6 +6,7 @@ export type NavigationProps = {
   value: string;
   icon: IconType;
   link: string;
+  isUnderConstruction?: boolean;
 };
 
 export type FooterLinkProps = {

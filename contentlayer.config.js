@@ -84,13 +84,8 @@ export const Blog = defineDocumentType(() => ({
       of: { type: 'string' },
       required: true,
     },
-    authors: {
-      // Reference types are not embedded.
-      // Until this is fixed, we can use a simple list.
-      // type: "reference",
-      // of: Author,
-      type: 'list',
-      of: { type: 'string' },
+    author: {
+      type: 'string',
       required: true,
     },
   },
@@ -117,7 +112,24 @@ export const Project = defineDocumentType(() => ({
       type: 'boolean',
       default: true,
     },
+    lastUpdated: {
+      type: 'date',
+      required: false,
+    },
     banner: {
+      type: 'string',
+      required: true,
+    },
+    tags: {
+      type: 'list',
+      of: { type: 'string' },
+      required: true,
+    },
+    sourceCode: {
+      type: 'string',
+      required: false,
+    },
+    demoUrl: {
       type: 'string',
       required: false,
     },
@@ -125,33 +137,9 @@ export const Project = defineDocumentType(() => ({
   computedFields,
 }));
 
-export const Author = defineDocumentType(() => ({
-  name: 'Author',
-  filePathPattern: `authors/**/*.mdx`,
-  contentType: 'mdx',
-  fields: {
-    title: {
-      type: 'string',
-      required: true,
-    },
-    description: {
-      type: 'string',
-    },
-    avatar: {
-      type: 'string',
-      required: true,
-    },
-    twitter: {
-      type: 'string',
-      required: true,
-    },
-  },
-  computedFields,
-}));
-
 export default makeSource({
   contentDirPath: 'src/content',
-  documentTypes: [Doc, Blog, Project, Author],
+  documentTypes: [Doc, Blog, Project],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

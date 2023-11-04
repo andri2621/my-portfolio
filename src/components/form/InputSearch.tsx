@@ -30,7 +30,7 @@ export default function InputSearch({
           className={cn(
             className,
             'pr-24',
-            'bg-base-100 h-10 w-full rounded-md',
+            'h-10 w-full rounded-md bg-transparent',
             'border border-gray-300 dark:border-gray-600',
             'focus:border-primary dark:focus:border-primary focus:outline-none focus:ring-0',
             'text-sm'

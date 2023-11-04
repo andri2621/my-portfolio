@@ -3,7 +3,7 @@ import { getCldImageUrl } from 'next-cloudinary';
 
 import { cn } from '@/lib/utils';
 
-type CloudinaryImgType = {
+type CloudinaryImageType = {
   publicId: string;
   alt: string;
   height?: number;
@@ -12,14 +12,14 @@ type CloudinaryImgType = {
   mdx?: boolean;
 } & React.ComponentPropsWithoutRef<'figure'>;
 
-export default function CloudinaryImg({
+export default function CloudinaryImage({
   publicId,
   height = 411,
   width = 731,
   alt,
   className,
   mdx = false,
-}: CloudinaryImgType) {
+}: CloudinaryImageType) {
   const blurImg = getCldImageUrl({
     width: 10,
     height: 7,
