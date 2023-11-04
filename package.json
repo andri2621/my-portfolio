@@ -12,6 +12,7 @@
     "lint:fix": "eslint src --fix && yarn format",
     "lint:strict": "eslint --max-warnings=0 src",
     "contentlayer": "contentlayer build",
+    "typecheck": "tsc --noEmit --incremental false",
     "test:watch": "jest --watch",
     "test": "jest",
     "format": "prettier -w .",
