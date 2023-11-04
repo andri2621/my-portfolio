@@ -1,12 +1,11 @@
 'use client';
 
-import { faCloudRain } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 
 import Setting from '@/components/settings';
 
 import { NavigationData } from '@/constant/config';
+import { Icons } from '@/constant/IconsData';
 
 function NavList() {
   return (
@@ -38,7 +37,8 @@ const NavbarTop = () => {
               href='/#home'
               className='text-primary block text-lg font-bold '
             >
-              <FontAwesomeIcon icon={faCloudRain} size='2xl' />
+              {/* <FontAwesomeIcon icon={faCloudRain} size='2xl' /> */}
+              <Icons.logo size='2xl' />
               <span className='text-primary ml-2'>awandri</span>
             </Link>
           </div>
