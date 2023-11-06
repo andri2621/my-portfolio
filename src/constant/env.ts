@@ -8,6 +8,13 @@ export const showLogger = isLocal
   : process.env.NEXT_PUBLIC_SHOW_LOGGER === 'true' ?? false;
 
 /**
+ * Show command service on contents
+ * @see GiscusComment.tsx
+ */
+export const commentFlag =
+  isProd || process.env.NEXT_PUBLIC_FLAG_COMMENT === 'true';
+
+/**
  * Get content meta from the database
  * @see useContentMeta.tsx
  */

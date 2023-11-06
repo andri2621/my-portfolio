@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { BiSolidFilePdf } from 'react-icons/bi';
 
 import LiquidBlob from '@/components/icons/LiquidBlob';
 import ReactScroll from '@/components/links/ReactScroll';
@@ -49,18 +48,15 @@ const HomeSection = () => {
               NextJS. Currently iam a full-time worker at CodeID, where i
               involved on several projects. */}
             Passionate about crafting beautiful and user-friendly websites. I
-            specialize in the React ecosystem and am proficient in TypeScript
-            and Next.js. Let's create something amazing together!
+            specialize in the React ecosystem and am proficient in Next.js.
+            Let's create something amazing together!
           </p>
 
           {/* CTA */}
           <div className='flex flex-wrap gap-2'>
-            <Link href='resume' className='btn btn-primary btn-sm '>
-              <BiSolidFilePdf size={18} />
+            <Link href='/about' className='btn btn-primary btn-sm '>
               <span>RESUME</span>
             </Link>
-
-            {/* </a> */}
 
             <ReactScroll
               to='contact'

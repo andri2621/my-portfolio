@@ -1,5 +1,6 @@
 import Link, { LinkProps } from 'next/link';
 import * as React from 'react';
+import { GoArrowUpRight } from 'react-icons/go';
 
 import { cn } from '@/lib/utils';
 
@@ -9,10 +10,22 @@ export type UnstyledLinkProps = {
   openNewTab?: boolean;
   className?: string;
   nextLinkProps?: Omit<LinkProps, 'href'>;
+  arrow?: boolean;
 } & React.ComponentPropsWithRef<'a'>;
 
 const UnstyledLink = React.forwardRef<HTMLAnchorElement, UnstyledLinkProps>(
-  ({ children, href, openNewTab, className, nextLinkProps, ...rest }, ref) => {
+  (
+    {
+      children,
+      href,
+      openNewTab,
+      className,
+      nextLinkProps,
+      arrow = true,
+      ...rest
+    },
+    ref
+  ) => {
     const isNewTab =
       openNewTab !== undefined
         ? openNewTab
@@ -33,16 +46,17 @@ const UnstyledLink = React.forwardRef<HTMLAnchorElement, UnstyledLinkProps>(
     }
 
     return (
-      <a
+      <Link
         ref={ref}
         target='_blank'
         rel='noopener noreferrer'
         href={href}
         {...rest}
-        className={cn('cursor-newtab', className)}
+        className={cn('cursor-newtab', 'inline-flex items-center', className)}
       >
-        {children}
-      </a>
+        <div>{children}</div>
+        {arrow && <GoArrowUpRight size={12} />}
+      </Link>
     );
   }
 );

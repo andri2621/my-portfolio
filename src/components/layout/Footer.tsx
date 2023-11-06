@@ -39,7 +39,7 @@ export default function Footer() {
           </nav>
           <nav>
             <p className='font-bold'>Reach me out!</p>
-            <div className='grid grid-flow-col gap-4'>
+            <div className='flex flex-wrap justify-center gap-x-4 gap-y-[2px]'>
               {socialLink.map((social, idx) => {
                 let variant = 'center';
 
@@ -52,9 +52,13 @@ export default function Footer() {
                 const SocialIcon = getIcon(social.label.toLowerCase());
 
                 return (
-                  <UnstyledLink href={social.link} key={social.name}>
+                  <UnstyledLink
+                    href={social.link}
+                    key={social.name}
+                    arrow={false}
+                  >
                     <Tooltip text={social.tooltip} variant={variant}>
-                      <div className='hover:text-primary flex items-center gap-2 font-semibold'>
+                      <div className='hover:text-primary flex items-center gap-1 font-semibold'>
                         {SocialIcon && <SocialIcon className='h-6 w-6' />}
                         <span>{social.label}</span>
                       </div>

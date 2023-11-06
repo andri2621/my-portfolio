@@ -4,9 +4,9 @@ import { cn } from '@/lib/utils';
 
 import UnderlineLink from '@/components/links/UnderlineLink';
 
-export default function Me() {
+export default function AboutMe() {
   return (
-    <div className={cn('flex flex-col')}>
+    <div className={cn('flex flex-col', 'leading-normal')}>
       <div className='mb-4'>
         Hello! I'm <span className='text-primary font-bold'>Andi Setiawan</span>
         , a frontend developer with a passion for web development.

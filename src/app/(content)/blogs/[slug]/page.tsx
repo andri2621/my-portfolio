@@ -5,6 +5,7 @@ import * as React from 'react';
 import { cn, formatDate } from '@/lib/utils';
 
 import SingleViewCounter from '@/components/content/blog/SIngleViewCounter';
+import GiscusComment from '@/components/content/GiscusComment';
 import CloudinaryImage from '@/components/image/CloudinaryImage';
 import { MDXComponentsWrapper } from '@/components/MDX/MDXComponentsWrapper';
 
@@ -79,6 +80,12 @@ export default async function SingleBlogPage({ params }: BlogPageProps) {
 
           <MDXComponentsWrapper code={blog.body.code} />
         </article>
+
+        <div className='divider'></div>
+
+        <figure className='mt-12'>
+          <GiscusComment />
+        </figure>
       </div>
     </>
   );
