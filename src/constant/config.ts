@@ -74,6 +74,14 @@ export const NavigationData: NavigationProps[] = [
     link: '/about',
     isUnderConstruction: false,
   },
+  {
+    id: 6,
+    label: 'Guestbook',
+    value: 'guestbook',
+    icon: FaPhoneAlt,
+    link: '/guestbook',
+    isUnderConstruction: false,
+  },
 ];
 
 export const footerLink: FooterLinkProps[] = [

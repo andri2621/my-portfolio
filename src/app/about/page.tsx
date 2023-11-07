@@ -1,6 +1,3 @@
-import Link from 'next/link';
-import { BiSolidFilePdf } from 'react-icons/bi';
-
 import AboutMe from '@/app/about/AboutMe';
 import BEskill from '@/app/about/BEskill';
 import CurrentLearn from '@/app/about/CurrentLearn';
@@ -12,11 +9,9 @@ export default function AboutSection() {
   return (
     <section id='about' className='min-h-screen py-24'>
       <h1 className='text-primary mb-4 font-bold'>About Me</h1>
-      <Link href='#' className='btn btn-primary btn-xs sm:btn-sm my-4'>
-        <BiSolidFilePdf size={18} />
-        <span>DOWNLOAD RESUME</span>
-      </Link>
+
       <AboutMe />
+
       <div className='divider'></div>
 
       <div className='min-h-screen'>

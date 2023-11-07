@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 
-import BubbleChat from '@/components/BubbleChat';
 import UnderlineLink from '@/components/links/UnderlineLink';
 
 import RocketBox from '~/svg/RocketBox.svg';
@@ -34,7 +33,6 @@ const IntroSection = () => {
           write personal documentation about what I've learned, and express my
           thoughts about web development.
         </p>
-        <BubbleChat className='self-center' />
       </div>
     </section>
   );

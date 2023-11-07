@@ -106,7 +106,7 @@ export default function ContactForm() {
                     errors.subject?.message,
                 }
               )}
-              placeholder='John'
+              placeholder='Subject'
             />
             {errors.subject?.message && (
               <p className='text-error mt-1 text-sm'>
