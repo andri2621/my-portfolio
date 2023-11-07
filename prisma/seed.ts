@@ -1,18 +1,57 @@
 import { PrismaClient } from '@prisma/client';
+import { promises } from 'fs';
+import { join } from 'path';
 
 const prisma = new PrismaClient();
 
-async function main() {
-  // const responses = await prisma.contentMeta.upsert({
-  //   where: { slug: 'weekend' },
-  //   update: {},
-  //   create: {
-  //     slug: 'weekend',
-  //   },
-  // });
+const getFileList = async (dirName: string) => {
+  const files: string[] = [];
+  const items = await promises.readdir(dirName, { withFileTypes: true });
 
-  // eslint-disable-next-line no-console
-  console.log('hehe');
+  for (const item of items) {
+    if (item.isDirectory()) {
+      files.push(...(await getFileList(join(dirName, item.name))));
+    } else {
+      files.push(join(dirName, item.name));
+    }
+  }
+
+  return files;
+};
+
+async function getAllFileSlug() {
+  const filePaths = await getFileList(
+    join(process.cwd(), 'src', 'content', 'blogs')
+  );
+
+  const allBlogSlug = filePaths.map((path) => {
+    const slug = path
+      .replace(join(process.cwd(), 'src', 'content', 'blogs') + '/', '')
+      .replace('.mdx', '')
+      .split('/');
+    return { slug: slug[0] };
+  });
+
+  return allBlogSlug;
+}
+
+async function main() {
+  const allBlogs = await getAllFileSlug();
+
+  for (const blog of allBlogs) {
+    try {
+      await prisma.contentMeta.upsert({
+        where: { slug: blog.slug },
+        update: {},
+        create: {
+          slug: blog.slug,
+        },
+      });
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(error);
+    }
+  }
 }
 
 main()
@@ -27,13 +66,4 @@ main()
   });
 
 // npx prisma db seed
-// "build": "contentlayer build && prisma generate && prisma db push && prisma db seed && next build",
-
-// prisma.contentMeta.upsert({
-//   where: { slug: blog.slugAsParams },
-//   update: {},
-//   create: {
-//     slug: blog.slugAsParams,
-//     createdAt: blog.publishedAt,
-//   },
-// }),
+// prisma generate && prisma db push && prisma db seed
