@@ -9,18 +9,12 @@ import ReactScroll from '@/components/links/ReactScroll';
 
 const HomeSection = () => {
   return (
-    <section
-      id='home'
-      // className='hero min-h-screen place-items-start py-24 md:min-h-full md:place-items-center lg:min-h-screen'
-      className='hero min-h-screen place-items-center py-24'
-    >
+    <section id='home' className='hero min-h-screen place-items-center py-24'>
       <div className='flex w-full flex-wrap items-center justify-center gap-y-12 text-center'>
-        {/* LEFT CONTENT */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          // className='w-full self-center md:w-7/12 lg:w-3/5 '
           className='w-full max-w-3xl'
         >
           <div className='text-primary text-base font-semibold sm:text-2xl'>
@@ -63,15 +57,6 @@ const HomeSection = () => {
             </Link>
           </div>
         </motion.div>
-        {/* RIGHT CONTENT */}
-        {/* <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className='flex w-full justify-center self-center md:w-5/12 lg:w-2/5 lg:justify-end'
-        >
-          <BubbleChat />
-        </motion.div> */}
       </div>
     </section>
   );

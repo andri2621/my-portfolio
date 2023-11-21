@@ -53,7 +53,7 @@ export default function BlogCard({ data, meta, className }: BlogCardProps) {
       <CloudinaryImage
         publicId={data.banner.replace('/public', '')}
         alt={data.title}
-        className='relative h-40 !rounded-b-none !shadow-none transition-colors sm:h-full sm:w-1/3 sm:!rounded-b-lg sm:rounded-r-none'
+        className='relative h-40 !rounded-b-none !shadow-none transition-colors sm:h-full sm:w-1/3 sm:!rounded-b-lg sm:!rounded-r-none'
         width={731}
         height={411}
       />

@@ -66,4 +66,13 @@ main()
   });
 
 // npx prisma db seed
-// prisma generate && prisma db push && prisma db seed
+// "build": "contentlayer build && prisma generate && prisma db push && prisma db seed && next build",
+
+// prisma.contentMeta.upsert({
+//   where: { slug: blog.slugAsParams },
+//   update: {},
+//   create: {
+//     slug: blog.slugAsParams,
+//     createdAt: blog.publishedAt,
+//   },
+// }),
