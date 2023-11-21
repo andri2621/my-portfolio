@@ -45,7 +45,7 @@ export default function CloudinaryImage({
         fill
         src={blurImg}
         alt={alt}
-        className={cn(mdx && '!m-0', 'z-0 aspect-video rounded-lg')}
+        className={cn(mdx && '!m-0', 'z-0 aspect-video')}
         {...(mdx
           ? {
               sizes:
@@ -61,7 +61,7 @@ export default function CloudinaryImage({
         fill
         src={mainImg}
         alt={alt}
-        className={cn(mdx && '!m-0', 'z-10 aspect-video rounded-lg')}
+        className={cn(mdx && '!m-0', 'z-10 aspect-video')}
         {...(mdx
           ? {
               sizes:

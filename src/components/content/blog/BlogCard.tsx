@@ -49,18 +49,16 @@ export default function BlogCard({ data, meta, className }: BlogCardProps) {
           <Badge tags={data.tags} className='w-full' maxBadges={10} />
         </div>
       </figure> */}
+
       <CloudinaryImage
         publicId={data.banner.replace('/public', '')}
         alt={data.title}
-        className='relative h-40 transition-colors sm:h-full sm:w-1/3'
+        className='relative h-40 !rounded-b-none !shadow-none transition-colors sm:h-full sm:w-1/3 sm:!rounded-b-lg sm:rounded-r-none'
         width={731}
         height={411}
       />
 
       <div className='card-body sm:w-2/3'>
-        <div className='flex items-center gap-4'>
-          <div className='font-semibold'>{formatDate(data.publishedAt)}</div>
-        </div>
         <h2 className='card-title text-neutral !mb-0 line-clamp-2 text-lg capitalize leading-snug dark:text-white'>
           {data.title}
         </h2>
@@ -74,7 +72,10 @@ export default function BlogCard({ data, meta, className }: BlogCardProps) {
             {meta?.views ?? '---'} views
           </div>
         </div>
-        <Badge tags={data.tags} className='hidden sm:flex' />
+        <div className='flex items-center gap-4'>
+          <div className='font-semibold'>{formatDate(data.publishedAt)}</div>
+        </div>
+        <Badge tags={data.tags} />
         <p className='mb-auto line-clamp-2 flex-grow-0'>{data.description}</p>
         <div className='card-actions justify-end'>
           <div
