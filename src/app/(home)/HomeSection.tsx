@@ -1,11 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import React from 'react';
 
 import ExpandingArrow from '@/components/ExpandingArrow';
-import ReactScroll from '@/components/links/ReactScroll';
+import UnstyledLink from '@/components/links/UnstyledLink';
 
 const HomeSection = () => {
   return (
@@ -40,21 +39,17 @@ const HomeSection = () => {
 
           {/* CTA */}
           <div className='flex flex-wrap justify-center gap-x-2 gap-y-4'>
-            <ReactScroll
-              to='contact'
-              href='contact'
-              className='btn btn-primary  btn-sm '
-            >
+            <UnstyledLink href='#contact' className='btn btn-primary  btn-sm '>
               CONTACT ME
-            </ReactScroll>
+            </UnstyledLink>
 
-            <Link
+            <UnstyledLink
               href='/about'
               className='btn btn-primary hover:!bg-primary/20 hover:!text-primary btn-outline btn-sm group'
             >
               <span>ABOUT ME</span>
               <ExpandingArrow />
-            </Link>
+            </UnstyledLink>
           </div>
         </motion.div>
       </div>

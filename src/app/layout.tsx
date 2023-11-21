@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang='en-US'
-      className='transition-colors duration-200 ease-linear'
+      className='scroll-smooth transition-colors duration-200 ease-linear'
       data-theme='night'
       suppressHydrationWarning={true}
     >
