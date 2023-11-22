@@ -1,9 +1,12 @@
 import { allBlogs } from 'contentlayer/generated';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import * as React from 'react';
 
+import { getMetaData } from '@/lib/getMetaData';
 import { cn, formatDate } from '@/lib/utils';
 
+import ButtonShare from '@/components/buttons/ButtonShare';
 import SingleViewCounter from '@/components/content/blog/SIngleViewCounter';
 import GiscusComment from '@/components/content/GiscusComment';
 import TableOfContents from '@/components/content/TableOfContents';
@@ -22,6 +25,26 @@ export async function generateStaticParams() {
   return allBlogs.map((blog) => ({
     slug: blog.slugAsParams,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: BlogPageProps): Promise<Metadata> {
+  const blog = allBlogs
+    .filter((blog) => blog.isPublished === true)
+    .find((blog) => blog.slugAsParams === params.slug);
+
+  const CustomMetaData = {
+    siteName: 'awandri.com',
+    description: blog?.title,
+    author: blog?.author,
+    userName: 'Frontend Developer',
+    ogType: 'blog',
+  };
+
+  const metadata = getMetaData(CustomMetaData);
+
+  return metadata;
 }
 
 export default async function SingleBlogPage({ params }: BlogPageProps) {
@@ -82,7 +105,21 @@ export default async function SingleBlogPage({ params }: BlogPageProps) {
 
             <MDXComponentsWrapper code={blog.body.code} />
           </article>
-          <TableOfContents />
+
+          {/* TOC & SHARE BUTTON */}
+          <aside className='py-4'>
+            <div className='sticky top-36 z-10'>
+              <TableOfContents />
+              <div className='flex items-center justify-center py-8'>
+                <ButtonShare
+                  slug={blog.slugAsParams}
+                  type='blogs'
+                  title={blog.title}
+                />
+              </div>
+            </div>
+          </aside>
+          {/* END TOC & SHARE BUTTON */}
         </section>
 
         <div className='divider'></div>

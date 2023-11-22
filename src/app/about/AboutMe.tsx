@@ -16,10 +16,10 @@ export default function AboutMe() {
       <div
         className={cn(
           'float-none flex flex-col items-center ',
-          'ml-6 min-[468px]:float-right'
+          'xs:float-right xs:mb-4'
         )}
       >
-        <div className='box-image-blob relative h-40 w-40 sm:h-72 sm:w-72'>
+        <div className='box-image-blob relative h-60 w-60 sm:h-72 sm:w-72'>
           <Image
             alt='My Photo'
             src={MyPhoto}
@@ -39,11 +39,12 @@ export default function AboutMe() {
         </div>
         <Link href='#' className='btn btn-primary btn-xs sm:btn-sm my-4'>
           <BiSolidFilePdf size={18} />
-          <span>DOWNLOAD RESUME</span>
+          <span>RESUME</span>
         </Link>
       </div>
 
       <div>
+        <h1 className='text-primary mb-4 font-bold'>About Me</h1>
         <div className='mb-4'>
           Hello! I'm{' '}
           <span className='text-primary font-bold'>Andi Setiawan</span>, a

@@ -12,7 +12,8 @@ export const showLogger = isLocal
  * @see GiscusComment.tsx
  */
 export const commentFlag =
-  isProd || process.env.NEXT_PUBLIC_FLAG_COMMENT === 'true';
+  // isProd || process.env.NEXT_PUBLIC_FLAG_COMMENT === 'true';
+  false;
 
 /**
  * Get content meta from the database

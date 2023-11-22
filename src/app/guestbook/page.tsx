@@ -12,7 +12,7 @@ export default function GuestBookPage() {
           Leave whatever you like to say—message, appreciation, suggestions. If
           you got some questions, you can leave them on the{' '}
           <UnderlineLink href='https://github.com/andri2621/my-portfolio/discussions/7'>
-            QnA discussion
+            AMA discussion
           </UnderlineLink>
         </p>
         <div className='divider'></div>

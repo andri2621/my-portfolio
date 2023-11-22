@@ -54,7 +54,7 @@ const UnstyledLink = React.forwardRef<HTMLAnchorElement, UnstyledLinkProps>(
         {...rest}
         className={cn('cursor-newtab', 'inline-flex items-center', className)}
       >
-        <div>{children}</div>
+        <div className='inline-flex items-center gap-x-1'>{children}</div>
         {arrow && <GoArrowUpRight size={12} />}
       </Link>
     );

@@ -13,7 +13,7 @@ export default function Footer() {
       <hr className='border-base-300 ' />
       <div className='layout'>
         <footer className='footer footer-center text-base-content py-6'>
-          <nav className='flex flex-wrap justify-center gap-x-8 gap-y-4'>
+          <div className='flex flex-wrap justify-center gap-x-8 gap-y-4'>
             {footerLink.map((item) => {
               if (item.underConstruction) {
                 return (
@@ -36,8 +36,8 @@ export default function Footer() {
                 );
               }
             })}
-          </nav>
-          <nav>
+          </div>
+          <div>
             <p className='font-bold'>Reach me out!</p>
             <div className='flex flex-wrap justify-center gap-x-4 gap-y-[2px]'>
               {socialLink.map((social, idx) => {
@@ -67,11 +67,11 @@ export default function Footer() {
                 );
               })}
             </div>
-          </nav>
+          </div>
 
-          <aside className='flex w-full flex-col items-center justify-between gap-4'>
+          <div className='flex w-full flex-col items-center justify-between gap-4'>
             <div>© {new Date().getFullYear()} - Andi Setiawan</div>
-          </aside>
+          </div>
         </footer>
       </div>
     </>

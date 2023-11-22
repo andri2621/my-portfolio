@@ -34,7 +34,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       themes={['emerald', 'night']}
     >
       <ToastContainer
-        autoClose={5000}
+        autoClose={3000}
         position='top-center'
         newestOnTop={true}
         closeButton={true}

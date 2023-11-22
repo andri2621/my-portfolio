@@ -144,14 +144,16 @@ export default function ContactForm() {
             )}
           </div>
         </div>
-        <button
-          type='submit'
-          disabled={isSubmitting}
-          className='btn btn-primary btn-sm mt-6'
-        >
-          {isSubmitting && <span className='loading loading-spinner'></span>}
-          {isSubmitting ? 'Sending...' : 'Send Message'}
-        </button>
+        <div className='flex w-full justify-end'>
+          <button
+            type='submit'
+            disabled={isSubmitting}
+            className='btn btn-primary btn-sm mt-6'
+          >
+            {isSubmitting && <span className='loading loading-spinner'></span>}
+            {isSubmitting ? 'Sending...' : 'Send Message'}
+          </button>
+        </div>
       </form>
     </>
   );
