@@ -88,7 +88,7 @@ export const footerLink: FooterLinkProps[] = [
   {
     label: 'Source Code',
     name: 'Portfolio Source',
-    link: '',
+    link: 'https://github.com/andri2621/my-portfolio',
     underConstruction: false,
   },
 
