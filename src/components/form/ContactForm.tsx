@@ -106,7 +106,7 @@ export default function ContactForm() {
                     errors.subject?.message,
                 }
               )}
-              placeholder='John'
+              placeholder='Subject'
             />
             {errors.subject?.message && (
               <p className='text-error mt-1 text-sm'>
@@ -144,14 +144,16 @@ export default function ContactForm() {
             )}
           </div>
         </div>
-        <button
-          type='submit'
-          disabled={isSubmitting}
-          className='btn btn-primary btn-sm mt-6'
-        >
-          {isSubmitting && <span className='loading loading-spinner'></span>}
-          {isSubmitting ? 'Sending...' : 'Send Message'}
-        </button>
+        <div className='flex w-full justify-end'>
+          <button
+            type='submit'
+            disabled={isSubmitting}
+            className='btn btn-primary btn-sm mt-6'
+          >
+            {isSubmitting && <span className='loading loading-spinner'></span>}
+            {isSubmitting ? 'Sending...' : 'Send Message'}
+          </button>
+        </div>
       </form>
     </>
   );

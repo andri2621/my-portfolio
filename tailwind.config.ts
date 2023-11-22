@@ -15,6 +15,7 @@ export default {
         primary: ['Inter', ...defaultTheme.fontFamily.sans],
       },
       screens: {
+        xs: '475px',
         '2xl': '1320px',
       },
       colors: {

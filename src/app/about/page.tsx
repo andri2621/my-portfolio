@@ -1,15 +1,16 @@
+import AboutMe from '@/app/about/AboutMe';
 import BEskill from '@/app/about/BEskill';
+import Contact from '@/app/about/Contact';
 import CurrentLearn from '@/app/about/CurrentLearn';
 import Education from '@/app/about/Education';
 import Experience from '@/app/about/Experience';
 import FEskill from '@/app/about/FEskill';
-import Me from '@/app/about/Me';
 
 export default function AboutSection() {
   return (
     <section id='about' className='min-h-screen py-24'>
-      <h2 className='text-primary mb-4 font-bold'>About Me</h2>
-      <Me />
+      <AboutMe />
+
       <div className='divider'></div>
 
       <div className='min-h-screen'>
@@ -42,6 +43,13 @@ export default function AboutSection() {
         <div id='education'>
           <h2 className='text-primary mb-4 font-bold'>Education</h2>
           <Education />
+        </div>
+
+        <div className='divider'></div>
+
+        <div id='contact'>
+          <h2 className='text-primary mb-4 font-bold'>Contact</h2>
+          <Contact />
         </div>
       </div>
     </section>

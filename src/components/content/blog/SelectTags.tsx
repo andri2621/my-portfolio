@@ -89,8 +89,8 @@ export default function SelectTags({ tags, handleTag }: SelectTagsProps) {
             <ul
               tabIndex={0}
               className={cn(
-                'bg-base-200 menu flex-nowrap overflow-hidden overflow-y-auto',
-                'h-60 w-32 p-2 md:w-40',
+                'bg-base-200 menu flex-nowrap gap-1 overflow-hidden overflow-y-auto',
+                'max-h-60 w-32 p-2 md:w-40',
                 'dark:shadow-4xl shadow-3xl',
                 'rounded-lg border-none outline-none',
                 'capitalize text-black hover:text-black dark:text-white dark:hover:text-white'

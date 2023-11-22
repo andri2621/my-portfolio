@@ -44,7 +44,11 @@ const TimeLine: React.FC<TimelineProps> = ({ data }) => {
               {item.title}
             </h3>
 
-            <div className='-mt-2'>
+            <time className='text-base-content text-sm font-normal leading-none'>
+              {item.date}
+            </time>
+
+            <div>
               {item.link ? (
                 <UnderlineLink
                   href={item.link}
@@ -57,9 +61,6 @@ const TimeLine: React.FC<TimelineProps> = ({ data }) => {
                 <div className='text-primary'> @{item.at}</div>
               )}
             </div>
-            <time className='text-base-content text-sm font-normal leading-none'>
-              {item.date}
-            </time>
           </div>
           {/* <h5 className='text-primary'>{item.school}</h5> */}
           <p className='text-base-content/70 my-4 text-sm font-normal md:text-base'>

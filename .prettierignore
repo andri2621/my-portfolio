@@ -39,3 +39,6 @@ CHANGELOG.md
 
 # contentlayer for render markdown
 .contentlayer
+
+# mdx content file
+/src/content/*

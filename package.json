@@ -1,12 +1,13 @@
 {
-  "name": "Awandri",
+  "name": "awandri.com",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "contentlayer build && prisma generate && next build",
+    "build": "contentlayer build && next build",
     "start": "next start",
     "prisma:seed": "prisma db seed",
+    "prisma:push": "prisma db push",
     "preview": "contentlayer build && next build && next start",
     "lint": "next lint",
     "lint:fix": "eslint src --fix && yarn format",
@@ -18,9 +19,11 @@
     "format": "prettier -w .",
     "format:check": "prettier -c .",
     "postbuild": "next-sitemap --config next-sitemap.config.js",
+    "postinstall": "prisma generate",
     "prepare": "husky install"
   },
   "dependencies": {
+    "@giscus/react": "^2.3.0",
     "@hookform/resolvers": "^3.3.2",
     "@prisma/client": "^5.5.2",
     "@types/react-scroll": "^1.8.8",
@@ -29,6 +32,7 @@
     "concurrently": "^8.2.2",
     "contentlayer": "^0.3.4",
     "crypto": "^1.0.1",
+    "date-fns": "^2.30.0",
     "framer-motion": "^10.16.4",
     "fuse.js": "^7.0.0",
     "lodash": "^4.17.21",
@@ -36,6 +40,7 @@
     "next": "^13.5.4",
     "next-cloudinary": "^4.28.0",
     "next-contentlayer": "^0.3.4",
+    "next-share": "^0.27.0",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

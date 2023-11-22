@@ -10,6 +10,7 @@ type LinkProps = {
   spy?: boolean;
   hashSpy?: boolean;
   offset?: number;
+  spyThrottle?: number;
   className?: string;
   onSetActive?: (to: string) => void;
 };

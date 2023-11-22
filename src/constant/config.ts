@@ -74,14 +74,22 @@ export const NavigationData: NavigationProps[] = [
     link: '/about',
     isUnderConstruction: false,
   },
+  {
+    id: 6,
+    label: 'Guestbook',
+    value: 'guestbook',
+    icon: FaPhoneAlt,
+    link: '/guestbook',
+    isUnderConstruction: false,
+  },
 ];
 
 export const footerLink: FooterLinkProps[] = [
   {
     label: 'Source Code',
     name: 'Portfolio Source',
-    link: '',
-    underConstruction: true,
+    link: 'https://github.com/andri2621/my-portfolio',
+    underConstruction: false,
   },
 
   {

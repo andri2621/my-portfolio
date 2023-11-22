@@ -1,6 +1,6 @@
 export default function ExpandingArrow({ className }: { className?: string }) {
   return (
-    <div className='group relative flex items-center'>
+    <div className='relative flex h-4 w-4 items-center'>
       <svg
         className={`${
           className ? className : 'h-4 w-4'

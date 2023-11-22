@@ -22,7 +22,7 @@ const VisibleBadges: React.FC<{ tags: string[] }> = ({ tags }) => (
           className={clsx(
             // selectedIcon && selectedIcon.badgeType,
             // 'badge badge-sm badge-outline',
-            'badge badge-accent badge-sm',
+            'badge badge-accent badge-outline badge-sm',
             'cursor-default',
             'items-center justify-center gap-1 py-2',
             'font-semibold uppercase'
@@ -66,7 +66,7 @@ const Badge: React.FC<BadgeProps> = ({
             setIsOpen((prev) => !prev);
           }}
         >
-          <div className='text-accent m-0 cursor-pointer text-sm font-medium'>
+          <div className='text-accent m-0 cursor-pointer text-sm font-medium hover:underline'>
             +{hiddenBadges.length} tags
           </div>
           {isOpen && (

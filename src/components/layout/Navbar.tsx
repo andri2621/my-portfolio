@@ -45,24 +45,7 @@ const Navbar = () => {
           {/* NAVIGATION LINKS ON > MEDIUM DEVICE */}
           <div className=' hidden items-center gap-4  sm:flex'>
             {NavigationData.map((nav) => {
-              if (nav.isUnderConstruction) {
-                return (
-                  <div
-                    key={nav.id}
-                    className={cn(
-                      'hover:!text-primary/50',
-                      'flex items-center',
-                      {
-                        'active font-medium': activePage === nav.link,
-                        'cursor-not-allowed': nav.isUnderConstruction,
-                      }
-                    )}
-                  >
-                    {nav.label}
-                    <Icons.underConstruction className='ml-1' />
-                  </div>
-                );
-              } else {
+              if (!nav.isUnderConstruction) {
                 return (
                   <Link
                     href={nav.link}
