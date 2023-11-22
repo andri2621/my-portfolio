@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-console */
 
+import { showLogger } from '@/constant/env';
+
 /**
  * A logger function that will only logs on development
  * @param object - The object to log
@@ -11,7 +13,7 @@ export default function logger(
   comment?: any,
   ...additionalObjects: any[]
 ): void {
-  // if (!showLogger) return;
+  if (!showLogger) return;
 
   console.log(
     `%c ============== INFO LOG ============== \n${
