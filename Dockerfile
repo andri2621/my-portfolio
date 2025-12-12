@@ -23,7 +23,7 @@ RUN npm run build
 # -----------------------------
 # STAGE 2 — Production image
 # -----------------------------
-FROM node:20 AS runner
+FROM node:24 AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
